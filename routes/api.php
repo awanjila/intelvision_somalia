@@ -9,6 +9,7 @@ use App\Http\Controllers\BackOffice\CategoryController;
 use App\Http\Controllers\BackOffice\PortfolioController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Models\BackOffice\Blog;
 
 
 
@@ -64,5 +65,42 @@ Route::get('/service/{slug}', function($slug) {
         return response()->json(['error' => 'Service not found'], 404);
     }
     return response()->json($service);
+});
+
+
+
+Route::get('/blogs', function () {
+    return Blog::select(
+        'id',
+        'blog_category_id',
+        'author',
+        'name',
+        'slug',
+        'meta_title',
+        'meta_description',
+        'image',
+        'created_at'
+    )
+    ->with('category:id,name,slug')
+    ->latest()
+    ->get();
+});
+
+Route::get('/blog-categories', function () {
+    return \App\Models\BackOffice\BlogCategory::select('id', 'name', 'slug')->get();
+});
+
+Route::get('/blog/{slug}', function ($slug) {
+    $blog = Blog::with('category')
+        ->where('slug', $slug)
+        ->first();
+
+    if (!$blog) {
+        return response()->json([
+            'error' => 'Blog not found'
+        ], 404);
+    }
+
+    return response()->json($blog);
 });
 

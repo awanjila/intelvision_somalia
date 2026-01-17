@@ -1,17 +1,17 @@
 <template>
-  <section class="services-section">
+  <section class="blog-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">What We Do</h2>
+        <h2 class="section-title">Insights & Updates</h2>
         <p class="section-subtitle">
-          Comprehensive security solutions powered by modern technology
+          Expert knowledge and industry trends to keep you informed and secure
         </p>
       </div>
 
       <div class="carousel-wrapper">
         <div v-if="loading" class="loading-state">
           <div class="spinner"></div>
-          <p>Loading services...</p>
+          <p>Loading articles...</p>
         </div>
         
         <transition-group v-else name="slide-fade" tag="div" class="carousel-track">
@@ -19,22 +19,37 @@
             v-for="(batch, batchIndex) in batches"
             :key="batchIndex"
             v-show="currentBatch === batchIndex"
-            class="services-batch"
+            class="blog-batch"
           >
-            <div
-              v-for="(service, index) in batch"
+            <article
+              v-for="(blog, index) in batch"
               :key="`${batchIndex}-${index}`"
-              class="service-card"
+              class="blog-card"
             >
               <div class="card-image-wrapper">
-                <img :src="service.image || '/images/services/default.jpg'" :alt="service.title || service.name" class="card-image" />
+                <img 
+                  :src="blog.image || '/images/blog/default.jpg'" 
+                  :alt="blog.name" 
+                  class="card-image" 
+                />
                 <div class="card-overlay"></div>
+                <div v-if="blog.category" class="card-category">{{ blog.category }}</div>
               </div>
               <div class="card-content">
-                <h3 class="card-title">{{ service.title || service.name }}</h3>
-                <p class="card-description" v-html="truncateDescription(service.description)"></p>
-                <a :href="`/show/service/${service.slug}`" class="card-link">
-                  Learn More
+                <div class="card-meta">
+                  <span class="meta-date">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    {{ formatDate(blog.created_at) }}
+                  </span>
+                  <span v-if="blog.read_time" class="meta-read-time">{{ blog.read_time }}</span>
+                </div>
+                <h3 class="card-title">{{ blog.name }}</h3>
+                <p class="card-excerpt">{{ truncateExcerpt(blog.meta_description) }}</p>
+                <a :href="`/blog/${blog.slug}`" class="card-link">
+                  Read Article
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -51,12 +66,13 @@
                   </svg>
                 </a>
               </div>
-            </div>
+            </article>
           </div>
         </transition-group>
 
         <!-- Navigation Arrows -->
         <button 
+          v-if="batches.length > 1"
           class="carousel-nav prev" 
           @click="prevBatch" 
           :disabled="currentBatch === 0"
@@ -78,6 +94,7 @@
         </button>
 
         <button 
+          v-if="batches.length > 1"
           class="carousel-nav next" 
           @click="nextBatch"
           :disabled="currentBatch === batches.length - 1"
@@ -99,7 +116,7 @@
         </button>
 
         <!-- Dots Indicator -->
-        <div class="carousel-dots">
+        <div v-if="batches.length > 1" class="carousel-dots">
           <button
             v-for="(batch, index) in batches"
             :key="`dot-${index}`"
@@ -109,167 +126,107 @@
           ></button>
         </div>
       </div>
+
+      <div class="section-footer">
+        <a href="/blogs" class="view-all-link">
+          View All Articles
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
 
-export default {
-  name: 'ServicesCarousel',
-  setup() {
-    const currentBatch = ref(0)
-    const services = ref([])
-    const loading = ref(true)
+const currentBatch = ref(0)
+const blogs = ref([])
+const loading = ref(true)
 
-    // Helper function to decode HTML entities
-    const decodeHtmlEntities = (text) => {
-      const textarea = document.createElement('textarea')
-      textarea.innerHTML = text
-      return textarea.value
-    }
+// Helper function to decode HTML entities
+const decodeHtmlEntities = (text) => {
+  if (!text) return ''
+  const textarea = document.createElement('textarea')
+  textarea.innerHTML = text
+  return textarea.value
+}
 
-    // Helper function to strip HTML tags
-    const stripHtmlTags = (html) => {
-      const div = document.createElement('div')
-      div.innerHTML = html
-      return div.textContent || div.innerText || ''
-    }
+// Helper function to strip HTML tags
+const stripHtmlTags = (html) => {
+  if (!html) return ''
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent || div.innerText || ''
+}
 
-    // Truncate description to uniform length
-    const truncateDescription = (description) => {
-      if (!description) return ''
-      
-      // Decode HTML entities and strip tags
-      let cleanText = stripHtmlTags(description)
-      cleanText = decodeHtmlEntities(cleanText)
-      
-      // Trim whitespace
-      cleanText = cleanText.trim()
-      
-      // Truncate to 120 characters
-      const maxLength = 120
-      if (cleanText.length > maxLength) {
-        return cleanText.substring(0, maxLength).trim() + '...'
-      }
-      
-      return cleanText
-    }
+// Truncate excerpt to uniform length
+const truncateExcerpt = (excerpt) => {
+  if (!excerpt) return ''
+  
+  // Decode HTML entities and strip tags
+  let cleanText = stripHtmlTags(excerpt)
+  cleanText = decodeHtmlEntities(cleanText)
+  
+  // Trim whitespace
+  cleanText = cleanText.trim()
+  
+  // Truncate to 140 characters
+  const maxLength = 140
+  if (cleanText.length > maxLength) {
+    return cleanText.substring(0, maxLength).trim() + '...'
+  }
+  
+  return cleanText
+}
 
-    const fetchServices = async () => {
-      try {
-        loading.value = true
-        const response = await axios.get('/api/services')
-        services.value = response.data
-      } catch (error) {
-        console.error('Error fetching services:', error)
-        // Fallback to hardcoded services if API fails
-        services.value = [
-          {
-            title: 'CCTV Surveillance',
-            description: 'Professional HD cameras with remote monitoring and night vision for comprehensive property security.',
-            image: '/images/services/cctv-surveillance.jpg',
-            link: '/services/cctv',
-            slug: 'cctv-surveillance'
-          },
-          {
-            title: 'Electric Fences',
-            description: 'Advanced energizer systems with alarm integration for maximum perimeter protection.',
-            image: '/images/services/electric-fences.jpg',
-            link: '/services/electric-fences',
-            slug: 'electric-fences'
-          },
-          {
-            title: 'Biometric Access Control',
-            description: 'Fingerprint scanners and card readers for secure entry management and attendance tracking.',
-            image: '/images/services/access-control.jpg',
-            link: '/services/access-control',
-            slug: 'biometric-access-control'
-          },
-          {
-            title: 'Automated Gates',
-            description: 'Smart gate automation with remote control for convenient and secure property access.',
-            image: '/images/services/automated-gates.jpg',
-            link: '/services/automated-gates',
-            slug: 'automated-gates'
-          },
-          {
-            title: 'Video Door Phones',
-            description: 'Modern intercom systems with video capability for secure visitor identification.',
-            image: '/images/services/door-phones.jpg',
-            link: '/services/door-phones',
-            slug: 'video-door-phones'
-          },
-          {
-            title: 'Fire Safety Solutions',
-            description: 'Comprehensive fire protection including extinguishers and fire doors for complete safety.',
-            image: '/images/services/fire-safety.jpg',
-            link: '/services/fire-safety',
-            slug: 'fire-safety-solutions'
-          },
-          {
-            title: 'Barriers & Road Blocks',
-            description: 'Heavy-duty barriers for controlled vehicle access in commercial facilities.',
-            image: '/images/services/barriers.jpg',
-            link: '/services/barriers',
-            slug: 'barriers-road-blocks'
-          },
-          {
-            title: 'Metal Detectors',
-            description: 'Professional-grade detection systems for enhanced security screening.',
-            image: '/images/services/metal-detectors.jpg',
-            link: '/services/metal-detectors',
-            slug: 'metal-detectors'
-          }
-        ]
-      } finally {
-        loading.value = false
-      }
-    }
+// Format date
+const formatDate = (date) => {
+  if (!date) return 'Recent'
+  const d = new Date(date)
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+}
 
-    const batches = computed(() => {
-      const batchSize = 4
-      const result = []
-      for (let i = 0; i < services.value.length; i += batchSize) {
-        result.push(services.value.slice(i, i + batchSize))
-      }
-      return result
-    })
+const batches = computed(() => {
+  const batchSize = 3
+  const result = []
+  for (let i = 0; i < blogs.value.length; i += batchSize) {
+    result.push(blogs.value.slice(i, i + batchSize))
+  }
+  return result
+})
 
-    const nextBatch = () => {
-      if (currentBatch.value < batches.value.length - 1) {
-        currentBatch.value++
-      }
-    }
-
-    const prevBatch = () => {
-      if (currentBatch.value > 0) {
-        currentBatch.value--
-      }
-    }
-
-    const goToBatch = (index) => {
-      currentBatch.value = index
-    }
-
-    onMounted(() => {
-      fetchServices()
-    })
-
-    return {
-      currentBatch,
-      services,
-      loading,
-      batches,
-      nextBatch,
-      prevBatch,
-      goToBatch,
-      truncateDescription
-    }
+const nextBatch = () => {
+  if (currentBatch.value < batches.value.length - 1) {
+    currentBatch.value++
   }
 }
+
+const prevBatch = () => {
+  if (currentBatch.value > 0) {
+    currentBatch.value--
+  }
+}
+
+const goToBatch = (index) => {
+  currentBatch.value = index
+}
+
+onMounted(async () => {
+  try {
+    loading.value = true
+    const res = await fetch('/api/blogs')
+    blogs.value = await res.json()
+  } catch (error) {
+    console.error('Error fetching blogs:', error)
+    blogs.value = []
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <style scoped>
@@ -279,20 +236,20 @@ export default {
   box-sizing: border-box;
 }
 
-.services-section {
+.blog-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   position: relative;
 }
 
-.services-section::before {
+.blog-section::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #01aeef, transparent);
+  background: linear-gradient(90deg, transparent, #02375f, transparent);
 }
 
 .container {
@@ -324,7 +281,7 @@ export default {
   transform: translateX(-50%);
   width: 100px;
   height: 5px;
-  background: linear-gradient(90deg, #01aeef, #0398d4);
+  background: linear-gradient(90deg, #02375f, #01517a);
   border-radius: 3px;
 }
 
@@ -339,7 +296,7 @@ export default {
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  min-height: 520px;
+  min-height: 580px;
 }
 
 .loading-state {
@@ -350,14 +307,14 @@ export default {
   gap: 20px;
   padding: 80px 20px;
   color: #6c757d;
-  min-height: 520px;
+  min-height: 580px;
 }
 
 .spinner {
   width: 48px;
   height: 48px;
-  border: 5px solid #e0f2fe;
-  border-top-color: #01aeef;
+  border: 5px solid #f0f0f0;
+  border-top-color: #02375f;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
@@ -371,35 +328,35 @@ export default {
   width: 100%;
 }
 
-.services-batch {
+.blog-batch {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
   width: 100%;
 }
 
-.service-card {
+.blog-card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid #e9ecef;
-  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.08);
+  box-shadow: 0 4px 16px rgba(2, 55, 95, 0.06);
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.service-card:hover {
+.blog-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(1, 174, 239, 0.2);
-  border-color: #01aeef;
+  box-shadow: 0 20px 48px rgba(2, 55, 95, 0.15);
+  border-color: #02375f;
 }
 
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 260px;
   overflow: hidden;
   background: linear-gradient(135deg, #02375f 0%, #01517a 100%);
 }
@@ -411,8 +368,8 @@ export default {
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.service-card:hover .card-image {
-  transform: scale(1.15);
+.blog-card:hover .card-image {
+  transform: scale(1.1);
 }
 
 .card-overlay {
@@ -421,12 +378,28 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, transparent 0%, rgba(2, 55, 95, 0.5) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 55, 95, 0.6) 100%);
   transition: background 0.4s ease;
 }
 
-.service-card:hover .card-overlay {
-  background: linear-gradient(180deg, rgba(1, 174, 239, 0.1) 0%, rgba(1, 174, 239, 0.4) 100%);
+.blog-card:hover .card-overlay {
+  background: linear-gradient(180deg, rgba(2, 55, 95, 0.1) 0%, rgba(2, 55, 95, 0.5) 100%);
+}
+
+.card-category {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(1, 174, 239, 0.95);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  backdrop-filter: blur(10px);
 }
 
 .card-content {
@@ -434,27 +407,58 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
-.card-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #02375f;
-  line-height: 1.3;
-  min-height: 52px;
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+.meta-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-date svg {
+  opacity: 0.7;
+}
+
+.meta-read-time {
   display: flex;
   align-items: center;
 }
 
-.card-description {
+.meta-read-time::before {
+  content: '•';
+  margin-right: 8px;
+  color: #cbd5e0;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #02375f;
+  line-height: 1.4;
+  min-height: 70px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-excerpt {
   font-size: 0.98rem;
   color: #6c757d;
-  line-height: 1.65;
+  line-height: 1.7;
   flex: 1;
-  min-height: 80px;
+  min-height: 85px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -463,7 +467,7 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #01aeef;
+  color: #02375f;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 700;
@@ -480,7 +484,7 @@ export default {
 }
 
 .card-link:hover {
-  color: #0398d4;
+  color: #01aeef;
   gap: 12px;
 }
 
@@ -493,8 +497,8 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #02375f;
-  border: none;
+  background: #ffffff;
+  border: 2px solid #02375f;
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -504,7 +508,7 @@ export default {
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.2);
+  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.15);
 }
 
 .carousel-nav:disabled {
@@ -514,12 +518,17 @@ export default {
 }
 
 .carousel-nav:not(:disabled):hover {
-  background: #01aeef;
+  background: #02375f;
   transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 6px 20px rgba(1, 174, 239, 0.3);
+  box-shadow: 0 6px 20px rgba(2, 55, 95, 0.25);
 }
 
 .carousel-nav svg {
+  color: #02375f;
+  transition: color 0.3s ease;
+}
+
+.carousel-nav:not(:disabled):hover svg {
   color: #ffffff;
 }
 
@@ -551,14 +560,51 @@ export default {
 }
 
 .dot.active {
-  background: #01aeef;
+  background: #02375f;
   width: 42px;
-  box-shadow: 0 2px 8px rgba(1, 174, 239, 0.4);
+  box-shadow: 0 2px 8px rgba(2, 55, 95, 0.3);
 }
 
 .dot:not(.active):hover {
-  background: #02375f;
+  background: #01aeef;
   transform: scale(1.2);
+}
+
+/* Section Footer */
+.section-footer {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #02375f 0%, #01517a 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(2, 55, 95, 0.2);
+}
+
+.view-all-link svg {
+  transition: transform 0.3s ease;
+}
+
+.view-all-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(2, 55, 95, 0.3);
+  gap: 14px;
+}
+
+.view-all-link:hover svg {
+  transform: translateX(4px);
 }
 
 /* Transitions */
@@ -583,18 +629,13 @@ export default {
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .services-batch {
-    grid-template-columns: repeat(3, 1fr);
+  .blog-batch {
+    grid-template-columns: repeat(2, 1fr);
     gap: 28px;
   }
 }
 
 @media (max-width: 900px) {
-  .services-batch {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
   .section-title {
     font-size: 2.8rem;
   }
@@ -609,7 +650,7 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .services-section {
+  .blog-section {
     padding: 70px 0;
   }
 
@@ -633,20 +674,21 @@ export default {
     min-height: auto;
   }
 
-  .services-batch {
+  .blog-batch {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 
   .card-image-wrapper {
-    height: 200px;
+    height: 220px;
   }
 
   .card-title {
     min-height: auto;
+    font-size: 1.3rem;
   }
 
-  .card-description {
+  .card-excerpt {
     min-height: 60px;
   }
 
@@ -675,6 +717,15 @@ export default {
   .dot.active {
     width: 36px;
   }
+
+  .section-footer {
+    margin-top: 50px;
+  }
+
+  .view-all-link {
+    padding: 14px 32px;
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -694,11 +745,16 @@ export default {
     font-size: 1.2rem;
   }
 
-  .card-description {
+  .card-excerpt {
     font-size: 0.92rem;
   }
 
   .card-link {
+    font-size: 0.9rem;
+  }
+
+  .view-all-link {
+    padding: 12px 28px;
     font-size: 0.9rem;
   }
 }

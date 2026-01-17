@@ -58,6 +58,9 @@ import { VueRecaptcha } from 'vue-recaptcha';
 import GoogleLoginButton from './components/auth/GoogleLoginButton.vue';
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
+import BlogList from './pages/BlogList.vue';
+import BlogDetails from './pages/BlogDetails.vue';
+
 
 // Add the imported icons to the library
 library.add(
@@ -151,6 +154,8 @@ app.component('category-portfolios', CategoryPortfolios);
 app.component('services-page', Services);
 app.component('service-detail', ServiceDetail);
 app.component('welcome-page', Welcome);
+app.component('blog-list', BlogList);
+app.component('blog-details', BlogDetails);
 
 // Use the router and Pinia
 app.use(router);

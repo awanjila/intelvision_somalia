@@ -6,9 +6,11 @@
     <!-- <ProcessSection /> -->
     <!-- <IntegrationsSection /> -->
     <!-- <WhyChooseUs /> -->
-    <TestimonialsSection />
+    
     <!-- <CallToAction /> -->
     <ContactSection />
+    <BlogSection />
+    <TestimonialsSection />
   </div>
 </template>
 
@@ -22,6 +24,7 @@ import ServicesSection from '@/components/ServicesSection.vue'
 // import CallToAction from '@/components/CallToAction.vue'
 import ContactSection from '@/components/ContactSection.vue'
 import TestimonialsSection from '@/components/TestimonialsSection.vue'
+import BlogSection from '@/components/BlogSection.vue'
 import { faHotTubPerson } from '@fortawesome/free-solid-svg-icons'
 </script>
 

@@ -54,11 +54,17 @@
               </li>
               <li>
                 <i class="fas fa-phone"></i>
-                <a href="tel:+254781312070">+254 781 312 070</a>
+                <div class="contact-group">
+                  <a href="tel:+254722850008">+254 (0)722 850008</a>
+                  <a href="tel:+254734850008">+254 (0)734 850008</a>
+                </div>
               </li>
               <li>
                 <i class="fas fa-envelope"></i>
-                <a href="mailto:support@wabestudio.co.ke">support@wabestudio.co.ke</a>
+                <div class="contact-group">
+                  <a href="mailto:info@intelvision.co.ke">info@intelvision.co.ke</a>
+                  <a href="mailto:sales@intelvision.co.ke">sales@intelvision.co.ke</a>
+                </div>
               </li>
               <li>
                 <i class="fas fa-clock"></i>
@@ -340,6 +346,12 @@ onMounted(() => {
   color: white;
 }
 
+.contact-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 /* ===== NEWSLETTER ===== */
 .newsletter-desc {
   font-size: 0.9rem;
@@ -569,5 +581,60 @@ onMounted(() => {
   .footer-menu li a {
     font-size: 0.8rem;
   }
+}
+
+/* ===== INTELVISION BRAND COLOR OVERRIDES ===== */
+/* Footer section headings */
+.footer-title {
+  color: #01aeeff2;
+}
+
+.footer-title::after {
+  background: linear-gradient(90deg, #01aeeff2 0%, #018fc4 100%);
+}
+
+/* Footer links - service links */
+.footer-links li a {
+  color: #01aeeff2;
+}
+
+.footer-links li a:hover {
+  color: #018fc4;
+}
+
+.footer-links li a i {
+  color: #01aeeff2;
+}
+
+/* Contact info links (email & phone) */
+.contact-info li a {
+  color: #01aeeff2;
+}
+
+.contact-info li a:hover {
+  color: #018fc4;
+}
+
+.contact-info li i {
+  color: #01aeeff2;
+}
+
+/* Footer menu navigation links */
+.footer-menu li a {
+  color: #01aeeff2;
+}
+
+.footer-menu li a:hover {
+  color: #018fc4;
+}
+
+/* Footer border/divider lines */
+.footer-main {
+  border-bottom: 1px solid rgba(1, 174, 239, 0.25);
+}
+
+/* Input focus state */
+.input-wrapper input:focus {
+  border-color: #01aeeff2;
 }
 </style>

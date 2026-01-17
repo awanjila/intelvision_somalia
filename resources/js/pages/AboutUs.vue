@@ -2,280 +2,221 @@
   <div class="about-page">
     <!-- Hero Section -->
     <section class="hero-section">
-      <div class="container">
-        <h1 class="hero-title">About Wabe Studio</h1>
-        <p class="hero-subtitle">We build systems that work — so you can grow.</p>
-        <div class="button-group">
-          <a :href="whatsappLink" target="_blank" rel="noopener noreferrer" class="cta-button whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            Let's Talk on WhatsApp
-          </a>
-          <a href="/contact" class="cta-button contact">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-              <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-            </svg>
-            Tell Us About Your Project
-          </a>
-        </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">About Intelvision Technologies</h1>
+        <p class="hero-subtitle">Securing Your World Since 2010</p>
       </div>
-    </section>
-
-    <!-- Who We Are & What We Do -->
-    <section class="content-section">
-      <div class="container">
-        <div class="two-column-grid">
-          <div class="column-card">
-            <h2 class="section-title">Who We Are</h2>
-            <p class="section-text">
-              Wabe Studio is a <strong>digital systems company</strong> based in Kenya, serving businesses across East Africa and Africa. We help companies simplify operations, improve efficiency, and grow through <strong>connected digital solutions</strong> that bring clarity and control to everyday business.
-            </p>
-          </div>
-          <div class="column-card">
-            <h2 class="section-title">What We Do</h2>
-            <p class="section-text">
-              We design <strong>business systems that scale</strong> — from sales and payments to inventory, security, and customer experience. We create digital environments where teams can see everything clearly, act faster, and make better decisions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Mission & Vision -->
-    <section class="content-section alt-bg">
-      <div class="container">
-        <div class="mission-vision-grid">
-          <div class="mission-card">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="6"></circle>
-                <circle cx="12" cy="12" r="2"></circle>
-              </svg>
-            </div>
-            <h3>Our Mission</h3>
-            <p>To empower African businesses with smart, reliable systems that remove friction, unlock data, and drive sustainable growth.</p>
-          </div>
-          <div class="vision-card">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-            </div>
-            <h3>Our Vision</h3>
-            <p>An Africa where every business runs on connected, efficient, and trustworthy technology built for local realities and global standards.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Edge -->
-    <section class="content-section">
-      <div class="container">
-        <h2 class="main-title">Our Edge</h2>
-        <div class="edge-grid">
-          <div class="edge-card">
-            <div class="edge-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m7 11 2-2-2-2"></path>
-                <path d="M11 13h4"></path>
-                <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
-              </svg>
-            </div>
-            <h4>Connected Thinking</h4>
-            <p>Systems that work together seamlessly.</p>
-          </div>
-          <div class="edge-card">
-            <div class="edge-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path>
-              </svg>
-            </div>
-            <h4>Built for Growth</h4>
-            <p>Solutions designed to scale with your business.</p>
-          </div>
-          <div class="edge-card">
-            <div class="edge-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" x2="12" y1="20" y2="10"></line>
-                <line x1="18" x2="18" y1="20" y2="4"></line>
-                <line x1="6" x2="6" y1="20" y2="16"></line>
-              </svg>
-            </div>
-            <h4>Data-Driven Clarity</h4>
-            <p>Know what's happening, when, and why.</p>
-          </div>
-          <div class="edge-card">
-            <div class="edge-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
-              </svg>
-            </div>
-            <h4>Partnership & Reliability</h4>
-            <p>We deliver, support, and grow with our clients.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Impact -->
-    <section class="content-section alt-bg">
-      <div class="container">
-        <h2 class="main-title">Our Impact</h2>
-        <p class="section-text centered">
-          Wabe Studio has supported organizations across retail, healthcare, education, and service industries to digitize operations, automate payments, and strengthen business visibility.
-        </p>
-        <div class="impact-grid">
-          <div class="impact-item">
-            <span class="impact-bullet">→</span>
-            <span>Save time and reduce errors</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-bullet">→</span>
-            <span>Improve accountability and performance</span>
-          </div>
-          <div class="impact-item">
-            <span class="impact-bullet">→</span>
-            <span>Build data-backed decision-making cultures</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Carousel -->
-    <section class="testimonials-section">
-      <div class="container">
-        <h2 class="main-title">What Our Clients Say</h2>
-        <div class="testimonial-carousel">
-          <button @click="prevTestimonial" class="carousel-btn prev" aria-label="Previous testimonial">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m15 18-6-6 6-6"/>
-            </svg>
-          </button>
-          
-          <div class="testimonial-card">
-            <div class="quote-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-              </svg>
-            </div>
-            <p class="testimonial-text">{{ testimonials[currentTestimonial].text }}</p>
-            <div class="testimonial-author">
-              <p class="author-name">{{ testimonials[currentTestimonial].name }}</p>
-              <p class="author-title">{{ testimonials[currentTestimonial].title }}</p>
+      <div class="hero-slider">
+        <transition name="fade" mode="out-in">
+          <div :key="activeSlide" class="slide">
+            <div class="slide-content">
+              <h3>{{ heroSlides[activeSlide].title }}</h3>
+              <p>{{ heroSlides[activeSlide].description }}</p>
             </div>
           </div>
-
-          <button @click="nextTestimonial" class="carousel-btn next" aria-label="Next testimonial">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m9 18 6-6-6-6"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="carousel-dots">
-          <button 
-            v-for="(testimonial, index) in testimonials" 
+        </transition>
+        <div class="slider-dots">
+          <button
+            v-for="(slide, index) in heroSlides"
             :key="index"
-            @click="currentTestimonial = index"
-            :class="['dot', { active: currentTestimonial === index }]"
-            :aria-label="`Go to testimonial ${index + 1}`"
+            @click="activeSlide = index"
+            :class="['dot', { active: activeSlide === index }]"
+            :aria-label="`Go to slide ${index + 1}`"
           ></button>
         </div>
       </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="cta-section">
-      <div class="container">
-        <h2 class="cta-title">Let's Build What Works</h2>
-        <p class="cta-text">
-          Whether you're modernizing operations, improving customer experience, or preparing to scale, we help you design systems that work — so your business can grow.
-        </p>
-        <div class="button-group">
-          <a :href="whatsappLink" target="_blank" rel="noopener noreferrer" class="cta-button large whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-            </svg>
-            Start a Conversation
-          </a>
-          <a href="/contact" class="cta-button large contact">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-              <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-            </svg>
-            Tell Us About Your Project
-          </a>
+    <!-- Company Overview -->
+    <section class="section-container">
+      <div class="content-wrapper">
+        <div class="section-header">
+          <div class="icon-wrapper">
+            <i class="fas fa-building"></i>
+          </div>
+          <h2>Company Overview</h2>
+        </div>
+        <div class="content-card">
+          <p class="lead-text">
+            Intelvision Technologies was established in 2010. Our primary aim is providing the best security solutions for our clients by taking advantage of today's modern technology. We form partnerships with our clients to ensure they realize the most gain in terms of advice and economy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="section-container bg-light">
+      <div class="content-wrapper">
+        <div class="mission-vision-grid">
+          <!-- Mission Statement -->
+          <div class="mv-card">
+            <div class="mv-header">
+              <div class="icon-wrapper">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h2>Mission Statement</h2>
+            </div>
+            <ul class="statement-list">
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>To our customers</strong> - we aim to deliver a service in which they can be confident in all aspects: price, delivery and support.
+                </div>
+              </li>
+              <li>
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <strong>To our staff</strong> - we aim to deliver a stimulating and rewarding working environment.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Vision Statement -->
+          <div class="mv-card">
+            <div class="mv-header">
+              <div class="icon-wrapper">
+                <i class="fas fa-eye"></i>
+              </div>
+              <h2>Vision Statement</h2>
+            </div>
+            <p class="vision-text">
+              Our vision is to be a market leader in the security industry through our dedication to providing quality services and the best solutions in the market.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section-container">
+      <div class="content-wrapper">
+        <div class="section-header centered">
+          <h2>Our Solutions</h2>
+          <p class="section-subtitle">Comprehensive security systems tailored to your needs</p>
+        </div>
+
+        <div class="solutions-grid">
+          <!-- Residential Solutions -->
+          <div class="solution-card">
+            <div class="solution-header">
+              <div class="solution-icon residential">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3>Residential Solutions</h3>
+            </div>
+            <ul class="solution-list">
+              <li v-for="item in residentialSolutions" :key="item">
+                <i class="fas fa-shield-alt"></i>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Commercial Solutions -->
+          <div class="solution-card">
+            <div class="solution-header">
+              <div class="solution-icon commercial">
+                <i class="fas fa-briefcase"></i>
+              </div>
+              <h3>Commercial Solutions</h3>
+            </div>
+            <ul class="solution-list">
+              <li v-for="item in commercialSolutions" :key="item">
+                <i class="fas fa-shield-alt"></i>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Outdoor Solutions -->
+          <div class="solution-card">
+            <div class="solution-header">
+              <div class="solution-icon outdoor">
+                <i class="fas fa-tree"></i>
+              </div>
+              <h3>Outdoor Solutions</h3>
+            </div>
+            <ul class="solution-list">
+              <li v-for="item in outdoorSolutions" :key="item">
+                <i class="fas fa-shield-alt"></i>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'AboutPage',
-  data() {
-    return {
-      whatsappNumber: '254781312070', // Replace with your actual WhatsApp number
-      currentTestimonial: 0,
-      testimonials: [
-        {
-          text: "Wabe Studio transformed our operations completely. The system they built reduced our processing time by 60% and gave us real-time visibility across all departments.",
-          name: "Sarah Kimani",
-          title: "Operations Director, RetailCo Kenya"
-        },
-        {
-          text: "Working with Wabe Studio was seamless. They understood our challenges and delivered a solution that actually works for our team. Our efficiency has improved dramatically.",
-          name: "David Omondi",
-          title: "CEO, MediHealth Solutions"
-        },
-        {
-          text: "The payment automation system Wabe built for us eliminated manual errors and saved us countless hours. Their support has been exceptional throughout.",
-          name: "Grace Mwangi",
-          title: "Finance Manager, EduLearn Africa"
-        },
-        {
-          text: "From concept to deployment, Wabe Studio delivered beyond expectations. The inventory system they created gives us control we never had before.",
-          name: "James Otieno",
-          title: "Managing Director, Supply Chain Pro"
-        }
-      ]
-    }
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const activeSlide = ref(0)
+let sliderInterval = null
+
+const heroSlides = [
+  {
+    title: 'Professional CCTV Surveillance Systems',
+    description: 'High-definition cameras with remote monitoring, night vision, and cloud storage for complete property oversight.',
+    image: '/images/hero/cctv-surveillance.jpg'
   },
-  computed: {
-    whatsappLink() {
-      return `https://wa.me/${this.whatsappNumber}?text=Hi%20Wabe%20Studio%2C%20I'm%20interested%20in%20learning%20more%20about%20your%20services`
-    }
+  {
+    title: 'Electric Fence & Perimeter Security',
+    description: 'Advanced energizer systems with alarm integration, ensuring maximum protection for residential and commercial properties.',
+    image: '/images/hero/electric-fence.jpg'
   },
-  methods: {
-    nextTestimonial() {
-      this.currentTestimonial = (this.currentTestimonial + 1) % this.testimonials.length
-    },
-    prevTestimonial() {
-      this.currentTestimonial = this.currentTestimonial === 0 
-        ? this.testimonials.length - 1 
-        : this.currentTestimonial - 1
-    }
+  {
+    title: 'Access Control & Biometric Solutions',
+    description: 'Fingerprint scanners, card readers, and automated gate systems for secure and convenient entry management.',
+    image: '/images/hero/residential-security.jpg'
   },
-  mounted() {
-    // Auto-rotate testimonials every 5 seconds
-    this.testimonialInterval = setInterval(() => {
-      this.nextTestimonial()
-    }, 5000)
-  },
-  beforeUnmount() {
-    if (this.testimonialInterval) {
-      clearInterval(this.testimonialInterval)
-    }
+  {
+    title: 'Automated Gates & Barrier Systems',
+    description: 'Automated gates and barriers for secure property access.',
+    image: '/images/hero/automated-gates.jpg'
   }
-}
+]
+
+const residentialSolutions = [
+  'CCTV Cameras',
+  'Automated Gates',
+  'Electric Fences',
+  'Fire Extinguishers',
+  'Video Door Phones',
+  'Fire Doors'
+]
+
+const commercialSolutions = [
+  'Biometric Access Control',
+  'Surveillance Cameras',
+  'Metal Detectors',
+  'Fire Extinguishers'
+]
+
+const outdoorSolutions = [
+  'Electric Fences',
+  'Barriers and Road Blocks',
+  'Automatic Gates'
+]
+
+onMounted(() => {
+  sliderInterval = setInterval(() => {
+    activeSlide.value = (activeSlide.value + 1) % heroSlides.length
+  }, 5000)
+})
+
+onUnmounted(() => {
+  if (sliderInterval) {
+    clearInterval(sliderInterval)
+  }
+})
 </script>
 
 <style scoped>
+/* ===== GLOBAL STYLES ===== */
 * {
   margin: 0;
   padding: 0;
@@ -283,460 +224,413 @@ export default {
 }
 
 .about-page {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: #1e293b;
   line-height: 1.6;
-  background: #ffffff;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-/* Hero Section */
+/* ===== HERO SECTION ===== */
 .hero-section {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  color: white;
-  padding: 60px 24px;
+  position: relative;
+  background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 24px 120px;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(1, 174, 239, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(2, 55, 95, 0.3) 0%, transparent 50%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
   text-align: center;
+  max-width: 800px;
+  margin-bottom: 60px;
 }
 
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
   margin-bottom: 16px;
-  letter-spacing: -0.01em;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .hero-subtitle {
-  font-size: 1.2rem;
-  font-weight: 300;
-  max-width: 600px;
-  margin: 0 auto 30px;
-  opacity: 0.95;
-}
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-}
-
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.cta-button.whatsapp {
-  background: #25D366;
-  color: white;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-}
-
-.cta-button.whatsapp:hover {
-  background: #20bd5a;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-
-.cta-button.contact {
-  background: white;
-  color: #1e3a8a;
-  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
-  border: 2px solid #0369a1;
-}
-
-.cta-button.contact:hover {
-  background: #f0f9ff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-}
-
-.cta-button.large {
-  padding: 14px 28px;
-  font-size: 1rem;
-}
-
-/* Content Sections */
-.content-section {
-  padding: 50px 24px;
-}
-
-.content-section.alt-bg {
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-}
-
-.main-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.section-title {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 300;
 }
 
-.section-text {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #475569;
+.hero-slider {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 700px;
+  z-index: 2;
 }
 
-.section-text.centered {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 30px;
+.slide {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.section-text strong {
-  color: #0369a1;
-  font-weight: 600;
-}
-
-/* Two Column Layout */
-.two-column-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 40px;
-}
-
-.column-card {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(30, 58, 138, 0.08);
-  border-left: 4px solid #0369a1;
-}
-
-/* Mission & Vision */
-.mission-vision-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-}
-
-.mission-card,
-.vision-card {
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  border-left: 4px solid #0369a1;
-  box-shadow: 0 2px 12px rgba(3, 105, 161, 0.08);
-}
-
-.icon-circle {
-  width: 56px;
-  height: 56px;
-  background: #1e3a8a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.icon-circle svg {
-  color: white;
-}
-
-.mission-card h3,
-.vision-card h3 {
-  font-size: 1.3rem;
-  color: #1e3a8a;
+.slide-content h3 {
+  font-size: 1.5rem;
+  color: #02375f;
   margin-bottom: 12px;
   font-weight: 700;
 }
 
-.mission-card p,
-.vision-card p {
-  font-size: 0.95rem;
+.slide-content p {
   color: #475569;
-  line-height: 1.6;
-}
-
-/* Our Edge */
-.edge-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-}
-
-.edge-card {
-  background: white;
-  padding: 24px 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
-  transition: all 0.3s ease;
-  border-top: 3px solid #0369a1;
-}
-
-.edge-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.12);
-}
-
-.edge-icon {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 14px;
-}
-
-.edge-icon svg {
-  color: white;
-}
-
-.edge-card h4 {
-  font-size: 1.1rem;
-  color: #1e3a8a;
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.edge-card p {
-  font-size: 0.9rem;
-  color: #64748b;
-  line-height: 1.5;
-}
-
-/* Impact Section */
-.impact-grid {
-  max-width: 700px;
-  margin: 0 auto;
-  display: grid;
-  gap: 12px;
-}
-
-.impact-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 18px;
-  background: white;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  color: #475569;
-  box-shadow: 0 2px 8px rgba(3, 105, 161, 0.08);
-}
-
-.impact-bullet {
-  color: #0369a1;
-  font-size: 1.3rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* Testimonials Carousel */
-.testimonials-section {
-  padding: 50px 24px;
-  background: white;
-}
-
-.testimonial-carousel {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.testimonial-card {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(3, 105, 161, 0.1);
-  flex: 1;
-  min-height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.quote-icon {
-  color: #0369a1;
-  opacity: 0.3;
-  margin-bottom: 16px;
-}
-
-.testimonial-text {
-  font-size: 1.05rem;
-  color: #475569;
-  line-height: 1.7;
-  margin-bottom: 24px;
-  font-style: italic;
-}
-
-.testimonial-author {
-  margin-top: auto;
-}
-
-.author-name {
   font-size: 1rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 4px;
+  line-height: 1.7;
 }
 
-.author-title {
-  font-size: 0.9rem;
-  color: #64748b;
-}
-
-.carousel-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: #1e3a8a;
-  color: white;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.carousel-btn:hover {
-  background: #0369a1;
-  transform: scale(1.1);
-}
-
-.carousel-dots {
+.slider-dots {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: #cbd5e1;
-  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid white;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .dot.active {
-  background: #1e3a8a;
-  width: 28px;
-  border-radius: 5px;
+  background: white;
+  width: 32px;
+  border-radius: 6px;
 }
 
-/* Final CTA */
-.cta-section {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  color: white;
-  padding: 60px 24px;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* ===== SECTIONS ===== */
+.section-container {
+  padding: 80px 24px;
+}
+
+.section-container.bg-light {
+  background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 48px;
+}
+
+.section-header.centered {
   text-align: center;
 }
 
-.cta-title {
-  font-size: 2rem;
-  font-weight: 700;
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #02375f;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #01aeef 0%, #02375f 100%);
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 16px;
 }
 
-.cta-text {
-  font-size: 1.05rem;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
-  opacity: 0.95;
+.icon-wrapper i {
+  font-size: 1.75rem;
+  color: white;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ===== CONTENT CARD ===== */
+.content-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+}
+
+.lead-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* ===== MISSION & VISION ===== */
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 32px;
+}
+
+.mv-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.15);
+}
+
+.mv-header {
+  margin-bottom: 24px;
+}
+
+.mv-header h2 {
+  font-size: 1.75rem;
+  color: #02375f;
+  font-weight: 700;
+}
+
+.statement-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statement-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.statement-list li i {
+  color: #01aeef;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.statement-list li div {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.vision-text {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* ===== SOLUTIONS GRID ===== */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.solution-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+  transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(1, 174, 239, 0.2);
+}
+
+.solution-header {
+  margin-bottom: 24px;
+}
+
+.solution-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.solution-icon.residential {
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+}
+
+.solution-icon.commercial {
+  background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
+}
+
+.solution-icon.outdoor {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+}
+
+.solution-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.solution-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #02375f;
+}
+
+.solution-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.solution-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #475569;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.solution-list li:last-child {
+  border-bottom: none;
+}
+
+.solution-list li i {
+  color: #01aeef;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.75rem;
   }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-  
-  .button-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-  }
-  
-  .cta-button {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .two-column-grid,
+
   .mission-vision-grid {
     grid-template-columns: 1fr;
   }
-  
-  .edge-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 16px 100px;
+    min-height: 450px;
   }
-  
-  .testimonial-carousel {
-    flex-direction: column;
+
+  .hero-title {
+    font-size: 2.25rem;
   }
-  
-  .carousel-btn {
-    display: none;
+
+  .hero-subtitle {
+    font-size: 1.125rem;
   }
-  
-  .testimonial-card {
-    min-height: auto;
-    padding: 30px 24px;
+
+  .slide {
+    padding: 24px;
   }
-  
-  .main-title {
-    font-size: 1.6rem;
+
+  .slide-content h3 {
+    font-size: 1.25rem;
   }
-  
-  .cta-title {
-    font-size: 1.6rem;
+
+  .section-container {
+    padding: 60px 16px;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .content-card,
+  .mv-card {
+    padding: 28px;
+  }
+
+  .solutions-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-section,
-  .content-section,
-  .cta-section {
-    padding: 40px 20px;
+  .hero-title {
+    font-size: 1.875rem;
   }
-  
-  .column-card,
-  .mission-card,
-  .vision-card {
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.75rem;
+  }
+
+  .content-card,
+  .mv-card,
+  .solution-card {
     padding: 24px;
   }
-  
-  .testimonial-card {
-    padding: 24px 20px;
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-wrapper i {
+    font-size: 1.5rem;
   }
 }
 </style>
