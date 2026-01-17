@@ -30,7 +30,7 @@
 
           <!-- IT Services -->
           <div class="footer-column">
-            <h3 class="footer-title">IT Services</h3>
+            <h3 class="footer-title">Our Products</h3>
             <ul v-if="services.length > 0" class="footer-links">
               <li v-for="service in services.slice(0, 6)" :key="service.id">
                 <a :href="`/show/service/${service.slug}`">
@@ -40,7 +40,7 @@
               </li>
             </ul>
             <ul v-else class="footer-links">
-              <li><a href="/wabe_digital_agency/services"><i class="fas fa-chevron-right"></i>View All Services</a></li>
+              <li><a href="/products"><i class="fas fa-chevron-right"></i>View All Services</a></li>
             </ul>
           </div>
 
@@ -112,9 +112,9 @@
           </div>
           <ul class="footer-menu">
             <li><a href="/">Home</a></li>
-            <li><a href="/about/wabe_digital_Agency">About</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="/blogs">Blog</a></li>
-            <li><a href="/wabe_digital_agency/services">Services</a></li>
+            <li><a href="/products">Products</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </div>

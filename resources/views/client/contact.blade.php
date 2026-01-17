@@ -1,6 +1,6 @@
 @extends('client.layout.app')
 @section('title')
-Contact| Web Design | POS | ecommerce  | Web Design | Biometric Attendance   
+Contact| Intelvision Technologies | Advanced Security Solutions  
 @endsection
 
 @section('meta_title')

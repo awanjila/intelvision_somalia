@@ -1,6 +1,6 @@
 @extends('client.layout.app')
 @section('title')
-Web Design | POS | ecommerce  | Web Design | Biometric Attendance | Cloud CCTV Storage  
+Intelvision Technologies | Advanced Security Solutions| Cloud CCTV Storage  
 @endsection
 
 @section('meta_title')

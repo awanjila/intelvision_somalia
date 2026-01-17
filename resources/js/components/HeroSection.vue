@@ -18,8 +18,8 @@
               <h1 class="slide-title">{{ slide.title }}</h1>
               <p class="slide-description">{{ slide.description }}</p>
               <div class="slide-actions">
-                <a href="#contact" class="btn btn-primary">Request Site Visit</a>
-                <a href="#solutions" class="btn btn-secondary">Our Solutions</a>
+                <a href="/contact" class="btn btn-primary">Contact Us</a>
+                <a href="/products" class="btn btn-secondary">Our Products</a>
               </div>
             </div>
           </div>

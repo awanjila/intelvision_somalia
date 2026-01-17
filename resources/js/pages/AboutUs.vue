@@ -93,7 +93,7 @@
     <section class="section-container">
       <div class="content-wrapper">
         <div class="section-header centered">
-          <h2>Our Solutions</h2>
+          <h2>Our Products</h2>
           <p class="section-subtitle">Comprehensive security systems tailored to your needs</p>
         </div>
 

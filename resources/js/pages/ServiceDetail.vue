@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <!-- Breadcrumbs -->
-    <div class="rs-breadcrumbs img3">
+    <div class="rs-breadcrumbs">
       <div class="breadcrumbs-inner text-center">
         <h1 class="page-title">{{ service.name || 'Service Details' }}</h1>
         <ul>
@@ -47,7 +47,7 @@
               <ul class="services-list">
                 <li v-for="item in allServices" :key="item.id" :class="{ active: item.slug === service.slug }">
                   <a :href="`/show/service/${item.slug}`">
-                    {{ item.name }}
+                    <span>{{ item.name }}</span>
                     <i class="fas fa-arrow-right"></i>
                   </a>
                 </li>
@@ -57,27 +57,53 @@
             <!-- Contact Card -->
             <div class="contact-card">
               <div class="contact-icon">
-                <i class="fas fa-phone"></i>
+                <i class="fas fa-phone-alt"></i>
               </div>
-              <h3 class="contact-title">Have any Questions?<br/>Call us Today!</h3>
-              <a href="tel:+254781312070" class="contact-number">+254 781 312 070</a>
+              <h3 class="contact-title">Have any Questions?</h3>
+              <p class="contact-subtitle">Call us Today!</p>
+              <div class="contact-numbers">
+                <a href="tel:+254722850008" class="contact-number">+254 (0)722 850008</a>
+                <a href="tel:+254734850008" class="contact-number">+254 (0)734 850008</a>
+              </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="email-card">
+              <div class="email-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3 class="email-title">Email Us</h3>
+              <div class="email-addresses">
+                <a href="mailto:info@intelvision.co.ke" class="email-link">
+                  <i class="fas fa-paper-plane"></i>
+                  info@intelvision.co.ke
+                </a>
+                <a href="mailto:sales@intelvision.co.ke" class="email-link">
+                  <i class="fas fa-paper-plane"></i>
+                  sales@intelvision.co.ke
+                </a>
+              </div>
             </div>
 
             <!-- Brochure Card -->
             <div class="brochure-card">
+              <div class="brochure-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
               <h3 class="brochure-title">Brochures</h3>
               <p class="brochure-text">
                 Download our comprehensive service brochure to learn more about what we offer.
               </p>
               <a href="/contact" class="brochure-button">
                 Request Brochure
-                <i class="fas fa-file-pdf"></i>
+                <i class="fas fa-download"></i>
               </a>
             </div>
           </div>
         </div>
 
         <div v-else class="error-state">
+          <i class="fas fa-exclamation-circle"></i>
           <p>Service not found.</p>
           <a href="/wabe_digital_agency/services" class="back-button">Back to Services</a>
         </div>
@@ -85,21 +111,18 @@
     </section>
 
     <!-- CTA Section -->
-    <div class="rs-cta style1 bg7 pt-80 pb-70">
+    <div class="cta-section">
       <div class="container">
-        <div class="cta-wrap">
-          <div class="row align-items-center">
-            <div class="col-lg-9 col-md-12 md-mb-30">
-              <span>Plan to Start a Project</span>
-              <div class="title-wrap">
-                <h2 class="epx-title">Our Experts Ready to Help You</h2>
-              </div>
-            </div>
-            <div class="col-lg-3 text-right md-text-left col-md-12">
-              <div class="button-wrap">
-                <a class="readon learn-more" href="/contact">Get In Touch</a>
-              </div>
-            </div>
+        <div class="cta-content">
+          <div class="cta-text">
+            <span class="cta-label">Plan to Start a Project</span>
+            <h2 class="cta-title">Our Experts Ready to Help You</h2>
+          </div>
+          <div class="cta-button-wrap">
+            <a class="cta-button" href="/contact">
+              Get In Touch
+              <i class="fas fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -154,20 +177,39 @@ onMounted(() => {
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+.main-content {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #1e293b;
 }
 
 /* ===== BREADCRUMBS ===== */
 .rs-breadcrumbs {
   padding: 100px 0 80px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.rs-breadcrumbs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(1, 174, 239, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(2, 55, 95, 0.3) 0%, transparent 50%);
 }
 
 .breadcrumbs-inner {
-  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .page-title {
@@ -175,6 +217,7 @@ onMounted(() => {
   font-weight: 800;
   margin-bottom: 20px;
   color: white;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .breadcrumbs-inner ul {
@@ -182,27 +225,40 @@ onMounted(() => {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .breadcrumbs-inner ul li {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.breadcrumbs-inner ul li::before {
+  content: '/';
+  margin-right: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.breadcrumbs-inner ul li:first-child::before {
+  display: none;
 }
 
 .breadcrumbs-inner ul li a {
-  color: #fbbf24;
+  color: white;
   text-decoration: none;
   transition: color 0.3s;
+  font-weight: 500;
 }
 
 .breadcrumbs-inner ul li a:hover {
-  color: white;
+  color: #fbbf24;
 }
 
 /* ===== SERVICE DETAIL SECTION ===== */
 .service-detail-section {
-  padding: 80px 24px;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
 }
 
 /* ===== LOADING & ERROR STATES ===== */
@@ -211,18 +267,25 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 60px 20px;
+  gap: 20px;
+  padding: 80px 20px;
   color: #64748b;
+  min-height: 400px;
+  justify-content: center;
+}
+
+.error-state i {
+  font-size: 3rem;
+  color: #ef4444;
 }
 
 .spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid #e0f2fe;
-  border-top-color: #0369a1;
+  border: 4px solid #e2e8f0;
+  border-top-color: #01aeef;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
@@ -230,26 +293,29 @@ onMounted(() => {
 }
 
 .back-button {
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   color: white;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .back-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.3);
 }
 
 /* ===== CONTENT LAYOUT ===== */
 .service-detail-content {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 60px;
+  gap: 48px;
   align-items: start;
 }
 
@@ -262,9 +328,10 @@ onMounted(() => {
 
 .service-cover-image {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(30, 58, 138, 0.15);
+  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.15);
+  border: 1px solid rgba(1, 174, 239, 0.1);
 }
 
 .service-cover-image img {
@@ -272,38 +339,54 @@ onMounted(() => {
   height: auto;
   display: block;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-cover-image:hover img {
+  transform: scale(1.05);
 }
 
 .service-main-content {
   background: white;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
 }
 
 .service-detail-title {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: #02375f;
   margin-bottom: 24px;
-  line-height: 1.2;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.3;
 }
 
 .service-detail-description {
   font-size: 1.05rem;
   color: #475569;
   line-height: 1.8;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .service-detail-description :deep(h1),
 .service-detail-description :deep(h2),
 .service-detail-description :deep(h3) {
-  color: #1e3a8a;
-  margin-top: 24px;
+  color: #02375f;
+  margin-top: 28px;
   margin-bottom: 16px;
   font-weight: 700;
+}
+
+.service-detail-description :deep(h1) {
+  font-size: 2rem;
+}
+
+.service-detail-description :deep(h2) {
+  font-size: 1.5rem;
+}
+
+.service-detail-description :deep(h3) {
+  font-size: 1.25rem;
 }
 
 .service-detail-description :deep(p) {
@@ -318,6 +401,23 @@ onMounted(() => {
 
 .service-detail-description :deep(li) {
   margin-bottom: 8px;
+  color: #475569;
+}
+
+.service-detail-description :deep(strong) {
+  color: #02375f;
+  font-weight: 700;
+}
+
+.service-detail-description :deep(a) {
+  color: #01aeef;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.service-detail-description :deep(a:hover) {
+  color: #0284c7;
 }
 
 /* ===== RIGHT SIDE - SIDEBAR ===== */
@@ -333,17 +433,18 @@ onMounted(() => {
 .services-sidebar {
   background: white;
   padding: 32px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
-  border-top: 4px solid #0369a1;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
 }
 
 .sidebar-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #02375f;
   margin-bottom: 20px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .services-list {
@@ -352,56 +453,58 @@ onMounted(() => {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.services-list li {
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  gap: 4px;
 }
 
 .services-list li a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 12px 16px;
   color: #475569;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  border-radius: 10px;
+  border-radius: 8px;
   transition: all 0.3s ease;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .services-list li a i {
   font-size: 0.875rem;
+  color: #01aeef;
   transition: transform 0.3s ease;
+  opacity: 0;
 }
 
 .services-list li a:hover {
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  color: #0369a1;
+  background: #f8fafc;
+  color: #01aeef;
   padding-left: 20px;
 }
 
 .services-list li a:hover i {
+  opacity: 1;
   transform: translateX(4px);
 }
 
 .services-list li.active a {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  color: white;
+}
+
+.services-list li.active a i {
+  opacity: 1;
   color: white;
 }
 
 /* ===== CONTACT CARD ===== */
 .contact-card {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
   padding: 32px;
-  border-radius: 20px;
+  border-radius: 16px;
   text-align: center;
   color: white;
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.25);
 }
 
 .contact-icon {
@@ -423,39 +526,130 @@ onMounted(() => {
 .contact-title {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   line-height: 1.4;
 }
 
+.contact-subtitle {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .contact-number {
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #fbbf24;
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: white;
   text-decoration: none;
   transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
 }
 
 .contact-number:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+/* ===== EMAIL CARD ===== */
+.email-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+}
+
+.email-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.email-icon i {
+  font-size: 1.5rem;
   color: white;
-  transform: scale(1.05);
+}
+
+.email-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #02375f;
+  margin-bottom: 16px;
+}
+
+.email-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.email-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  color: #01aeef;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+}
+
+.email-link:hover {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding-left: 16px;
+}
+
+.email-link i {
+  font-size: 0.875rem;
 }
 
 /* ===== BROCHURE CARD ===== */
 .brochure-card {
   background: white;
   padding: 32px;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
-  border-left: 4px solid #fbbf24;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+}
+
+.brochure-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.brochure-icon i {
+  font-size: 1.5rem;
+  color: white;
 }
 
 .brochure-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #02375f;
   margin-bottom: 12px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .brochure-text {
@@ -463,7 +657,6 @@ onMounted(() => {
   color: #64748b;
   line-height: 1.6;
   margin-bottom: 20px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .brochure-button {
@@ -471,22 +664,91 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: #1e3a8a;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  color: white;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.25);
 }
 
 .brochure-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.35);
 }
 
-.brochure-button i {
-  font-size: 1.1rem;
+/* ===== CTA SECTION ===== */
+.cta-section {
+  background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.cta-label {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: white;
+  color: #02375f;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  gap: 16px;
+}
+
+.cta-button i {
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+  transform: translateX(4px);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -498,48 +760,80 @@ onMounted(() => {
 
   .detail-right {
     position: static;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: grid;
   }
 
   .page-title {
     font-size: 2.5rem;
   }
+
+  .cta-title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
   .service-detail-section {
-    padding: 60px 20px;
+    padding: 60px 0;
   }
 
-  .service-detail-title {
-    font-size: 2rem;
-  }
-
-  .service-detail-description {
-    font-size: 1rem;
-  }
-
-  .service-main-content {
-    padding: 30px 24px;
-  }
-
-  .services-sidebar,
-  .contact-card,
-  .brochure-card {
-    padding: 24px;
+  .rs-breadcrumbs {
+    padding: 80px 0 60px;
   }
 
   .page-title {
     font-size: 2rem;
   }
+
+  .service-detail-title {
+    font-size: 1.875rem;
+  }
+
+  .service-main-content {
+    padding: 32px 24px;
+  }
+
+  .services-sidebar,
+  .contact-card,
+  .email-card,
+  .brochure-card {
+    padding: 24px;
+  }
+
+  .detail-right {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: 1.75rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
   .service-detail-section {
-    padding: 40px 16px;
+    padding: 40px 0;
+  }
+
+  .rs-breadcrumbs {
+    padding: 60px 0 40px;
+  }
+
+  .page-title {
+    font-size: 1.75rem;
   }
 
   .service-detail-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   .service-detail-description {
@@ -551,11 +845,16 @@ onMounted(() => {
   }
 
   .contact-number {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
-  .page-title {
-    font-size: 1.75rem;
+  .cta-title {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 14px 24px;
+    font-size: 0.95rem;
   }
 }
 </style>

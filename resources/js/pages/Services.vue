@@ -1,187 +1,260 @@
 <template>
-  <div class="main-content">
-    <!-- Breadcrumbs -->
-    <div class="rs-breadcrumbs img3">
-      <div class="breadcrumbs-inner text-center">
-        <h1 class="page-title">Services</h1>
-        <ul>
-          <li>
-            <a class="active" href="/">Home</a>
-          </li>
-          <li>Services</li>
-        </ul>
+  <section class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="icon-wrapper">
+          <i class="fas fa-cogs"></i>
+        </div>
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-subtitle">
+          Comprehensive security solutions powered by modern technology
+        </p>
       </div>
-    </div>
 
-    <!-- Services Section -->
-    <section class="services-section">
-      <div class="container">
-        <div class="services-content">
-          <!-- Left Side: Text & Services List -->
-          <div class="services-left">
-            <div class="services-header">
-              <div class="section-label">What We Do</div>
-              <h2 class="section-title">
-                Our Featured <span class="gradient-text">Services</span>
-              </h2>
-              <p class="section-description">
-                Comprehensive digital solutions designed to transform your business operations and drive sustainable growth.
-              </p>
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading services...</p>
+      </div>
+
+      <div v-else>
+        <!-- Services Grid -->
+        <div class="services-grid">
+          <div
+            v-for="service in paginatedServices"
+            :key="service.slug"
+            class="service-card"
+          >
+            <div class="card-image-wrapper">
+              <img 
+                :src="service.image || '/images/services/default.jpg'" 
+                :alt="service.title || service.name" 
+                class="card-image" 
+              />
+              <div class="card-overlay"></div>
             </div>
-
-            <div v-if="loading" class="loading-state">
-              <div class="spinner"></div>
-              <p>Loading services...</p>
-            </div>
-
-            <div v-else-if="services.length > 0" class="services-list">
-              <a
-                v-for="(service, index) in services"
-                :key="service.id"
-                :href="`/show/service/${service.slug}`"
-                class="service-item"
-              >
-                <div class="service-number">{{ String(index + 1).padStart(2, '0') }}</div>
-                <div class="service-icon-wrapper">
-                  <i :class="getServiceIcon(index)" class="service-icon"></i>
-                </div>
-                <div class="service-content">
-                  <h3 class="service-title">{{ service.name }}</h3>
-                  <p class="service-description">{{ truncateText(service.description, 110) }}</p>
-                </div>
+            <div class="card-content">
+              <h3 class="card-title">{{ service.title || service.name }}</h3>
+              <p class="card-description" v-html="truncateDescription(service.description)"></p>
+              <a :href="`/show/service/${service.slug}`" class="card-link">
+                Learn More
+                <i class="fas fa-arrow-right"></i>
               </a>
             </div>
-
-            <div v-else class="no-services">
-              <p>No services available at the moment.</p>
-            </div>
-          </div>
-
-          <!-- Right Side: Branded Illustration -->
-          <div class="services-right">
-            <div class="services-image-wrapper">
-              <div class="floating-badge badge-1">
-                <div class="badge-icon">✓</div>
-                <div class="badge-text">Quality Assured</div>
-              </div>
-              <div class="floating-badge badge-2">
-                <div class="badge-icon">⚡</div>
-                <div class="badge-text">Fast Delivery</div>
-              </div>
-              <div class="services-illustration">
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Background Elements -->
-                  <circle cx="250" cy="250" r="200" fill="url(#servicesGradient1)" opacity="0.08"/>
-                  <circle cx="350" cy="150" r="60" fill="#60a5fa" opacity="0.1"/>
-                  <circle cx="150" cy="350" r="80" fill="#fbbf24" opacity="0.1"/>
-                  
-                  <!-- Central Workspace -->
-                  <rect x="100" y="100" width="300" height="300" rx="20" fill="white" opacity="0.95"/>
-                  <rect x="115" y="115" width="270" height="270" rx="15" fill="url(#servicesGradient2)"/>
-                  
-                  <!-- Grid/Dashboard Elements -->
-                  <rect x="140" y="140" width="100" height="80" rx="8" fill="white" opacity="0.9"/>
-                  <rect x="260" y="140" width="100" height="80" rx="8" fill="white" opacity="0.7"/>
-                  <rect x="140" y="240" width="100" height="80" rx="8" fill="white" opacity="0.8"/>
-                  <rect x="260" y="240" width="100" height="80" rx="8" fill="white" opacity="0.6"/>
-                  
-                  <!-- Icons representation -->
-                  <circle cx="190" cy="180" r="15" fill="#0369a1" opacity="0.8"/>
-                  <circle cx="310" cy="180" r="15" fill="#60a5fa" opacity="0.8"/>
-                  <circle cx="190" cy="280" r="15" fill="#fbbf24" opacity="0.8"/>
-                  <circle cx="310" cy="280" r="15" fill="#34d399" opacity="0.8"/>
-                  
-                  <!-- Connecting Lines -->
-                  <line x1="190" y1="195" x2="190" y2="265" stroke="#0369a1" stroke-width="2" opacity="0.3"/>
-                  <line x1="205" y1="180" x2="295" y2="180" stroke="#60a5fa" stroke-width="2" opacity="0.3"/>
-                  
-                  <!-- Decorative Tech Elements -->
-                  <text x="50" y="250" font-size="50" fill="#1e3a8a" opacity="0.15" font-family="monospace">&lt;/&gt;</text>
-                  <text x="400" y="250" font-size="40" fill="#0369a1" opacity="0.15" font-family="monospace">{ }</text>
-                  
-                  <!-- Gradients -->
-                  <defs>
-                    <linearGradient id="servicesGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#0369a1;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="servicesGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-                      <stop offset="50%" style="stop-color:#0369a1;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CTA Section -->
-    <div class="rs-cta style1 bg7 pt-80 pb-70">
-      <div class="container">
-        <div class="cta-wrap">
-          <div class="row align-items-center">
-            <div class="col-lg-9 col-md-12 md-mb-30">
-              <span>Plan to Start a Project</span>
-              <div class="title-wrap">
-                <h2 class="epx-title">Our Experts Ready to Help You</h2>
-              </div>
-            </div>
-            <div class="col-lg-3 text-right md-text-left col-md-12">
-              <div class="button-wrap">
-                <a class="readon learn-more" href="/contact">Get In Touch</a>
-              </div>
-            </div>
+        <!-- Pagination Controls -->
+        <div v-if="totalPages > 1" class="pagination-wrapper">
+          <button 
+            class="pagination-btn"
+            @click="goToPage(currentPage - 1)"
+            :disabled="currentPage === 1"
+            aria-label="Previous page"
+          >
+            <i class="fas fa-chevron-left"></i>
+            <span>Previous</span>
+          </button>
+
+          <div class="pagination-numbers">
+            <button
+              v-for="page in displayedPages"
+              :key="page"
+              @click="goToPage(page)"
+              :class="['page-number', { active: currentPage === page, ellipsis: page === '...' }]"
+              :disabled="page === '...'"
+            >
+              {{ page }}
+            </button>
           </div>
+
+          <button 
+            class="pagination-btn"
+            @click="goToPage(currentPage + 1)"
+            :disabled="currentPage === totalPages"
+            aria-label="Next page"
+          >
+            <span>Next</span>
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
+const currentPage = ref(1)
+const itemsPerPage = ref(8)
 const services = ref([])
 const loading = ref(true)
 
-const serviceIcons = [
-  'fas fa-code',
-  'fas fa-globe',
-  'fas fa-video',
-  'fas fa-fingerprint',
-  'fas fa-plug',
-  'fas fa-cash-register',
-  'fas fa-mobile-alt',
-  'fas fa-database',
-  'fas fa-shield-alt',
-  'fas fa-chart-line'
-]
-
-const getServiceIcon = (index) => {
-  return serviceIcons[index % serviceIcons.length]
+// Helper function to decode HTML entities
+const decodeHtmlEntities = (text) => {
+  const textarea = document.createElement('textarea')
+  textarea.innerHTML = text
+  return textarea.value
 }
 
-const truncateText = (text, length) => {
-  if (!text) return ''
-  const stripped = text.replace(/<[^>]*>/g, '')
-  return stripped.length > length ? stripped.substring(0, length) + '...' : stripped
+// Helper function to strip HTML tags
+const stripHtmlTags = (html) => {
+  const div = document.createElement('div')
+  div.innerHTML = html
+  return div.textContent || div.innerText || ''
+}
+
+// Truncate description to uniform length
+const truncateDescription = (description) => {
+  if (!description) return ''
+  
+  let cleanText = stripHtmlTags(description)
+  cleanText = decodeHtmlEntities(cleanText)
+  cleanText = cleanText.trim()
+  
+  const maxLength = 120
+  if (cleanText.length > maxLength) {
+    return cleanText.substring(0, maxLength).trim() + '...'
+  }
+  
+  return cleanText
 }
 
 const fetchServices = async () => {
   try {
     loading.value = true
-    // Fetch services from your Laravel backend
     const response = await axios.get('/api/services')
-    services.value = response.data
+    // Fix image paths - ensure correct upload path
+    services.value = response.data.map(service => {
+      let imagePath = service.image
+      if (imagePath) {
+        // Remove '/wabe_digital_agency' if it exists in the path
+        imagePath = imagePath.replace('/wabe_digital_agency', '')
+        // Ensure it starts with /upload/
+        if (!imagePath.startsWith('/upload/')) {
+          imagePath = '/upload/' + imagePath.split('/upload/').pop()
+        }
+      }
+      return {
+        ...service,
+        image: imagePath
+      }
+    })
   } catch (error) {
     console.error('Error fetching services:', error)
+    // Fallback to hardcoded services if API fails
+    services.value = [
+      {
+        title: 'CCTV Surveillance',
+        description: 'Professional HD cameras with remote monitoring and night vision for comprehensive property security.',
+        image: '/images/services/cctv-surveillance.jpg',
+        slug: 'cctv-surveillance'
+      },
+      {
+        title: 'Electric Fences',
+        description: 'Advanced energizer systems with alarm integration for maximum perimeter protection.',
+        image: '/images/services/electric-fences.jpg',
+        slug: 'electric-fences'
+      },
+      {
+        title: 'Biometric Access Control',
+        description: 'Fingerprint scanners and card readers for secure entry management and attendance tracking.',
+        image: '/images/services/access-control.jpg',
+        slug: 'biometric-access-control'
+      },
+      {
+        title: 'Automated Gates',
+        description: 'Smart gate automation with remote control for convenient and secure property access.',
+        image: '/images/services/automated-gates.jpg',
+        slug: 'automated-gates'
+      },
+      {
+        title: 'Video Door Phones',
+        description: 'Modern intercom systems with video capability for secure visitor identification.',
+        image: '/images/services/door-phones.jpg',
+        slug: 'video-door-phones'
+      },
+      {
+        title: 'Fire Safety Solutions',
+        description: 'Comprehensive fire protection including extinguishers and fire doors for complete safety.',
+        image: '/images/services/fire-safety.jpg',
+        slug: 'fire-safety-solutions'
+      },
+      {
+        title: 'Barriers & Road Blocks',
+        description: 'Heavy-duty barriers for controlled vehicle access in commercial facilities.',
+        image: '/images/services/barriers.jpg',
+        slug: 'barriers-road-blocks'
+      },
+      {
+        title: 'Metal Detectors',
+        description: 'Professional-grade detection systems for enhanced security screening.',
+        image: '/images/services/metal-detectors.jpg',
+        slug: 'metal-detectors'
+      },
+      {
+        title: 'Fire Doors',
+        description: 'Fire-rated doors that provide crucial protection and compartmentalization during emergencies.',
+        image: '/images/services/fire-doors.jpg',
+        slug: 'fire-doors'
+      },
+      {
+        title: 'Security Alarms',
+        description: 'Advanced alarm systems with 24/7 monitoring for immediate threat response.',
+        image: '/images/services/alarms.jpg',
+        slug: 'security-alarms'
+      }
+    ]
   } finally {
     loading.value = false
+  }
+}
+
+const totalPages = computed(() => {
+  return Math.ceil(services.value.length / itemsPerPage.value)
+})
+
+const paginatedServices = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value
+  const end = start + itemsPerPage.value
+  return services.value.slice(start, end)
+})
+
+const displayedPages = computed(() => {
+  const pages = []
+  const total = totalPages.value
+  const current = currentPage.value
+  
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) {
+      pages.push(i)
+    }
+  } else {
+    if (current <= 3) {
+      for (let i = 1; i <= 5; i++) pages.push(i)
+      pages.push('...')
+      pages.push(total)
+    } else if (current >= total - 2) {
+      pages.push(1)
+      pages.push('...')
+      for (let i = total - 4; i <= total; i++) pages.push(i)
+    } else {
+      pages.push(1)
+      pages.push('...')
+      for (let i = current - 1; i <= current + 1; i++) pages.push(i)
+      pages.push('...')
+      pages.push(total)
+    }
+  }
+  
+  return pages
+})
+
+const goToPage = (page) => {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
 
@@ -191,483 +264,377 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Import the same styles from ServicesSection.vue */
-
-/* ===== DESIGN SYSTEM ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.services-section {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* ===== BREADCRUMBS ===== */
-.rs-breadcrumbs {
-  padding: 100px 0 80px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  position: relative;
+/* Section Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
 }
 
-.breadcrumbs-inner {
-  color: white;
-}
-
-.page-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: white;
-}
-
-.breadcrumbs-inner ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.breadcrumbs-inner ul li {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.breadcrumbs-inner ul li a {
-  color: #fbbf24;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.breadcrumbs-inner ul li a:hover {
-  color: white;
-}
-
-/* ===== SERVICES SECTION - SPLIT LAYOUT ===== */
-.services-section {
-  padding: 80px 24px;
-  background: white;
-  position: relative;
-  overflow: hidden;
-}
-
-.services-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.services-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
+.icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #01aeef 0%, #02375f 100%);
+  border-radius: 12px;
+  display: inline-flex;
   align-items: center;
-  position: relative;
-  z-index: 1;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
-/* ===== LEFT SIDE - SERVICES LIST ===== */
-.services-left {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  animation: fadeInLeft 1s ease-out;
-}
-
-.services-header {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.section-label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #0369a1;
+.icon-wrapper i {
+  font-size: 1.75rem;
+  color: white;
 }
 
 .section-title {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  color: #1e3a8a;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #0369a1 0%, #60a5fa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #02375f;
+  margin-bottom: 12px;
+  position: relative;
   display: inline-block;
 }
 
-.section-description {
-  font-size: 1.05rem;
+.section-subtitle {
+  font-size: 1.125rem;
   color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
   line-height: 1.7;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
-/* ===== LOADING STATE ===== */
+/* Loading State */
 .loading-state {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 40px;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 20px;
   color: #64748b;
+  min-height: 400px;
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid #e0f2fe;
-  border-top-color: #0369a1;
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #01aeef;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-.no-services {
-  padding: 40px;
-  text-align: center;
-  color: #64748b;
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+  margin-bottom: 60px;
 }
 
-/* ===== SERVICES LIST ===== */
-.services-list {
+.service-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  height: 100%;
 }
 
-.service-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-left: 4px solid transparent;
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(1, 174, 239, 0.2);
+  border-color: #01aeef;
+}
+
+.card-image-wrapper {
   position: relative;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
-  text-decoration: none;
-  color: inherit;
+  background: linear-gradient(135deg, #02375f 0%, #01517a 100%);
 }
 
-.service-item::before {
-  content: '';
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-image {
+  transform: scale(1.1);
+}
+
+.card-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(96, 165, 250, 0.03) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 55, 95, 0.4) 100%);
+  transition: background 0.3s ease;
 }
 
-.service-item:hover {
-  transform: translateX(8px);
-  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
-  border-left-color: #fbbf24;
+.service-card:hover .card-overlay {
+  background: linear-gradient(180deg, rgba(1, 174, 239, 0.1) 0%, rgba(1, 174, 239, 0.3) 100%);
 }
 
-.service-item:hover::before {
-  opacity: 1;
-}
-
-.service-number {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: #0369a1;
-  transition: all 0.3s ease;
-}
-
-.service-item:hover .service-number {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  color: #d97706;
-  transform: scale(1.1);
-}
-
-.service-icon-wrapper {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.service-icon {
-  font-size: 1.5rem;
-  color: #0369a1;
-  transition: all 0.3s ease;
-}
-
-.service-item:hover .service-icon-wrapper {
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  transform: rotate(5deg);
-}
-
-.service-item:hover .service-icon {
-  color: white;
-}
-
-.service-content {
+.card-content {
+  padding: 28px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
 
-.service-title {
-  font-size: 1.125rem;
+.card-title {
+  font-size: 1.35rem;
   font-weight: 700;
-  color: #1e3a8a;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #02375f;
   line-height: 1.3;
-  transition: color 0.3s ease;
+  margin-bottom: 4px;
 }
 
-.service-item:hover .service-title {
-  color: #0369a1;
-}
-
-.service-description {
+.card-description {
   font-size: 0.95rem;
-  color: #64748b;
-  line-height: 1.6;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #475569;
+  line-height: 1.7;
+  flex: 1;
 }
 
-/* ===== RIGHT SIDE - ILLUSTRATION ===== */
-.services-right {
-  position: relative;
-  animation: fadeInRight 1s ease-out;
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #01aeef;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: 8px;
 }
 
-.services-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 500px;
+.card-link:hover {
+  color: #0284c7;
+  gap: 12px;
 }
 
-.services-illustration {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 20px 60px rgba(30, 58, 138, 0.15));
+.card-link i {
+  transition: transform 0.3s ease;
 }
 
-.services-illustration svg {
-  width: 100%;
-  height: 100%;
+.card-link:hover i {
+  transform: translateX(4px);
 }
 
-/* ===== FLOATING BADGES ===== */
-.floating-badge {
-  position: absolute;
-  background: white;
-  backdrop-filter: blur(10px);
-  padding: 12px 20px;
-  border-radius: 50px;
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.2);
+/* Pagination */
+.pagination-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
-  animation: floatBadge 3s ease-in-out infinite;
-  border: 2px solid rgba(96, 165, 250, 0.2);
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.badge-1 {
-  top: 15%;
-  right: 5%;
-  animation-delay: 0s;
-}
-
-.badge-2 {
-  bottom: 20%;
-  left: 5%;
-  animation-delay: 1.5s;
-}
-
-.badge-icon {
-  font-size: 1.25rem;
-  line-height: 1;
-}
-
-.badge-text {
-  font-size: 0.875rem;
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  color: #02375f;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #1e3a8a;
-  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.pagination-btn:hover:not(:disabled) {
+  background: #01aeef;
+  border-color: #01aeef;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(1, 174, 239, 0.3);
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-@keyframes floatBadge {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
+.pagination-numbers {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+.page-number {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  color: #475569;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-number:hover:not(.active):not(.ellipsis) {
+  background: #f1f5f9;
+  border-color: #01aeef;
+  color: #01aeef;
+}
+
+.page-number.active {
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  border-color: #01aeef;
+  color: white;
+  box-shadow: 0 4px 12px rgba(1, 174, 239, 0.3);
+}
+
+.page-number.ellipsis {
+  background: transparent;
+  border: none;
+  cursor: default;
+  color: #94a3b8;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
-  .services-content {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .services-right {
-    order: -1;
-  }
-
-  .services-image-wrapper {
-    height: 350px;
-  }
-
-  .section-title {
-    font-size: 2.25rem;
-  }
-
-  .floating-badge {
-    display: none;
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
   }
 }
 
 @media (max-width: 768px) {
   .services-section {
-    padding: 60px 20px;
+    padding: 60px 0;
   }
 
-  .services-content {
-    gap: 40px;
+  .section-header {
+    margin-bottom: 48px;
   }
 
   .section-title {
     font-size: 2rem;
   }
 
-  .section-description {
+  .section-subtitle {
     font-size: 1rem;
   }
 
-  .services-image-wrapper {
-    height: 280px;
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
   }
 
-  .service-item {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 20px;
+  .card-content {
+    padding: 24px;
   }
 
-  .service-number {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
+  .pagination-btn span {
+    display: none;
   }
 
-  .service-item:hover .service-number {
-    transform: translateX(-50%) scale(1.1);
+  .pagination-btn {
+    padding: 12px 16px;
   }
 
-  .page-title {
-    font-size: 2.5rem;
+  .page-number {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-numbers {
+    gap: 6px;
+  }
+
+  .page-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .services-section {
-    padding: 40px 16px;
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-wrapper i {
+    font-size: 1.5rem;
   }
 
   .section-title {
     font-size: 1.75rem;
   }
 
-  .section-description {
+  .section-subtitle {
     font-size: 0.95rem;
   }
 
-  .service-item {
-    padding: 24px 16px;
+  .card-content {
+    padding: 20px;
   }
 
-  .service-icon-wrapper {
-    width: 45px;
-    height: 45px;
+  .card-title {
+    font-size: 1.2rem;
   }
 
-  .service-icon {
-    font-size: 1.25rem;
-  }
-
-  .service-title {
-    font-size: 1rem;
-  }
-
-  .service-description {
-    font-size: 0.875rem;
-  }
-
-  .page-title {
-    font-size: 2rem;
+  .card-description {
+    font-size: 0.9rem;
   }
 }
 </style>

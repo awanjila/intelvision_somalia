@@ -10,18 +10,19 @@
               Let's <span class="gradient-text">Get Started</span>
             </h2>
             <p class="section-description">
-              Ready to transform your business? Fill out the form and we'll get back to you within 24 hours. Let's build something amazing together.
+              Ready to secure your property? Fill out the form and we'll get back to you within 24 hours. Let's build a safer future together.
             </p>
           </div>
 
           <div class="contact-info-list">
             <div class="contact-info-item">
               <div class="info-icon-wrapper">
-                <i class="fas fa-phone info-icon"></i>
+                <i class="fas fa-phone-alt info-icon"></i>
               </div>
               <div class="info-content">
                 <h4 class="info-title">Phone</h4>
-                <p class="info-text">+254 781 312 070</p>
+                <a href="tel:+254722850008" class="info-link">+254 (0)722 850008</a>
+                <a href="tel:+254734850008" class="info-link">+254 (0)734 850008</a>
               </div>
             </div>
             <div class="contact-info-item">
@@ -30,16 +31,18 @@
               </div>
               <div class="info-content">
                 <h4 class="info-title">Email</h4>
-                <p class="info-text">info@wabestudio.co.ke</p>
+                <a href="mailto:info@intelvision.co.ke" class="info-link">info@intelvision.co.ke</a>
+                <a href="mailto:sales@intelvision.co.ke" class="info-link">sales@intelvision.co.ke</a>
               </div>
             </div>
             <div class="contact-info-item">
               <div class="info-icon-wrapper">
-                <i class="fas fa-globe info-icon"></i>
+                <i class="fas fa-clock info-icon"></i>
               </div>
               <div class="info-content">
-                <h4 class="info-title">Website</h4>
-                <p class="info-text">wabestudio.co.ke</p>
+                <h4 class="info-title">Working Hours</h4>
+                <p class="info-text">Mon - Fri: 08:00 - 17:00</p>
+                <p class="info-text">Sat: 09:00 - 13:00</p>
               </div>
             </div>
             <div class="contact-info-item">
@@ -48,6 +51,7 @@
               </div>
               <div class="info-content">
                 <h4 class="info-title">Location</h4>
+                <p class="info-text">3rd Parklands Ave</p>
                 <p class="info-text">Nairobi, Kenya</p>
               </div>
             </div>
@@ -81,11 +85,11 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label">Company / Project Name</label>
+              <label class="form-label">Company / Organization</label>
               <input
                 v-model="formData.company"
                 type="text"
-                placeholder="Your Company"
+                placeholder="Your Company Name"
                 class="form-input"
                 :disabled="isSubmitting"
               />
@@ -107,7 +111,7 @@
                 <input
                   v-model="formData.phone"
                   type="tel"
-                  placeholder="+254 781 312 070"
+                  placeholder="+254 (0)722 850008"
                   class="form-input"
                   :disabled="isSubmitting"
                   required
@@ -115,15 +119,35 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Tell us about your project *</label>
+              <label class="form-label">Service Interested In</label>
+              <select
+                v-model="formData.service"
+                class="form-input"
+                :disabled="isSubmitting"
+              >
+                <option value="">Select a service...</option>
+                <option value="CCTV Surveillance">CCTV Surveillance</option>
+                <option value="Electric Fences">Electric Fences</option>
+                <option value="Biometric Access Control">Biometric Access Control</option>
+                <option value="Automated Gates">Automated Gates</option>
+                <option value="Video Door Phones">Video Door Phones</option>
+                <option value="Fire Safety Solutions">Fire Safety Solutions</option>
+                <option value="Barriers & Road Blocks">Barriers & Road Blocks</option>
+                <option value="Metal Detectors">Metal Detectors</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tell us about your requirements *</label>
               <textarea
                 v-model="formData.message"
-                placeholder="Describe your project requirements, goals, and timeline..."
+                placeholder="Describe your security needs, property type, and any specific requirements..."
                 class="form-textarea"
                 :disabled="isSubmitting"
                 required
               ></textarea>
             </div>
+            
             <button type="submit" class="form-submit" :disabled="isSubmitting">
               <span v-if="!isSubmitting" class="button-text">Send Message</span>
               <span v-else class="button-text">Sending...</span>
@@ -136,7 +160,7 @@
               </svg>
             </button>
             <p class="form-note">
-              <i class="fas fa-lock note-icon"></i>
+              <i class="fas fa-shield-alt note-icon"></i>
               Your information is secure and will never be shared with third parties.
             </p>
           </form>
@@ -155,6 +179,7 @@ const formData = ref({
   company: '',
   email: '',
   phone: '',
+  service: '',
   message: ''
 })
 
@@ -171,7 +196,7 @@ const submitForm = async () => {
     const response = await axios.post('/api/contact', formData.value)
     
     if (response.data.success) {
-      successMessage.value = response.data.message
+      successMessage.value = 'Thank you for contacting Intelvision! We have received your message and will get back to you within 24 hours.'
       
       // Reset form
       formData.value = {
@@ -179,6 +204,7 @@ const submitForm = async () => {
         company: '',
         email: '',
         phone: '',
+        service: '',
         message: ''
       }
 
@@ -195,7 +221,7 @@ const submitForm = async () => {
     } else if (error.response && error.response.data && error.response.data.message) {
       errorMessage.value = error.response.data.message
     } else {
-      errorMessage.value = 'An error occurred while sending your message. Please try again.'
+      errorMessage.value = 'An error occurred while sending your message. Please try again or contact us directly.'
     }
 
     // Clear error message after 8 seconds
@@ -217,35 +243,24 @@ const submitForm = async () => {
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 /* ===== CONTACT SECTION - SPLIT LAYOUT ===== */
 .contact-section {
-  padding: 100px 24px;
-  background: white;
+  padding: 80px 24px;
+  background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
   position: relative;
   overflow: hidden;
-}
-
-.contact-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-  opacity: 0.5;
-  pointer-events: none;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
+  gap: 60px;
   align-items: start;
   position: relative;
   z-index: 1;
@@ -256,7 +271,7 @@ const submitForm = async () => {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  animation: fadeInLeft 1s ease-out;
+  animation: fadeInLeft 0.8s ease-out;
   position: sticky;
   top: 100px;
 }
@@ -272,20 +287,19 @@ const submitForm = async () => {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #0369a1;
+  color: #01aeef;
 }
 
 .section-title {
   font-size: 2.75rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: #02375f;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #0369a1 0%, #60a5fa 100%);
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -296,7 +310,6 @@ const submitForm = async () => {
   font-size: 1.05rem;
   color: #64748b;
   line-height: 1.7;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ===== CONTACT INFO LIST ===== */
@@ -308,26 +321,26 @@ const submitForm = async () => {
 
 .contact-info-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   padding: 20px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border-left: 4px solid #0369a1;
+  border: 1px solid rgba(1, 174, 239, 0.1);
 }
 
 .contact-info-item:hover {
   transform: translateX(8px);
-  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
-  border-left-color: #fbbf24;
+  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.2);
+  border-color: #01aeef;
 }
 
 .info-icon-wrapper {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -337,52 +350,64 @@ const submitForm = async () => {
 }
 
 .contact-info-item:hover .info-icon-wrapper {
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.3);
 }
 
 .info-icon {
   font-size: 1.3rem;
   line-height: 1;
-  color: #0369a1;
-  transition: color 0.3s ease;
-}
-
-.contact-info-item:hover .info-icon {
-  color: #d97706;
+  color: white;
 }
 
 .info-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .info-title {
   font-size: 0.875rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #02375f;
   margin-bottom: 4px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .info-text {
   font-size: 0.95rem;
-  color: #64748b;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #475569;
   margin: 0;
+  line-height: 1.5;
 }
 
+.info-link {
+  font-size: 0.95rem;
+  color: #01aeef;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.info-link:hover {
+  color: #0284c7;
+  text-decoration: underline;
+}
 
 /* ===== RIGHT SIDE - CONTACT FORM ===== */
 .contact-right {
-  animation: fadeInRight 1s ease-out;
+  animation: fadeInRight 0.8s ease-out;
 }
 
 .contact-form {
   background: white;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(30, 58, 138, 0.1);
-  border-top: 4px solid #0369a1;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
 }
 
 .form-group {
@@ -393,9 +418,8 @@ const submitForm = async () => {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1e3a8a;
+  color: #02375f;
   margin-bottom: 8px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .form-row {
@@ -405,57 +429,62 @@ const submitForm = async () => {
   margin-bottom: 0;
 }
 
-.form-input {
+.form-input,
+select.form-input {
   width: 100%;
   padding: 14px 18px;
   border: 2px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.95rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   transition: all 0.3s ease;
   color: #1e293b;
-  background: white;
+  background: #f8fafc;
 }
 
-.form-input:focus {
+.form-input:focus,
+select.form-input:focus {
   outline: none;
-  border-color: #0369a1;
-  box-shadow: 0 0 0 4px rgba(3, 105, 161, 0.1);
+  border-color: #01aeef;
+  box-shadow: 0 0 0 3px rgba(1, 174, 239, 0.1);
+  background: white;
 }
 
 .form-textarea {
   width: 100%;
   padding: 14px 18px;
   border: 2px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.95rem;
   font-family: 'Segoe UI', system-ui, sans-serif;
   transition: all 0.3s ease;
   resize: vertical;
   min-height: 140px;
   color: #1e293b;
-  background: white;
+  background: #f8fafc;
+  line-height: 1.6;
 }
 
 .form-textarea:focus {
   outline: none;
-  border-color: #0369a1;
-  box-shadow: 0 0 0 4px rgba(3, 105, 161, 0.1);
+  border-color: #01aeef;
+  box-shadow: 0 0 0 3px rgba(1, 174, 239, 0.1);
+  background: white;
 }
 
 .form-submit {
   width: 100%;
   padding: 16px 32px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: 'Segoe UI', system-ui, sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -479,9 +508,9 @@ const submitForm = async () => {
   left: 100%;
 }
 
-.form-submit:hover {
+.form-submit:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.4);
 }
 
 .button-icon {
@@ -499,12 +528,12 @@ const submitForm = async () => {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Segoe UI', system-ui, sans-serif;
+  justify-content: center;
 }
 
 .note-icon {
   font-size: 1rem;
-  color: #64748b;
+  color: #01aeef;
 }
 
 /* ===== ALERT MESSAGES ===== */
@@ -516,24 +545,24 @@ const submitForm = async () => {
   align-items: center;
   gap: 12px;
   font-size: 0.95rem;
-  font-family: 'Segoe UI', system-ui, sans-serif;
   animation: slideDown 0.3s ease-out;
 }
 
 .alert i {
   font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .alert-success {
   background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
   color: #065f46;
-  border-left: 4px solid #10b981;
+  border: 1px solid #6ee7b7;
 }
 
 .alert-error {
   background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   color: #991b1b;
-  border-left: 4px solid #ef4444;
+  border: 1px solid #fca5a5;
 }
 
 /* ===== LOADING SPINNER ===== */
@@ -563,8 +592,9 @@ const submitForm = async () => {
 
 /* ===== DISABLED STATE ===== */
 .form-input:disabled,
-.form-textarea:disabled {
-  background: #f8fafc;
+.form-textarea:disabled,
+select.form-input:disabled {
+  background: #e2e8f0;
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -579,7 +609,7 @@ const submitForm = async () => {
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
@@ -590,7 +620,7 @@ const submitForm = async () => {
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(30px);
   }
   to {
     opacity: 1;
@@ -602,7 +632,7 @@ const submitForm = async () => {
 @media (max-width: 1024px) {
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
   }
 
   .contact-left {
@@ -632,14 +662,13 @@ const submitForm = async () => {
   }
 
   .contact-form {
-    padding: 30px 24px;
+    padding: 32px 24px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
     gap: 0;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -680,14 +709,15 @@ const submitForm = async () => {
   }
 
   .info-icon {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
 
   .info-title {
     font-size: 0.8rem;
   }
 
-  .info-text {
+  .info-text,
+  .info-link {
     font-size: 0.875rem;
   }
 }

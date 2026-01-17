@@ -81,7 +81,7 @@ Route::post('update/about/page', 'UpdateAbout')->name('update.about');
 Route::get('edit/about/page', 'AboutPage')->name('edit.about.page');
 
    //frontend
-Route::get('about/wabe_digital_Agency', 'About')->name('about');
+Route::get('about', 'About')->name('about');
 Route::get('pricing_and_packages', 'Pricing')->name('pricing');
     
  });
@@ -102,7 +102,7 @@ Route::post('update/service', 'UpdateService')->name('update.service');
 
 Route::get('show/service/{slug}', 'showService')->name('show.service'); 
 
-Route::get('wabe_digital_agency/services', 'Services')->name('services');
+Route::get('products', 'Services')->name('services');
  });
 
 

@@ -51,40 +51,33 @@
         <!-- Desktop Navigation -->
         <nav class="desktop-nav">
           <a href="/" class="nav-link">Home</a>
-          <a href="/about/wabe_digital_Agency" class="nav-link">About Us</a>
-          <a href="/our-works" class="nav-link">Our Works</a>
-          <a href="/wabe_digital_agency/services" class="nav-link">Services</a>
-          
-          <!-- Resources Dropdown -->
-          <div class="dropdown">
-            <button class="nav-link dropdown-toggle" @click="showResourcesDropdown = !showResourcesDropdown">
-              Resources
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="{ 'rotate': showResourcesDropdown }">
-                <path d="m6 9 6 6 6-6"/>
+          <a href="/about" class="nav-link">About Us</a>
+
+          <!-- Products Dropdown -->
+          <div class="products-dropdown">
+            <button class="nav-link dropdown-toggle" @click="toggleProductsDropdown">
+              Products
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="{ rotate: showProductsDropdown }">
+                <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            <div class="dropdown-menu" :class="{ 'show': showResourcesDropdown }">
-              <a href="/blogs" class="dropdown-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
-                  <path d="M18 14h-8"/>
-                  <path d="M15 18h-5"/>
-                  <path d="M10 6h8v4h-8V6Z"/>
-                </svg>
-                News & Articles
-              </a>
-              <a href="/pricing_and_packages" class="dropdown-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="8" cy="8" r="6"/>
-                  <path d="M18.09 10.37A6 6 0 1 1 10.34 18"/>
-                  <path d="M7 6h1v4"/>
-                  <path d="m16.71 13.88.7.71-2.82 2.82"/>
-                </svg>
-                Pricing & Packages
-              </a>
+            <div class="products-dropdown-menu" :class="{ show: showProductsDropdown }">
+              <div class="services-grid">
+                <a
+                  v-for="service in services"
+                  :key="service.id"
+                  :href="`/show/service/${service.slug}`"
+                  class="service-item"
+                  @click="showProductsDropdown = false"
+                >
+                  <span class="service-name">{{ service.name }}</span>
+                </a>
+              </div>
             </div>
           </div>
 
+          <a href="/blog" class="nav-link">News & Articles</a>
+        
           <a href="/contact" class="nav-link">Contact</a>
         </nav>
 
@@ -120,40 +113,11 @@
         <div class="mobile-nav-content">
           <a href="/" class="mobile-nav-link" @click="mobileMenuOpen = false">Home</a>
           <a href="/about" class="mobile-nav-link" @click="mobileMenuOpen = false">About Us</a>
-          <a href="/our-works" class="mobile-nav-link" @click="mobileMenuOpen = false">Our Works</a>
-          <a href="/services" class="mobile-nav-link" @click="mobileMenuOpen = false">Services</a>
+          <a href="/services" class="mobile-nav-link" @click="mobileMenuOpen = false">Products</a>
+          <a href="/blogs" class="mobile-nav-link" @click="mobileMenuOpen = false">News & Articles</a>
           
           <!-- Resources Accordion -->
-          <div class="mobile-dropdown">
-            <button class="mobile-dropdown-toggle" @click="mobileResourcesOpen = !mobileResourcesOpen">
-              Resources
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="{ 'rotate': mobileResourcesOpen }">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <transition name="expand">
-              <div v-show="mobileResourcesOpen" class="mobile-dropdown-content">
-                <a href="/resources/news-articles" class="mobile-dropdown-link" @click="mobileMenuOpen = false">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
-                    <path d="M18 14h-8"/>
-                    <path d="M15 18h-5"/>
-                    <path d="M10 6h8v4h-8V6Z"/>
-                  </svg>
-                  News & Articles
-                </a>
-                <a href="/resources/pricing" class="mobile-dropdown-link" @click="mobileMenuOpen = false">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="8" cy="8" r="6"/>
-                    <path d="M18.09 10.37A6 6 0 1 1 10.34 18"/>
-                    <path d="M7 6h1v4"/>
-                    <path d="m16.71 13.88.7.71-2.82 2.82"/>
-                  </svg>
-                  Pricing & Packages
-                </a>
-              </div>
-            </transition>
-          </div>
+        
 
           <a href="/contact" class="mobile-nav-link" @click="mobileMenuOpen = false">Contact</a>
 
@@ -174,6 +138,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'SiteHeader',
   data() {
@@ -181,7 +147,10 @@ export default {
       whatsappNumber: '254722850008',
       mobileMenuOpen: false,
       showResourcesDropdown: false,
-      mobileResourcesOpen: false
+      mobileResourcesOpen: false,
+      services: [],
+      servicesLoading: true,
+      showProductsDropdown: false
     }
   },
   computed: {
@@ -200,13 +169,16 @@ export default {
     }
   },
   mounted() {
+    this.fetchServices()
     // Close dropdown when clicking outside
     this.boundHandleClickOutside = this.handleClickOutside.bind(this)
     document.addEventListener('click', this.boundHandleClickOutside)
     
-    // Add hover listeners for desktop dropdown
+    // Add hover listeners for desktop dropdowns
     if (this.$refs.headerRef) {
       const dropdown = this.$refs.headerRef.querySelector('.dropdown')
+      const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
+      
       if (dropdown) {
         dropdown.addEventListener('mouseenter', this.showDropdown.bind(this))
         dropdown.addEventListener('mouseleave', this.hideDropdown.bind(this))
@@ -219,6 +191,8 @@ export default {
     
     if (this.$refs.headerRef) {
       const dropdown = this.$refs.headerRef.querySelector('.dropdown')
+      const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
+      
       if (dropdown) {
         dropdown.removeEventListener('mouseenter', this.showDropdown.bind(this))
         dropdown.removeEventListener('mouseleave', this.hideDropdown.bind(this))
@@ -226,14 +200,79 @@ export default {
     }
   },
   methods: {
+    async fetchServices() {
+      try {
+        this.servicesLoading = true
+        const response = await axios.get('/api/services')
+        this.services = response.data
+        // Fix image URLs by removing the incorrect path
+        this.services = this.services.map(service => {
+          if (service.image) {
+            service.image = service.image.replace('/wabe_digital_agency/upload/service_image/', '/upload/service_image/')
+          }
+          return service
+        })
+      } catch (error) {
+        console.error('Error fetching services:', error)
+        // Fallback to hardcoded services if API fails
+        this.services = [
+          {
+            id: 1,
+            name: 'CCTV Surveillance',
+            slug: 'cctv-surveillance'
+          },
+          {
+            id: 2,
+            name: 'Electric Fences',
+            slug: 'electric-fences'
+          },
+          {
+            id: 3,
+            name: 'Biometric Access Control',
+            slug: 'biometric-access-control'
+          },
+          {
+            id: 4,
+            name: 'Automated Gates',
+            slug: 'automated-gates'
+          },
+          {
+            id: 5,
+            name: 'Video Door Phones',
+            slug: 'video-door-phones'
+          },
+          {
+            id: 6,
+            name: 'Fire Safety Solutions',
+            slug: 'fire-safety-solutions'
+          },
+          {
+            id: 7,
+            name: 'Barriers & Road Blocks',
+            slug: 'barriers-road-blocks'
+          },
+          {
+            id: 8,
+            name: 'Metal Detectors',
+            slug: 'metal-detectors'
+          }
+        ]
+      } finally {
+        this.servicesLoading = false
+      }
+    },
     handleClickOutside(event) {
       if (!this.$refs.headerRef) return
       
       const dropdown = this.$refs.headerRef.querySelector('.dropdown')
+      const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
       const mobileToggle = this.$refs.headerRef.querySelector('.mobile-menu-toggle')
       
       if (dropdown && !dropdown.contains(event.target) && (!mobileToggle || !mobileToggle.contains(event.target))) {
         this.showResourcesDropdown = false
+      }
+      if (productsDropdown && !productsDropdown.contains(event.target) && (!mobileToggle || !mobileToggle.contains(event.target))) {
+        this.showProductsDropdown = false
       }
     },
     showDropdown() {
@@ -241,6 +280,9 @@ export default {
     },
     hideDropdown() {
       this.showResourcesDropdown = false
+    },
+    toggleProductsDropdown() {
+      this.showProductsDropdown = !this.showProductsDropdown
     }
   }
 }
@@ -427,6 +469,76 @@ export default {
 
 .dropdown-item svg {
   color: #0369a1;
+}
+
+/* Products Dropdown */
+.products-dropdown {
+  position: relative;
+}
+
+.products-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 12px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(30, 58, 138, 0.25);
+  min-width: 600px;
+  max-width: 800px;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.products-dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 12px;
+  color: #1e3a8a;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  text-align: center;
+  min-height: 60px;
+}
+
+.service-item:hover {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  color: #0369a1;
+  border-color: #e0f2fe;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(1, 174, 239, 0.15);
+}
+
+.service-icon {
+  display: none;
+}
+
+.service-name {
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 /* Header CTA */
@@ -633,6 +745,16 @@ export default {
     gap: 20px;
   }
   
+  .products-dropdown-menu {
+    min-width: 500px;
+    max-width: 600px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  
   .header-cta {
     gap: 8px;
   }
@@ -700,6 +822,10 @@ export default {
   
   .info-items {
     gap: 12px;
+  }
+  
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>
