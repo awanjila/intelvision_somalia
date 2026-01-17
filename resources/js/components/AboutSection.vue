@@ -1,99 +1,57 @@
 <template>
-  <section id="about" class="about-section">
+  <section class="about-section">
     <div class="container">
       <div class="about-content">
-        <!-- Left Side: Branded Illustration -->
-        <div class="about-left">
-          <div class="about-image-wrapper">
-            <div class="floating-element element-1">
-              <div class="element-icon">⚡</div>
+        <!-- Left Side: Image -->
+        <div class="about-image-wrapper" data-aos="fade-right">
+          <div class="image-container">
+            <img 
+              src="/images/about/security-team.jpg" 
+              alt="Intelvision Technologies Security Solutions" 
+              class="about-image"
+            />
+            <div class="image-overlay"></div>
+            
+            <!-- Stats Badge -->
+            <div class="stats-badge">
+              <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Years Experience</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Happy Clients</div>
+              </div>
             </div>
-            <div class="floating-element element-2">
-              <div class="element-icon">🎯</div>
-            </div>
-            <div class="floating-element element-3">
-              <div class="element-icon">✨</div>
-            </div>
-            <div class="about-illustration">
-              <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                <!-- Background Shapes -->
-                <circle cx="250" cy="250" r="180" fill="url(#aboutGradient1)" opacity="0.1"/>
-                <circle cx="150" cy="150" r="80" fill="#60a5fa" opacity="0.15"/>
-                <circle cx="350" cy="350" r="100" fill="#fbbf24" opacity="0.15"/>
-                
-                <!-- Central Device/Dashboard -->
-                <rect x="120" y="120" width="260" height="260" rx="30" fill="white" opacity="0.95"/>
-                <rect x="135" y="135" width="230" height="230" rx="20" fill="url(#aboutGradient2)"/>
-                
-                <!-- Dashboard Elements -->
-                <rect x="160" y="160" width="80" height="60" rx="8" fill="white" opacity="0.9"/>
-                <rect x="260" y="160" width="80" height="60" rx="8" fill="white" opacity="0.7"/>
-                <rect x="160" y="240" width="180" height="40" rx="8" fill="white" opacity="0.8"/>
-                <rect x="160" y="300" width="120" height="40" rx="8" fill="white" opacity="0.6"/>
-                
-                <!-- Decorative Lines -->
-                <line x1="100" y1="100" x2="150" y2="150" stroke="#0369a1" stroke-width="3" opacity="0.3"/>
-                <line x1="400" y1="100" x2="350" y2="150" stroke="#fbbf24" stroke-width="3" opacity="0.3"/>
-                <line x1="100" y1="400" x2="150" y2="350" stroke="#60a5fa" stroke-width="3" opacity="0.3"/>
-                
-                <!-- Tech Icons -->
-                <text x="50" y="250" font-size="40" fill="#1e3a8a" opacity="0.2" font-family="monospace">01</text>
-                <text x="400" y="250" font-size="40" fill="#0369a1" opacity="0.2" font-family="monospace">10</text>
-                
-                <!-- Gradients -->
-                <defs>
-                  <linearGradient id="aboutGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#0369a1;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
-                  </linearGradient>
-                  <linearGradient id="aboutGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-                    <stop offset="50%" style="stop-color:#0369a1;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+
+            <!-- Decorative Elements -->
+            <div class="decorative-circle circle-1"></div>
+            <div class="decorative-circle circle-2"></div>
           </div>
         </div>
 
-        <!-- Right Side: Text Content -->
-        <div class="about-right">
-          <div class="about-text">
-            <div class="section-label">Who We Are</div>
-            <h2 class="section-title">
-              Crafting Digital Excellence
-              <span class="gradient-text">Since Day One</span>
-            </h2>
-            <p class="section-description">
-              We are a <span class="text-highlight">full-stack digital solutions company</span> specializing in automation, system development, and smart technology. Whether you're a startup or an enterprise, we craft tools that connect your operations, streamline workflows, and secure your environment.
-            </p>
-            <p class="section-description-secondary">
-              Our mission is simple: transform complex business challenges into elegant, scalable solutions that drive real results. We don't just build software — we build partnerships that last.
-            </p>
-          </div>
+        <!-- Right Side: Content -->
+        <div class="about-text-wrapper" data-aos="fade-left">
+          <div class="section-label">About Intelvision</div>
+          <h2 class="section-title">
+            Leading the Way in 
+            <span class="gradient-text">Security Solutions</span>
+          </h2>
+          
+          <p class="about-description">
+            Intelvision Technologies was established in 2010 with a clear mission: to provide the best security solutions for our clients by leveraging today's modern technology. We form strong partnerships with our clients to ensure they realize maximum value in terms of expert advice and cost-effectiveness.
+          </p>
 
-          <div class="features-badges">
-            <div class="badge-item">
-              <div class="badge-icon">📊</div>
-              <div class="badge-text">10+ Years</div>
-            </div>
-            <div class="badge-item">
-              <div class="badge-icon">🤝</div>
-              <div class="badge-text">Trusted Partner</div>
-            </div>
-            <div class="badge-item">
-              <div class="badge-icon">🚀</div>
-              <div class="badge-text">Fast & Secure</div>
-            </div>
-          </div>
-
-          <div class="about-cta">
-            <a href="/about" class="learn-more-button">
-              <span class="button-text">Learn More About Us</span>
-              <svg class="button-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+        
+          <div class="cta-buttons">
+            <a href="/about" class="btn-primary">
+              Learn More About Us
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="/contact" class="btn-secondary">
+              <i class="fas fa-phone-alt"></i>
+              Get In Touch
             </a>
           </div>
         </div>
@@ -102,10 +60,19 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'AboutSection'
-}
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  // Initialize AOS (Animate On Scroll) if available
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    })
+  }
+})
 </script>
 
 <style scoped>
@@ -117,28 +84,29 @@ export default {
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-/* ===== ABOUT SECTION - SPLIT LAYOUT ===== */
+/* ===== ABOUT SECTION ===== */
 .about-section {
-  padding: 80px 24px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #dbeafe 100%);
+  padding: 100px 0;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
   position: relative;
   overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 .about-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 20% 80%, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(1, 174, 239, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
   pointer-events: none;
 }
 
@@ -151,76 +119,125 @@ export default {
   z-index: 1;
 }
 
-/* ===== LEFT SIDE - ILLUSTRATION ===== */
-.about-left {
-  position: relative;
-  animation: fadeInLeft 1s ease-out;
-}
-
+/* ===== LEFT SIDE - IMAGE ===== */
 .about-image-wrapper {
   position: relative;
-  width: 100%;
-  height: 400px;
 }
 
-.about-illustration {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 20px 60px rgba(30, 58, 138, 0.15));
+.image-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(2, 55, 95, 0.15);
 }
 
-.about-illustration svg {
+.about-image {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
 }
 
-/* ===== FLOATING ELEMENTS ===== */
-.floating-element {
+.image-container:hover .about-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
   position: absolute;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(1, 174, 239, 0.1) 0%,
+    rgba(2, 55, 95, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===== STATS BADGE ===== */
+.stats-badge {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  padding: 16px;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15);
-  animation: floatSlow 4s ease-in-out infinite;
-  border: 2px solid rgba(96, 165, 250, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.element-1 {
-  top: 5%;
-  right: 10%;
-  animation-delay: 0s;
+.stat-item {
+  text-align: center;
 }
 
-.element-2 {
-  bottom: 20%;
-  left: -5%;
-  animation-delay: 1.5s;
-}
-
-.element-3 {
-  top: 40%;
-  right: -5%;
-  animation-delay: 3s;
-}
-
-.element-icon {
+.stat-number {
   font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
+  margin-bottom: 8px;
 }
 
-/* ===== RIGHT SIDE - TEXT CONTENT ===== */
-.about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  animation: fadeInRight 1s ease-out;
+.stat-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
-.about-text {
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, #e2e8f0, transparent);
+}
+
+/* ===== DECORATIVE CIRCLES ===== */
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.circle-1 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(1, 174, 239, 0.15) 0%, rgba(2, 55, 95, 0.1) 100%);
+  top: -30px;
+  right: -30px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-2 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(2, 55, 95, 0.1) 0%, rgba(1, 174, 239, 0.15) 100%);
+  bottom: -20px;
+  left: -20px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* ===== RIGHT SIDE - CONTENT ===== */
+.about-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 .section-label {
@@ -228,170 +245,150 @@ export default {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #0369a1;
+  color: #01aeef;
   display: inline-block;
 }
 
 .section-title {
   font-size: 2.75rem;
   font-weight: 800;
-  color: #1e3a8a;
+  color: #02375f;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  margin-bottom: 8px;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #0369a1 0%, #60a5fa 100%);
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
 }
 
-.section-description {
-  font-size: 1.125rem;
-  color: #475569;
-  line-height: 1.8;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-}
-
-.text-highlight {
-  font-weight: 700;
-  color: #1e3a8a;
-  position: relative;
-}
-
-.section-description-secondary {
+.about-description {
   font-size: 1.05rem;
   color: #64748b;
-  line-height: 1.7;
-  font-style: italic;
-  padding-left: 20px;
-  border-left: 4px solid #fbbf24;
+  line-height: 1.8;
+  margin-bottom: 8px;
 }
 
-/* ===== FEATURES BADGES (HORIZONTAL) ===== */
-.features-badges {
+/* ===== FEATURE LIST ===== */
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 16px 0;
+}
+
+.feature-item {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
 }
 
-.badge-item {
+.feature-item:hover {
+  border-color: #01aeef;
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.15);
+  transform: translateX(8px);
+}
+
+.feature-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 50px;
-  border: 2px solid rgba(3, 105, 161, 0.15);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.08);
-}
-
-.badge-item:hover {
-  background: white;
-  border-color: rgba(251, 191, 36, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.12);
-}
-
-.badge-icon {
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-.badge-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #1e3a8a;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  white-space: nowrap;
-}
-
-/* ===== ABOUT CTA BUTTON ===== */
-.about-cta {
-  margin-top: 8px;
-}
-
-.learn-more-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.learn-more-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.learn-more-button:hover::before {
-  left: 100%;
-}
-
-.learn-more-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(30, 58, 138, 0.4);
-}
-
-.button-icon {
+  justify-content: center;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
-.learn-more-button:hover .button-icon {
+.feature-item:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.feature-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #02375f;
+  margin-bottom: 6px;
+}
+
+.feature-content p {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== CTA BUTTONS ===== */
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
+  color: white;
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.4);
+}
+
+.btn-primary i {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover i {
   transform: translateX(4px);
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.btn-secondary {
+  background: white;
+  color: #01aeef;
+  border: 2px solid #01aeef;
 }
 
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-25px) rotate(5deg);
-  }
+.btn-secondary:hover {
+  background: #01aeef;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.2);
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -401,108 +398,113 @@ export default {
     gap: 60px;
   }
 
-  .about-left {
-    order: 2;
-  }
-
-  .about-right {
-    order: 1;
-  }
-
-  .about-image-wrapper {
-    height: 350px;
-  }
-
   .section-title {
     font-size: 2.25rem;
   }
 
-  .floating-element {
-    display: none;
+  .stats-badge {
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 20px;
+  }
+
+  .stat-number {
+    font-size: 1.75rem;
   }
 }
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 60px 20px;
+    padding: 70px 0;
   }
 
   .about-content {
-    gap: 40px;
+    gap: 50px;
   }
 
   .section-title {
     font-size: 2rem;
   }
 
-  .section-description {
+  .about-description {
     font-size: 1rem;
   }
 
-  .section-description-secondary {
-    font-size: 0.95rem;
+  .feature-list {
+    gap: 16px;
   }
 
-  .about-image-wrapper {
-    height: 280px;
+  .feature-item {
+    padding: 16px;
   }
 
-  .features-badges {
-    justify-content: center;
+  .feature-icon {
+    width: 45px;
+    height: 45px;
   }
 
-  .badge-item {
-    padding: 10px 18px;
-  }
-
-  .badge-icon {
+  .feature-icon i {
     font-size: 1.25rem;
   }
 
-  .badge-text {
-    font-size: 0.875rem;
+  .cta-buttons {
+    flex-direction: column;
   }
 
-  .learn-more-button {
+  .btn-primary,
+  .btn-secondary {
     width: 100%;
     justify-content: center;
+  }
+
+  .stats-badge {
+    position: static;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .about-section {
-    padding: 40px 16px;
+    padding: 50px 0;
   }
 
   .section-title {
     font-size: 1.75rem;
   }
 
-  .section-description {
+  .about-description {
     font-size: 0.95rem;
   }
 
-  .section-description-secondary {
-    font-size: 0.875rem;
-    padding-left: 16px;
+  .feature-content h4 {
+    font-size: 1rem;
   }
 
-  .features-badges {
+  .feature-content p {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  .stats-badge {
     flex-direction: column;
-    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
   }
 
-  .badge-item {
-    justify-content: center;
-    padding: 12px 16px;
+  .stat-divider {
+    width: 100%;
+    height: 1px;
   }
 
-  .badge-icon {
-    font-size: 1.25rem;
-  }
-
-  .badge-text {
-    font-size: 0.85rem;
+  .circle-1,
+  .circle-2 {
+    display: none;
   }
 }
 </style>

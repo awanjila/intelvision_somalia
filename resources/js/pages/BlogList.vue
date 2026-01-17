@@ -35,7 +35,7 @@
                 class="card-image" 
               />
               <div class="card-overlay"></div>
-              <div v-if="blog.category" class="card-category">{{ blog.category }}</div>
+              <div v-if="blog.category" class="card-category">{{ blog.category.name }}</div>
             </div>
             <div class="card-content">
               <div class="card-meta">

@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Wabe Digital Agency | Admin @endsection
+@section('title') Intelvison Technologies | Admin @endsection
 @section('content')
 
     @php
@@ -26,7 +26,7 @@
                                     <li class="breadcrumb-item active"> Wabe Digital Agency</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Wabe Digital Agency</h4>
+                            <h4 class="page-title">Intelvision Technologies</h4>
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
 
                 <div class="row">
                     <!-- INBOX -->
-                    <div class="col-xl-8 col-lg-8">
+                    <div class="col-xl-12 col-lg-8">
                         <div class="card">
                             <div class="card-body">
                                 <div class="dropdown float-end">
@@ -105,102 +105,6 @@
                         </div> <!-- end card -->
                     </div> <!-- end col -->
 
-                    <!-- CHAT -->
-                    <div class="col-xl-4 col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="dropdown float-end">
-                                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="mdi mdi-dots-vertical"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item">Settings</a>
-                                        <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
-                                    </div>
-                                </div>
-                                <h4 class="header-title mb-3">Chat</h4>
-
-                                <div class="chat-conversation">
-                                    <div data-simplebar style="height: 370px;">
-                                        <ul class="conversation-list">
-                                            <li class="clearfix">
-                                                <div class="chat-avatar">
-                                                    <img src="assets/images/users/user-5.jpg" alt="male">
-                                                    <i>10:00</i>
-                                                </div>
-                                                <div class="conversation-text">
-                                                    <div class="ctext-wrap">
-                                                        <i>Geneva</i>
-                                                        <p>
-                                                            Hello!
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix odd">
-                                                <div class="chat-avatar">
-                                                    <img src="assets/images/users/user-1.jpg" alt="Female">
-                                                    <i>10:01</i>
-                                                </div>
-                                                <div class="conversation-text">
-                                                    <div class="ctext-wrap">
-                                                        <i>Dominic</i>
-                                                        <p>
-                                                            Hi, How are you? What about our next meeting?
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix">
-                                                <div class="chat-avatar">
-                                                    <img src="assets/images/users/user-5.jpg" alt="male">
-                                                    <i>10:01</i>
-                                                </div>
-                                                <div class="conversation-text">
-                                                    <div class="ctext-wrap">
-                                                        <i>Geneva</i>
-                                                        <p>
-                                                            Yeah everything is fine
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="clearfix odd">
-                                                <div class="chat-avatar">
-                                                    <img src="assets/images/users/user-1.jpg" alt="male">
-                                                    <i>10:02</i>
-                                                </div>
-                                                <div class="conversation-text">
-                                                    <div class="ctext-wrap">
-                                                        <i>Dominic</i>
-                                                        <p>
-                                                            Wow that's great
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <form class="needs-validation" novalidate name="chat-form" id="chat-form">
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" class="form-control chat-input" placeholder="Enter your text" required>
-                                                <div class="invalid-feedback">
-                                                    Please enter your messsage
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <button type="submit" class="btn btn-danger chat-send waves-effect waves-light w-100">Send</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                </div> <!-- end .chat-conversation-->
-                            </div>
-                        </div> <!-- end card-->
-                    </div> <!-- end col-->
                 </div> <!-- end row -->
 
             </div> <!-- container -->

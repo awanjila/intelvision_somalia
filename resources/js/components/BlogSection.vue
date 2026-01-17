@@ -33,7 +33,7 @@
                   class="card-image" 
                 />
                 <div class="card-overlay"></div>
-                <div v-if="blog.category" class="card-category">{{ blog.category }}</div>
+                <div v-if="blog.category" class="card-category">{{ blog.category.name }}</div>
               </div>
               <div class="card-content">
                 <div class="card-meta">
@@ -48,7 +48,7 @@
                 </div>
                 <h3 class="card-title">{{ blog.name }}</h3>
                 <p class="card-excerpt">{{ truncateExcerpt(blog.meta_description) }}</p>
-                <a :href="`/blog/${blog.slug}`" class="card-link">
+                <a :href="`show/blog/${blog.slug}`" class="card-link">
                   Read Article
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

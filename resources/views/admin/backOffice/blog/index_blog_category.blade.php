@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Wabe Digital Agency | Services @endsection
+@section('title') Intelvison Technologies | Services @endsection
 @section('content')
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

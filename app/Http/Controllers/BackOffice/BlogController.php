@@ -11,6 +11,7 @@ use Storage;
 use App\Mail\BlogMail;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -29,47 +30,51 @@ class BlogController extends Controller
 
 
     public function StoreBlog(Request $request)
-    {
-        $data = $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required',
-            'author' => 'required',
-        ]);
-    
-        $slug = Str::slug($request->name);
-        $save_url = null;
-    
-        if ($request->file('image')) {
-            $image = $request->file('image');
-            $name_gen = $slug . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(800, 400)->save('upload/blog_image/' . $name_gen);
-            $save_url = 'upload/blog_image/' . $name_gen;
-        }
-    
-        $blog = new Blog();
-        $blog->name = $request->name;
-        $blog->description = $request->description;
-        $blog->meta_title = $request->meta_title;
-        $blog->meta_description = $request->meta_description;
-        $blog->author = $request->author;
-        $blog->blog_category_id = $request->category;
-        $blog->image = $save_url;
-        $blog->save();
-    
-        $notification = [
-            'message' => 'Blog ' . ($save_url ? 'with Image ' : 'without Image ') . 'has been Created Successfully',
-            'alert-type' => $save_url ? 'info' : 'warning',
-        ];
-    
-        // Send email to all contacts
-        $contacts = Contact::all();
+{
+    $data = $this->validate($request, [
+        'name' => 'required',
+        'description' => 'required',
+        'author' => 'required',
+    ]);
+
+    $slug = Str::slug($request->name);
+    $save_url = null;
+
+    if ($request->file('image')) {
+        $image = $request->file('image');
+        $name_gen = $slug . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(800, 400)->save('upload/blog_image/' . $name_gen);
+        $save_url = 'upload/blog_image/' . $name_gen;
+    }
+
+    // Use DB::insert instead of Eloquent
+    DB::table('blogs')->insert([
+        'name' => $request->name,
+        'description' => $request->description,
+        'meta_title' => $request->meta_title,
+        'meta_description' => $request->meta_description,
+        'author' => $request->author,
+        'blog_category_id' => $request->category,
+        'image' => $save_url,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $notification = [
+        'message' => 'Blog ' . ($save_url ? 'with Image ' : 'without Image ') . 'has been Created Successfully',
+        'alert-type' => $save_url ? 'info' : 'warning',
+    ];
+
+    // Optimize email sending - use queue and chunk
+    Contact::chunk(100, function ($contacts) use ($data, $save_url) {
         foreach ($contacts as $contact) {
             Mail::to($contact->email)
-                ->send(new BlogMail($data, $save_url, $contact->name));
+                ->queue(new BlogMail($data, $save_url, $contact->name));
         }
-    
-        return redirect()->route('index.blog')->with($notification);
-    }//endmethod
+    });
+
+    return redirect()->route('index.blog')->with($notification);
+}//endmethod
     
 
 
@@ -183,9 +188,11 @@ public function AddBlogCategory(){
 
     public function IndexOfBlogs(){
 
-      $blogs=Blog::orderBy('created_at', 'desc')->get();
+       $blogs = Blog::with('category')
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-      return view('admin.backOffice.blog.index_blog')->with('blogs', $blogs);
+    return view('admin.backOffice.blog.index_blog', compact('blogs'));
     }//endmethod
 
     public function IndexOfBlogCategories(){
