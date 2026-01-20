@@ -21,7 +21,7 @@
       <div class="container">
         <div v-if="loading" class="loading-state">
           <div class="spinner"></div>
-          <p>Loading service details...</p>
+          <p>Loading Product details...</p>
         </div>
 
         <div v-else-if="service.id" class="service-detail-content">
@@ -43,10 +43,10 @@
           <div class="detail-right">
             <!-- All Services List -->
             <div class="services-sidebar">
-              <h3 class="sidebar-title">All Services</h3>
+              <h3 class="sidebar-title">All Products</h3>
               <ul class="services-list">
                 <li v-for="item in allServices" :key="item.id" :class="{ active: item.slug === service.slug }">
-                  <a :href="`/show/service/${item.slug}`">
+                  <a :href="`/show/product/${item.slug}`">
                     <span>{{ item.name }}</span>
                     <i class="fas fa-arrow-right"></i>
                   </a>
@@ -92,7 +92,7 @@
               </div>
               <h3 class="brochure-title">Brochures</h3>
               <p class="brochure-text">
-                Download our comprehensive service brochure to learn more about what we offer.
+                Download our comprehensive Product brochure to learn more about what we offer.
               </p>
               <a href="/contact" class="brochure-button">
                 Request Brochure
@@ -104,8 +104,8 @@
 
         <div v-else class="error-state">
           <i class="fas fa-exclamation-circle"></i>
-          <p>Service not found.</p>
-          <a href="/wabe_digital_agency/services" class="back-button">Back to Services</a>
+          <p>product not found.</p>
+          <a href="/products" class="back-button">Back to Products</a>
         </div>
       </div>
     </section>

@@ -50,7 +50,7 @@
                 ></p>
 
                 <a
-                  :href="`/show/service/${service.slug}`"
+                  :href="`/show/product/${service.slug}`"
                   class="card-link"
                 >
                   Learn More

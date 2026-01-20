@@ -33,7 +33,7 @@
             <h3 class="footer-title">Our Products</h3>
             <ul v-if="services.length > 0" class="footer-links">
               <li v-for="service in services.slice(0, 6)" :key="service.id">
-                <a :href="`/show/service/${service.slug}`">
+                <a :href="`/show/product/${service.slug}`">
                   <i class="fas fa-chevron-right"></i>
                   {{ service.name }}
                 </a>

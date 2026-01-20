@@ -100,7 +100,7 @@ Route::post('update/service', 'UpdateService')->name('update.service');
 
 //frontend
 
-Route::get('show/service/{slug}', 'showService')->name('show.service'); 
+Route::get('show/product/{slug}', 'showService')->name('show.service'); 
 
 Route::get('products', 'Services')->name('services');
  });
@@ -182,7 +182,7 @@ Route::controller(CatalogController::class)->group(function(){
     Route::get('/store', 'Index')->name('catalog.index');
     Route::get('/category/{slug}', 'showProducts')->name('category.products');
     Route::get('/brand/{slug}', 'showBrandProducts')->name('brand.products');
-    Route::get('show/product/{slug}', 'show')->name('show.product');
+    Route::get('show/product-1/{slug}', 'show')->name('show.product');
     Route::get('show/cart', 'showCart')->name('show.cart');
     Route::get('checkout', 'checkout')->name('show.checkout');
     Route::get('search', 'searchProducts')->name('search');

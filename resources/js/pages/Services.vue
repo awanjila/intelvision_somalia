@@ -35,7 +35,7 @@
             <div class="card-content">
               <h3 class="card-title">{{ service.title || service.name }}</h3>
               <p class="card-description" v-html="truncateDescription(service.description)"></p>
-              <a :href="`/show/service/${service.slug}`" class="card-link">
+              <a :href="`/show/product/${service.slug}`" class="card-link">
                 Learn More
                 <i class="fas fa-arrow-right"></i>
               </a>
