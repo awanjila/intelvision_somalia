@@ -68,7 +68,8 @@
                   :key="service.id"
                   :href="`/show/product/${service.slug}`"
                   class="service-item"
-                  @click="showProductsDropdown = false"
+                  @mouseenter="showProductsDropdown = true"
+                  @click.stop="showProductsDropdown = false"
                 >
                   <span class="service-name">{{ service.name }}</span>
                 </a>
@@ -76,7 +77,7 @@
             </div>
           </div>
 
-          <a href="/blog" class="nav-link">Blog</a>
+          <a href="/blogs" class="nav-link">Blog</a>
         
           <a href="/contact" class="nav-link">Contact</a>
         </nav>
@@ -113,12 +114,34 @@
         <div class="mobile-nav-content">
           <a href="/" class="mobile-nav-link" @click="mobileMenuOpen = false">Home</a>
           <a href="/about" class="mobile-nav-link" @click="mobileMenuOpen = false">About Us</a>
-          <a href="/services" class="mobile-nav-link" @click="mobileMenuOpen = false">Products</a>
-          <a href="/blogs" class="mobile-nav-link" @click="mobileMenuOpen = false">News & Articles</a>
           
-          <!-- Resources Accordion -->
-        
+          <!-- Mobile Products Dropdown -->
+          <div class="mobile-dropdown">
+            <button 
+              class="mobile-dropdown-toggle" 
+              @click="mobileProductsOpen = !mobileProductsOpen"
+            >
+              Products
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="{ rotate: mobileProductsOpen }">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <transition name="expand">
+              <div v-show="mobileProductsOpen" class="mobile-dropdown-content">
+                <a
+                  v-for="service in services"
+                  :key="service.id"
+                  :href="`/show/product/${service.slug}`"
+                  class="mobile-dropdown-link"
+                  @click="mobileMenuOpen = false; mobileProductsOpen = false"
+                >
+                  {{ service.name }}
+                </a>
+              </div>
+            </transition>
+          </div>
 
+          <a href="/blog" class="mobile-nav-link" @click="mobileMenuOpen = false">Blog</a>
           <a href="/contact" class="mobile-nav-link" @click="mobileMenuOpen = false">Contact</a>
 
           <!-- Mobile CTA Buttons -->
@@ -150,7 +173,8 @@ export default {
       mobileResourcesOpen: false,
       services: [],
       servicesLoading: true,
-      showProductsDropdown: false
+      showProductsDropdown: false,
+      mobileProductsOpen: false
     }
   },
   computed: {
@@ -165,6 +189,7 @@ export default {
       } else {
         document.body.style.overflow = ''
         this.mobileResourcesOpen = false
+        this.mobileProductsOpen = false
       }
     }
   },
@@ -175,15 +200,39 @@ export default {
     document.addEventListener('click', this.boundHandleClickOutside)
     
     // Add hover listeners for desktop dropdowns
-    if (this.$refs.headerRef) {
-      const dropdown = this.$refs.headerRef.querySelector('.dropdown')
-      const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
-      
-      if (dropdown) {
-        dropdown.addEventListener('mouseenter', this.showDropdown.bind(this))
-        dropdown.addEventListener('mouseleave', this.hideDropdown.bind(this))
+    this.$nextTick(() => {
+      if (this.$refs.headerRef) {
+        const dropdown = this.$refs.headerRef.querySelector('.dropdown')
+        const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
+        
+        if (dropdown) {
+          this.boundShowDropdown = this.showDropdown.bind(this)
+          this.boundHideDropdown = this.hideDropdown.bind(this)
+          dropdown.addEventListener('mouseenter', this.boundShowDropdown)
+          dropdown.addEventListener('mouseleave', this.boundHideDropdown)
+        }
+        
+        if (productsDropdown) {
+          this.boundShowProducts = () => { 
+            this.showProductsDropdown = true
+            // Clear any pending hide timeout
+            if (this.productsHideTimeout) {
+              clearTimeout(this.productsHideTimeout)
+              this.productsHideTimeout = null
+            }
+          }
+          this.boundHideProducts = () => { 
+            // Add a small delay before hiding to allow navigation
+            this.productsHideTimeout = setTimeout(() => {
+              this.showProductsDropdown = false
+              this.productsHideTimeout = null
+            }, 200)
+          }
+          productsDropdown.addEventListener('mouseenter', this.boundShowProducts)
+          productsDropdown.addEventListener('mouseleave', this.boundHideProducts)
+        }
       }
-    }
+    })
   },
   beforeUnmount() {
     document.body.style.overflow = ''
@@ -193,9 +242,20 @@ export default {
       const dropdown = this.$refs.headerRef.querySelector('.dropdown')
       const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
       
-      if (dropdown) {
-        dropdown.removeEventListener('mouseenter', this.showDropdown.bind(this))
-        dropdown.removeEventListener('mouseleave', this.hideDropdown.bind(this))
+      if (dropdown && this.boundShowDropdown && this.boundHideDropdown) {
+        dropdown.removeEventListener('mouseenter', this.boundShowDropdown)
+        dropdown.removeEventListener('mouseleave', this.boundHideDropdown)
+      }
+      
+      if (productsDropdown && this.boundShowProducts && this.boundHideProducts) {
+        productsDropdown.removeEventListener('mouseenter', this.boundShowProducts)
+        productsDropdown.removeEventListener('mouseleave', this.boundHideProducts)
+      }
+      
+      // Clear any pending timeout
+      if (this.productsHideTimeout) {
+        clearTimeout(this.productsHideTimeout)
+        this.productsHideTimeout = null
       }
     }
   },
@@ -266,13 +326,23 @@ export default {
       
       const dropdown = this.$refs.headerRef.querySelector('.dropdown')
       const productsDropdown = this.$refs.headerRef.querySelector('.products-dropdown')
+      const productsDropdownMenu = this.$refs.headerRef.querySelector('.products-dropdown-menu')
       const mobileToggle = this.$refs.headerRef.querySelector('.mobile-menu-toggle')
       
+      // Check if click is outside dropdown
       if (dropdown && !dropdown.contains(event.target) && (!mobileToggle || !mobileToggle.contains(event.target))) {
         this.showResourcesDropdown = false
       }
-      if (productsDropdown && !productsDropdown.contains(event.target) && (!mobileToggle || !mobileToggle.contains(event.target))) {
-        this.showProductsDropdown = false
+      
+      // For products dropdown, check both the dropdown container and the menu itself
+      if (productsDropdown) {
+        const isClickInside = productsDropdown.contains(event.target) || 
+                             (productsDropdownMenu && productsDropdownMenu.contains(event.target))
+        const isMobileToggle = mobileToggle && mobileToggle.contains(event.target)
+        
+        if (!isClickInside && !isMobileToggle) {
+          this.showProductsDropdown = false
+        }
       }
     },
     showDropdown() {
@@ -283,6 +353,11 @@ export default {
     },
     toggleProductsDropdown() {
       this.showProductsDropdown = !this.showProductsDropdown
+      // Clear any pending hide timeout when toggling
+      if (this.productsHideTimeout) {
+        clearTimeout(this.productsHideTimeout)
+        this.productsHideTimeout = null
+      }
     }
   }
 }
@@ -481,16 +556,16 @@ export default {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 12px;
+  margin-top: 16px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(30, 58, 138, 0.25);
-  min-width: 600px;
-  max-width: 800px;
-  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(2, 55, 95, 0.2), 0 0 0 1px rgba(2, 55, 95, 0.05);
+  min-width: 700px;
+  max-width: 900px;
+  padding: 32px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 1000;
 }
@@ -499,37 +574,73 @@ export default {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.products-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
+  filter: drop-shadow(0 -2px 4px rgba(2, 55, 95, 0.1));
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
 }
 
 .service-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 16px 12px;
-  color: #1e3a8a;
+  gap: 8px;
+  padding: 20px 16px;
+  color: #02375f;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e2e8f0;
   text-align: center;
-  min-height: 60px;
+  min-height: 80px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #01aeef 0%, #0284c7 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
 }
 
 .service-item:hover {
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-  color: #0369a1;
-  border-color: #e0f2fe;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(1, 174, 239, 0.15);
+  color: #02375f;
+  border-color: #01aeef;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(1, 174, 239, 0.2);
+}
+
+.service-item:hover::before {
+  transform: scaleX(1);
 }
 
 .service-icon {
@@ -539,6 +650,7 @@ export default {
 .service-name {
   font-weight: 700;
   line-height: 1.4;
+  color: inherit;
 }
 
 /* Header CTA */
@@ -679,12 +791,13 @@ export default {
 }
 
 .mobile-dropdown-link:hover {
-  background: #f8fafc;
-  color: #0369a1;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  color: #02375f;
+  padding-left: 24px;
 }
 
 .mobile-dropdown-link svg {
-  color: #0369a1;
+  color: #01aeef;
 }
 
 /* Mobile CTA Buttons */
@@ -746,13 +859,19 @@ export default {
   }
   
   .products-dropdown-menu {
-    min-width: 500px;
-    max-width: 600px;
+    min-width: 600px;
+    max-width: 700px;
+    padding: 28px;
   }
   
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 16px;
+  }
+
+  .service-item {
+    padding: 18px 14px;
+    min-height: 75px;
   }
   
   .header-cta {
@@ -807,6 +926,25 @@ export default {
   }
 }
 
+@media (max-width: 900px) {
+  .products-dropdown-menu {
+    min-width: 500px;
+    max-width: 600px;
+    padding: 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .service-item {
+    padding: 16px 12px;
+    min-height: 70px;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
@@ -823,9 +961,10 @@ export default {
   .info-items {
     gap: 12px;
   }
-  
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+
+  .mobile-dropdown-link {
+    padding: 14px 20px;
+    font-size: 0.95rem;
   }
 }
 </style>

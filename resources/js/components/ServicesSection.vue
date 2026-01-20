@@ -175,7 +175,7 @@ export default {
 
 <style scoped>
 .services-section {
-  padding: 90px 0;
+  padding: 50px 0 30px 0;
   background: #f8f9fa;
 }
 
@@ -191,15 +191,55 @@ export default {
 }
 
 .section-title {
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 800;
   color: #02375f;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
 }
 
 .section-subtitle {
   max-width: 620px;
   margin: 16px auto 0;
   color: #6c757d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 20px;
+  color: #6c757d;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #f0f0f0;
+  border-top-color: #02375f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
 }
 
 .services-batch {
@@ -215,11 +255,14 @@ export default {
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: #01aeef;
 }
 
 .card-image-wrapper {
@@ -265,6 +308,21 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.card-link:hover {
+  color: #0284c7;
+  gap: 10px;
+}
+
+.card-link svg {
+  transition: transform 0.3s ease;
+}
+
+.card-link:hover svg {
+  transform: translateX(4px);
 }
 
 .carousel-nav {
@@ -278,6 +336,24 @@ export default {
   height: 48px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.2);
+}
+
+.carousel-nav:hover:not(:disabled) {
+  background: #01aeef;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 16px rgba(1, 174, 239, 0.3);
+}
+
+.carousel-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .carousel-nav.prev { left: -20px }
@@ -296,6 +372,14 @@ export default {
   background: #cbd5e0;
   border-radius: 50%;
   border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dot:hover:not(.active) {
+  background: #01aeef;
+  transform: scale(1.2);
 }
 
 .dot.active {
@@ -304,15 +388,161 @@ export default {
   border-radius: 12px;
 }
 
-@media (max-width: 900px) {
+/* Slide transitions */
+.slide-fade-enter-active {
+  transition: all 0.5s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.3s ease;
+  position: absolute;
+}
+
+.slide-fade-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
   .services-batch {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .services-batch {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .carousel-nav.prev {
+    left: -10px;
+  }
+
+  .carousel-nav.next {
+    right: -10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section {
+    padding: 40px 0 25px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-top: 12px;
+  }
+
   .services-batch {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    border-radius: 12px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .carousel-nav.prev {
+    left: 0;
+  }
+
+  .carousel-nav.next {
+    right: 0;
+  }
+
+  .carousel-dots {
+    margin-top: 30px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot.active {
+    width: 28px;
+  }
+
+  .loading-state {
+    min-height: 300px;
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .card-content {
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-description {
+    font-size: 0.875rem;
+  }
+
+  .card-link {
+    font-size: 0.9rem;
   }
 }
 </style>

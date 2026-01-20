@@ -139,7 +139,7 @@ export default {
 
   /* Core fix */
   min-height: 420px;
-  height: clamp(420px, 55vh, 640px);
+  height: clamp(420px, 65vh, 800px);
 }
 
 .slider-wrapper,
@@ -300,28 +300,130 @@ export default {
 @media (max-width: 768px) {
   .hero-section {
     height: auto;
-    min-height: unset;
-    padding: 80px 0;
+    min-height: 400px;
+    max-height: 600px;
+  }
+
+  .slider-wrapper,
+  .slides-container {
+    min-height: 400px;
   }
 
   .slide {
-    position: relative;
+    position: absolute;
+    min-height: 400px;
+    padding: 20px 0;
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+
+  .container {
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   .slide-content {
-    padding: 28px 32px;
+    max-width: 100%;
+    padding: 24px 20px;
+    margin: 0;
+    background: rgba(2, 55, 95, 0.95);
+    border-left: 3px solid #01aeef;
   }
 
   .slide-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 16px;
   }
 
   .slide-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .slide-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    border-radius: 6px;
+  }
+
+  .btn-secondary {
+    border-width: 2px;
   }
 
   .slider-nav {
     display: none;
+  }
+
+  .slider-dots {
+    bottom: 16px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.active {
+    width: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 350px;
+    max-height: 500px;
+  }
+
+  .slider-wrapper,
+  .slides-container {
+    min-height: 350px;
+  }
+
+  .slide {
+    min-height: 350px;
+    padding-top: 30px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .slide-content {
+    padding: 20px 16px;
+  }
+
+  .slide-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .slide-description {
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    padding: 11px 20px;
+    font-size: 0.85rem;
+  }
+
+  .slider-dots {
+    bottom: 12px;
   }
 }
 </style>

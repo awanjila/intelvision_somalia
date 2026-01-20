@@ -125,21 +125,15 @@ const fetchServices = async () => {
   try {
     loading.value = true
     const response = await axios.get('/api/services')
-    // Fix image paths - ensure correct upload path
+    // Fix image paths - remove incorrect path prefix if exists (same as Header.vue)
     services.value = response.data.map(service => {
-      let imagePath = service.image
-      if (imagePath) {
-        // Remove '/wabe_digital_agency' if it exists in the path
-        imagePath = imagePath.replace('/wabe_digital_agency', '')
-        // Ensure it starts with /upload/
-        if (!imagePath.startsWith('/upload/')) {
-          imagePath = '/upload/' + imagePath.split('/upload/').pop()
-        }
+      if (service.image) {
+        // Fix image URLs by removing the incorrect path (same logic as Header.vue)
+        service.image = service.image.replace('/wabe_digital_agency/upload/service_image/', '/upload/service_image/')
+        // Also handle other variations
+        service.image = service.image.replace('/wabe_digital_agency', '')
       }
-      return {
-        ...service,
-        image: imagePath
-      }
+      return service
     })
   } catch (error) {
     console.error('Error fetching services:', error)

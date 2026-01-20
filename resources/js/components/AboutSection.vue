@@ -91,7 +91,7 @@ onMounted(() => {
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  padding: 100px 0;
+  padding: 50px 0 30px 0;
   background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
   position: relative;
   overflow: hidden;
@@ -416,7 +416,7 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .about-section {
-    padding: 70px 0;
+    padding: 40px 0 25px 0;
   }
 
   .about-content {
@@ -466,7 +466,7 @@ onMounted(() => {
 
 @media (max-width: 480px) {
   .about-section {
-    padding: 50px 0;
+    padding: 35px 0 20px 0;
   }
 
   .section-title {

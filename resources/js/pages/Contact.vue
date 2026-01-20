@@ -38,7 +38,7 @@ import ContactSection from '../components/ContactSection.vue'
 <style scoped>
 /* ===== BREADCRUMBS ===== */
 .rs-breadcrumbs {
-  padding: 100px 0 80px;
+  padding: 50px 0 40px;
   background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
   position: relative;
 }

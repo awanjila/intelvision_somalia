@@ -237,7 +237,7 @@ onMounted(async () => {
 }
 
 .blog-section {
-  padding: 100px 0;
+  padding: 50px 0 30px 0;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   position: relative;
 }
@@ -651,7 +651,7 @@ onMounted(async () => {
 
 @media (max-width: 768px) {
   .blog-section {
-    padding: 70px 0;
+    padding: 40px 0 25px 0;
   }
 
   .container {

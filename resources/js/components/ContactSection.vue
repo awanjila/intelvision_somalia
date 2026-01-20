@@ -272,14 +272,14 @@ const submitForm = async () => {
   flex-direction: column;
   gap: 40px;
   animation: fadeInLeft 0.8s ease-out;
-  position: sticky;
-  top: 100px;
+  align-self: flex-start;
 }
 
 .contact-header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  margin-top: -20px;
 }
 
 .section-label {
