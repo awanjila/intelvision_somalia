@@ -3,13 +3,13 @@
     <!-- Breadcrumbs -->
     <div class="rs-breadcrumbs">
       <div class="breadcrumbs-inner text-center">
-        <h1 class="page-title">{{ service.name || 'Service Details' }}</h1>
+        <h1 class="page-title">{{ service.name || 'Product Details' }}</h1>
         <ul>
           <li>
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/wabe_digital_agency/services">Services</a>
+            <a href="/products">Products</a>
           </li>
           <li>{{ service.name }}</li>
         </ul>

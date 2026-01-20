@@ -22,3 +22,15 @@
 [2026-01-20 20:38:22] local.INFO: array (
 )  
 [2026-01-20 20:38:22] local.INFO: 11.92  
+[2026-01-20 20:46:59] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 60 seconds exceeded at D:\\Laravel Projects\\intelvision\\vendor\\nesbot\\carbon\\lazy\\Carbon\\MessageFormatter\\MessageFormatterMapperStrongType.php:16)
+[stacktrace]
+#0 {main}
+"} 
+[2026-01-20 20:51:52] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-20 20:51:53] local.INFO: array (
+)  
+[2026-01-20 20:51:53] local.INFO: 17.99  
+[2026-01-20 20:51:54] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 4)  
+[2026-01-20 20:51:54] local.INFO: array (
+)  
+[2026-01-20 20:51:54] local.INFO: 11.8  
