@@ -13,8 +13,13 @@
           <div class="spinner"></div>
           <p>Loading services...</p>
         </div>
-        
-        <transition-group v-else name="slide-fade" tag="div" class="carousel-track">
+
+        <transition-group
+          v-else
+          name="slide-fade"
+          tag="div"
+          class="carousel-track"
+        >
           <div
             v-for="(batch, batchIndex) in batches"
             :key="batchIndex"
@@ -27,13 +32,27 @@
               class="service-card"
             >
               <div class="card-image-wrapper">
-                <img :src="service.image || '/images/services/default.jpg'" :alt="service.title || service.name" class="card-image" />
-                <div class="card-overlay"></div>
+                <img
+                  :src="service.image || '/images/services/default.jpg'"
+                  :alt="service.title || service.name"
+                  class="card-image"
+                />
               </div>
+
               <div class="card-content">
-                <h3 class="card-title">{{ service.title || service.name }}</h3>
-                <p class="card-description" v-html="truncateDescription(service.description)"></p>
-                <a :href="`/show/service/${service.slug}`" class="card-link">
+                <h3 class="card-title">
+                  {{ service.title || service.name }}
+                </h3>
+
+                <p
+                  class="card-description"
+                  v-html="truncateDescription(service.description)"
+                ></p>
+
+                <a
+                  :href="`/show/service/${service.slug}`"
+                  class="card-link"
+                >
                   Learn More
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +65,8 @@
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </a>
               </div>
@@ -55,58 +74,31 @@
           </div>
         </transition-group>
 
-        <!-- Navigation Arrows -->
-        <button 
-          class="carousel-nav prev" 
-          @click="prevBatch" 
+        <!-- Navigation -->
+        <button
+          class="carousel-nav prev"
+          @click="prevBatch"
           :disabled="currentBatch === 0"
-          aria-label="Previous"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
+          ‹
         </button>
 
-        <button 
-          class="carousel-nav next" 
+        <button
+          class="carousel-nav next"
           @click="nextBatch"
           :disabled="currentBatch === batches.length - 1"
-          aria-label="Next"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+          ›
         </button>
 
-        <!-- Dots Indicator -->
+        <!-- Dots -->
         <div class="carousel-dots">
           <button
-            v-for="(batch, index) in batches"
-            :key="`dot-${index}`"
+            v-for="(_, index) in batches"
+            :key="index"
             :class="['dot', { active: currentBatch === index }]"
             @click="goToBatch(index)"
-            :aria-label="`Go to batch ${index + 1}`"
-          ></button>
+          />
         </div>
       </div>
     </div>
@@ -114,7 +106,7 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
 
 export default {
@@ -124,118 +116,32 @@ export default {
     const services = ref([])
     const loading = ref(true)
 
-    // Helper function to decode HTML entities
-    const decodeHtmlEntities = (text) => {
-      const textarea = document.createElement('textarea')
-      textarea.innerHTML = text
-      return textarea.value
-    }
-
-    // Helper function to strip HTML tags
-    const stripHtmlTags = (html) => {
+    const truncateDescription = (html) => {
+      if (!html) return ''
       const div = document.createElement('div')
       div.innerHTML = html
-      return div.textContent || div.innerText || ''
-    }
-
-    // Truncate description to uniform length
-    const truncateDescription = (description) => {
-      if (!description) return ''
-      
-      // Decode HTML entities and strip tags
-      let cleanText = stripHtmlTags(description)
-      cleanText = decodeHtmlEntities(cleanText)
-      
-      // Trim whitespace
-      cleanText = cleanText.trim()
-      
-      // Truncate to 120 characters
-      const maxLength = 120
-      if (cleanText.length > maxLength) {
-        return cleanText.substring(0, maxLength).trim() + '...'
-      }
-      
-      return cleanText
+      const text = div.textContent || ''
+      return text.length > 120 ? text.slice(0, 120) + '…' : text
     }
 
     const fetchServices = async () => {
       try {
-        loading.value = true
-        const response = await axios.get('/api/services')
-        services.value = response.data
-      } catch (error) {
-        console.error('Error fetching services:', error)
-        // Fallback to hardcoded services if API fails
-        services.value = [
-          {
-            title: 'CCTV Surveillance',
-            description: 'Professional HD cameras with remote monitoring and night vision for comprehensive property security.',
-            image: '/images/services/cctv-surveillance.jpg',
-            link: '/services/cctv',
-            slug: 'cctv-surveillance'
-          },
-          {
-            title: 'Electric Fences',
-            description: 'Advanced energizer systems with alarm integration for maximum perimeter protection.',
-            image: '/images/services/electric-fences.jpg',
-            link: '/services/electric-fences',
-            slug: 'electric-fences'
-          },
-          {
-            title: 'Biometric Access Control',
-            description: 'Fingerprint scanners and card readers for secure entry management and attendance tracking.',
-            image: '/images/services/access-control.jpg',
-            link: '/services/access-control',
-            slug: 'biometric-access-control'
-          },
-          {
-            title: 'Automated Gates',
-            description: 'Smart gate automation with remote control for convenient and secure property access.',
-            image: '/images/services/automated-gates.jpg',
-            link: '/services/automated-gates',
-            slug: 'automated-gates'
-          },
-          {
-            title: 'Video Door Phones',
-            description: 'Modern intercom systems with video capability for secure visitor identification.',
-            image: '/images/services/door-phones.jpg',
-            link: '/services/door-phones',
-            slug: 'video-door-phones'
-          },
-          {
-            title: 'Fire Safety Solutions',
-            description: 'Comprehensive fire protection including extinguishers and fire doors for complete safety.',
-            image: '/images/services/fire-safety.jpg',
-            link: '/services/fire-safety',
-            slug: 'fire-safety-solutions'
-          },
-          {
-            title: 'Barriers & Road Blocks',
-            description: 'Heavy-duty barriers for controlled vehicle access in commercial facilities.',
-            image: '/images/services/barriers.jpg',
-            link: '/services/barriers',
-            slug: 'barriers-road-blocks'
-          },
-          {
-            title: 'Metal Detectors',
-            description: 'Professional-grade detection systems for enhanced security screening.',
-            image: '/images/services/metal-detectors.jpg',
-            link: '/services/metal-detectors',
-            slug: 'metal-detectors'
-          }
-        ]
+        const { data } = await axios.get('/api/services')
+        services.value = data
+      } catch {
+        services.value = []
       } finally {
         loading.value = false
       }
     }
 
     const batches = computed(() => {
-      const batchSize = 4
-      const result = []
-      for (let i = 0; i < services.value.length; i += batchSize) {
-        result.push(services.value.slice(i, i + batchSize))
+      const size = 3
+      const out = []
+      for (let i = 0; i < services.value.length; i += size) {
+        out.push(services.value.slice(i, i + size))
       }
-      return result
+      return out
     })
 
     const nextBatch = () => {
@@ -250,18 +156,13 @@ export default {
       }
     }
 
-    const goToBatch = (index) => {
-      currentBatch.value = index
-    }
+    const goToBatch = (i) => (currentBatch.value = i)
 
-    onMounted(() => {
-      fetchServices()
-    })
+    onMounted(fetchServices)
 
     return {
-      currentBatch,
-      services,
       loading,
+      currentBatch,
       batches,
       nextBatch,
       prevBatch,
@@ -273,433 +174,145 @@ export default {
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .services-section {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  position: relative;
-}
-
-.services-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #01aeef, transparent);
+  padding: 90px 0;
+  background: #f8f9fa;
 }
 
 .container {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 32px;
+  margin: auto;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 64px;
 }
 
 .section-title {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
   color: #02375f;
-  margin-bottom: 20px;
-  letter-spacing: -0.03em;
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
-  background: linear-gradient(90deg, #01aeef, #0398d4);
-  border-radius: 3px;
 }
 
 .section-subtitle {
-  font-size: 1.3rem;
+  max-width: 620px;
+  margin: 16px auto 0;
   color: #6c757d;
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-.carousel-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 520px;
-}
-
-.loading-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 80px 20px;
-  color: #6c757d;
-  min-height: 520px;
-}
-
-.spinner {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #e0f2fe;
-  border-top-color: #01aeef;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-.carousel-track {
-  position: relative;
-  width: 100%;
 }
 
 .services-batch {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  width: 100%;
 }
 
 .service-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid #e9ecef;
-  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.08);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(1, 174, 239, 0.2);
-  border-color: #01aeef;
+  transform: translateY(-6px);
 }
 
 .card-image-wrapper {
-  position: relative;
   width: 100%;
-  height: 220px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #02375f 0%, #01517a 100%);
+  aspect-ratio: 16 / 9;
+  background: #02375f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.service-card:hover .card-image {
-  transform: scale(1.15);
-}
-
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, transparent 0%, rgba(2, 55, 95, 0.5) 100%);
-  transition: background 0.4s ease;
-}
-
-.service-card:hover .card-overlay {
-  background: linear-gradient(180deg, rgba(1, 174, 239, 0.1) 0%, rgba(1, 174, 239, 0.4) 100%);
+  object-fit: contain;
 }
 
 .card-content {
-  padding: 28px;
-  flex: 1;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 .card-title {
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #02375f;
-  line-height: 1.3;
-  min-height: 52px;
-  display: flex;
-  align-items: center;
 }
 
 .card-description {
-  font-size: 0.98rem;
   color: #6c757d;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.6;
   flex: 1;
-  min-height: 80px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  margin-top: auto;
+  font-weight: 700;
   color: #01aeef;
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 700;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  padding: 8px 0;
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.card-link svg {
-  transition: transform 0.3s ease;
-}
-
-.card-link:hover {
-  color: #0398d4;
-  gap: 12px;
-}
-
-.card-link:hover svg {
-  transform: translateX(6px);
-}
-
-/* Navigation Arrows */
 .carousel-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background: #02375f;
+  color: #fff;
   border: none;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  z-index: 10;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.2);
 }
 
-.carousel-nav:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  box-shadow: none;
-}
+.carousel-nav.prev { left: -20px }
+.carousel-nav.next { right: -20px }
 
-.carousel-nav:not(:disabled):hover {
-  background: #01aeef;
-  transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 6px 20px rgba(1, 174, 239, 0.3);
-}
-
-.carousel-nav svg {
-  color: #ffffff;
-}
-
-.carousel-nav.prev {
-  left: -28px;
-}
-
-.carousel-nav.next {
-  right: -28px;
-}
-
-/* Dots */
 .carousel-dots {
   display: flex;
-  gap: 14px;
   justify-content: center;
-  margin-top: 50px;
+  gap: 10px;
+  margin-top: 40px;
 }
 
 .dot {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   background: #cbd5e0;
+  border-radius: 50%;
   border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
 }
 
 .dot.active {
   background: #01aeef;
-  width: 42px;
-  box-shadow: 0 2px 8px rgba(1, 174, 239, 0.4);
-}
-
-.dot:not(.active):hover {
-  background: #02375f;
-  transform: scale(1.2);
-}
-
-/* Transitions */
-.slide-fade-enter-active {
-  transition: all 0.5s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.3s ease;
-  position: absolute;
-}
-
-.slide-fade-enter-from {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateX(-30px);
-}
-
-/* Responsive */
-@media (max-width: 1200px) {
-  .services-batch {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
+  width: 36px;
+  border-radius: 12px;
 }
 
 @media (max-width: 900px) {
   .services-batch {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-  }
-
-  .section-title {
-    font-size: 2.8rem;
-  }
-
-  .carousel-nav.prev {
-    left: -20px;
-  }
-
-  .carousel-nav.next {
-    right: -20px;
   }
 }
 
-@media (max-width: 768px) {
-  .services-section {
-    padding: 70px 0;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  .section-header {
-    margin-bottom: 50px;
-  }
-
-  .section-title {
-    font-size: 2.2rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .carousel-wrapper {
-    min-height: auto;
-  }
-
+@media (max-width: 600px) {
   .services-batch {
     grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .card-image-wrapper {
-    height: 200px;
-  }
-
-  .card-title {
-    min-height: auto;
-  }
-
-  .card-description {
-    min-height: 60px;
-  }
-
-  .carousel-nav {
-    width: 48px;
-    height: 48px;
-  }
-
-  .carousel-nav.prev {
-    left: 0;
-  }
-
-  .carousel-nav.next {
-    right: 0;
-  }
-
-  .carousel-dots {
-    margin-top: 40px;
-  }
-
-  .dot {
-    width: 12px;
-    height: 12px;
-  }
-
-  .dot.active {
-    width: 36px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.9rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-  }
-
-  .card-content {
-    padding: 24px;
-  }
-
-  .card-title {
-    font-size: 1.2rem;
-  }
-
-  .card-description {
-    font-size: 0.92rem;
-  }
-
-  .card-link {
-    font-size: 0.9rem;
   }
 }
 </style>

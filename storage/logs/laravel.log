@@ -4739,3 +4739,11 @@
 [2026-01-20 14:27:57] local.INFO: array (
 )  
 [2026-01-20 14:27:57] local.INFO: 31.58  
+[2026-01-20 15:10:01] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-20 15:10:01] local.INFO: array (
+)  
+[2026-01-20 15:10:01] local.INFO: 32.52  
+[2026-01-20 15:10:01] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 4)  
+[2026-01-20 15:10:01] local.INFO: array (
+)  
+[2026-01-20 15:10:01] local.INFO: 12.01  
