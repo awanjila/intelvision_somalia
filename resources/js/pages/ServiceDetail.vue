@@ -177,9 +177,9 @@ onMounted(() => {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 40px;
 }
 
 .main-content {
@@ -187,9 +187,9 @@ onMounted(() => {
   color: #1e293b;
 }
 
-/* ===== BREADCRUMBS ===== */
+/* ===== BREADCRUMBS - REDUCED TO HALF ===== */
 .rs-breadcrumbs {
-  padding: 100px 0 80px;
+  padding: 20px 0 15px;
   background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
   position: relative;
   overflow: hidden;
@@ -213,9 +213,9 @@ onMounted(() => {
 }
 
 .page-title {
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   color: white;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -225,18 +225,18 @@ onMounted(() => {
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
 .breadcrumbs-inner ul li {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
 }
 
 .breadcrumbs-inner ul li::before {
   content: '/';
-  margin-right: 12px;
+  margin-right: 8px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -311,11 +311,11 @@ onMounted(() => {
   box-shadow: 0 8px 24px rgba(1, 174, 239, 0.3);
 }
 
-/* ===== CONTENT LAYOUT ===== */
+/* ===== CONTENT LAYOUT - WIDER DESCRIPTION ===== */
 .service-detail-content {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1fr 340px;
+  gap: 50px;
   align-items: start;
 }
 
@@ -328,10 +328,9 @@ onMounted(() => {
 
 .service-cover-image {
   width: 100%;
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.15);
-  border: 1px solid rgba(1, 174, 239, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .service-cover-image img {
@@ -348,17 +347,16 @@ onMounted(() => {
 
 .service-main-content {
   background: white;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(1, 174, 239, 0.1);
+  padding: 50px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .service-detail-title {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #02375f;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   line-height: 1.3;
 }
 
@@ -429,22 +427,21 @@ onMounted(() => {
   top: 100px;
 }
 
-/* ===== SERVICES SIDEBAR ===== */
+/* ===== SERVICES SIDEBAR - NO BORDERS ===== */
 .services-sidebar {
   background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(1, 174, 239, 0.1);
+  padding: 28px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .sidebar-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #02375f;
   margin-bottom: 20px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .services-list {
@@ -460,13 +457,14 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
+  padding: 12px 0;
   color: #475569;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  border-radius: 8px;
+  font-size: 0.9rem;
+  border-radius: 0;
   transition: all 0.3s ease;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .services-list li a i {
@@ -477,9 +475,9 @@ onMounted(() => {
 }
 
 .services-list li a:hover {
-  background: #f8fafc;
+  background: transparent;
   color: #01aeef;
-  padding-left: 20px;
+  padding-left: 8px;
 }
 
 .services-list li a:hover i {
@@ -488,68 +486,70 @@ onMounted(() => {
 }
 
 .services-list li.active a {
-  background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
-  color: white;
+  background: transparent;
+  color: #01aeef;
+  font-weight: 700;
+  border-bottom-color: #01aeef;
 }
 
 .services-list li.active a i {
   opacity: 1;
-  color: white;
+  color: #01aeef;
 }
 
 /* ===== CONTACT CARD ===== */
 .contact-card {
   background: linear-gradient(135deg, #02375f 0%, #01aeef 100%);
-  padding: 32px;
-  border-radius: 16px;
+  padding: 28px;
+  border-radius: 8px;
   text-align: center;
   color: white;
-  box-shadow: 0 8px 32px rgba(1, 174, 239, 0.25);
+  box-shadow: 0 4px 16px rgba(1, 174, 239, 0.2);
 }
 
 .contact-icon {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
 }
 
 .contact-icon i {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   color: white;
 }
 
 .contact-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 4px;
   line-height: 1.4;
 }
 
 .contact-subtitle {
-  font-size: 1rem;
-  margin-bottom: 20px;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .contact-numbers {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .contact-number {
   display: block;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: white;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 8px;
+  padding: 6px;
   border-radius: 8px;
 }
 
@@ -558,53 +558,52 @@ onMounted(() => {
   transform: scale(1.02);
 }
 
-/* ===== EMAIL CARD ===== */
+/* ===== EMAIL CARD - NO BORDERS ===== */
 .email-card {
   background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(1, 174, 239, 0.1);
+  padding: 28px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .email-icon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .email-icon i {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: white;
 }
 
 .email-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #02375f;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .email-addresses {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .email-link {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
+  gap: 8px;
+  padding: 10px;
   color: #01aeef;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border-radius: 8px;
   transition: all 0.3s ease;
   background: #f8fafc;
@@ -613,62 +612,62 @@ onMounted(() => {
 .email-link:hover {
   background: #e0f2fe;
   color: #0284c7;
-  padding-left: 16px;
+  padding-left: 14px;
 }
 
 .email-link i {
   font-size: 0.875rem;
 }
 
-/* ===== BROCHURE CARD ===== */
+/* ===== BROCHURE CARD - NO BORDERS ===== */
 .brochure-card {
   background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(1, 174, 239, 0.1);
+  padding: 28px;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .brochure-icon {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .brochure-icon i {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: white;
 }
 
 .brochure-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #02375f;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .brochure-text {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #64748b;
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .brochure-button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   background: linear-gradient(135deg, #01aeef 0%, #0284c7 100%);
   color: white;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(1, 174, 239, 0.25);
 }
@@ -765,7 +764,7 @@ onMounted(() => {
   }
 
   .page-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .cta-title {
@@ -779,26 +778,26 @@ onMounted(() => {
   }
 
   .rs-breadcrumbs {
-    padding: 80px 0 60px;
+    padding: 18px 0 12px;
   }
 
   .page-title {
-    font-size: 2rem;
+    font-size: 1.125rem;
   }
 
   .service-detail-title {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 
   .service-main-content {
-    padding: 32px 24px;
+    padding: 28px 20px;
   }
 
   .services-sidebar,
   .contact-card,
   .email-card,
   .brochure-card {
-    padding: 24px;
+    padding: 20px;
   }
 
   .detail-right {
@@ -817,7 +816,7 @@ onMounted(() => {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 16px;
+    padding: 0 24px;
   }
 
   .service-detail-section {
@@ -825,11 +824,11 @@ onMounted(() => {
   }
 
   .rs-breadcrumbs {
-    padding: 60px 0 40px;
+    padding: 15px 0 10px;
   }
 
   .page-title {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 
   .service-detail-title {

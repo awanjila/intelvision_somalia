@@ -6,7 +6,7 @@
         <div class="about-image-wrapper" data-aos="fade-right">
           <div class="image-container">
             <img 
-              src="/images/about/security-team.jpg" 
+              src="/images/about/security-team.jpeg" 
               alt="Intelvision Technologies Security Solutions" 
               class="about-image"
             />
