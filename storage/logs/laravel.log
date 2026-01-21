@@ -122,3 +122,32 @@
 [2026-01-21 00:45:54] local.INFO: array (
 )  
 [2026-01-21 00:45:54] local.INFO: 0.7  
+[2026-01-21 17:06:07] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-21 17:06:07] local.INFO: array (
+)  
+[2026-01-21 17:06:07] local.INFO: 76.41  
+[2026-01-21 17:06:08] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 4)  
+[2026-01-21 17:06:08] local.INFO: array (
+)  
+[2026-01-21 17:06:08] local.INFO: 34.56  
+[2026-01-21 17:10:55] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-21 17:10:55] local.INFO: array (
+)  
+[2026-01-21 17:10:55] local.INFO: 18.31  
+[2026-01-21 17:10:55] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 4)  
+[2026-01-21 17:10:55] local.INFO: array (
+)  
+[2026-01-21 17:10:55] local.INFO: 0.66  
+[2026-01-21 17:11:54] local.INFO: select * from `blogs` order by `created_at` desc  
+[2026-01-21 17:11:54] local.INFO: array (
+)  
+[2026-01-21 17:11:54] local.INFO: 0.56  
+[2026-01-21 17:11:54] local.INFO: select * from `services` order by `created_at` desc  
+[2026-01-21 17:11:54] local.INFO: array (
+)  
+[2026-01-21 17:11:54] local.INFO: 0.61  
+[2026-01-21 17:11:54] local.INFO: select * from `users` where `users`.`id` = ? limit 1  
+[2026-01-21 17:11:54] local.INFO: array (
+  0 => 1,
+)  
+[2026-01-21 17:11:54] local.INFO: 0.51  

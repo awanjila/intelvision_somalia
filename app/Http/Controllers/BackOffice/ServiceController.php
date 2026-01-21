@@ -150,6 +150,8 @@ public function IndexOfServices(){
         Service::findOrFail($service_id)->update([
             'name' => $request->title,
             'description' => $request->description,
+            'meta_title' => $request->meta_title,
+            'meta_description' => $request->meta_description,
         ]);
 
         $notification = array(

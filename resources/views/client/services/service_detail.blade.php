@@ -1,7 +1,7 @@
 @extends('client.layout.app')
 
 @section('title')
-    {{$service->name}} | Intelvison Technologies | 0781312070
+    {{$service->name}} | Intelvison Technologies
 @endsection
 
 @section('meta_title')

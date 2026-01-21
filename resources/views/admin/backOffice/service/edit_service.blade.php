@@ -18,7 +18,7 @@ Admin | Edit Service
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Edit Service </h4>
+                                <h4 class="card-title">Edit Product </h4>
 
                                 @if (session('message'))
                                 <div class="alert alert-{{ session('alert-type') }}">
@@ -47,11 +47,11 @@ Admin | Edit Service
                                         </div>
                                     </div>
 
-                                    <div class="row mb-3">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label">Meta Description</label>
+                                <div class="row mb-3">
+                                        <label for="meta-description-input" class="col-sm-2 col-form-label">Meta Description</label>
                                         <div class="col-sm-10">
-                                            <textarea name="meta_description" class="form-control" id="description-input">{{$service->meta_description}}"></textarea>
-                                            <span class="text-danger" id="description-error"></span>
+                                            <textarea name="meta_description" class="form-control" id="meta-description-input">{{$service->meta_description}}</textarea>
+                                            <span class="text-danger" id="meta-description-error"></span>
                                         </div>
                                     </div>
                                     <!-- end row -->
@@ -60,7 +60,7 @@ Admin | Edit Service
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-10">
                                             <textarea name="description" class="form-control" id="description-input">{{$service->description}}</textarea>
-                                            <span class="text-danger" id="short-title-error"></span>
+                                            <span class="text-danger" id="description-error"></span>
                                         </div>
                                     </div>
                                     <!-- end row -->
@@ -77,7 +77,7 @@ Admin | Edit Service
                                     <div class="row mb-3">
                                         <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
-                                            <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($editData->profile_image))? url('upload/admin_images/'.$editData->profile_image):url('upload/no_image.jpg') }}" alt="Card image cap">
+                                            <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($service->image))? url($service->image):url('upload/no_image.jpg') }}" alt="Service image preview">
                                         </div>
                                     </div>
                                     <!-- end row -->
@@ -103,13 +103,18 @@ Admin | Edit Service
             $('#sliderForm').submit(function(e) {
                 e.preventDefault();
 
+                // Sync TinyMCE content back to textarea
+                if (tinymce) {
+                    tinymce.triggerSave();
+                }
+
                 // Clear previous error messages
                 $('.text-danger').text('');
 
                 // Retrieve form inputs
                 var title = $('#title-input').val();
                 var description = $('#description-input').val();
-                
+                var metaDescription = $('#meta-description-input').val();
 
                 // Perform validation
                 var isValid = true;
@@ -124,7 +129,10 @@ Admin | Edit Service
                     isValid = false;
                 }
 
-                
+                if (metaDescription.trim() === '') {
+                    $('#meta-description-error').text('Meta description is required.');
+                    isValid = false;
+                }
 
                 if (isValid) {
                     toastr.success('Form submitted successfully.');
@@ -145,6 +153,8 @@ Admin | Edit Service
             tinymce.init({
                 selector: '#description-input',
                 plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
+                menubar: false,
                 toolbar_mode: 'floating',
                 height: 300
             });
