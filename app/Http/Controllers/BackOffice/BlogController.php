@@ -16,6 +16,13 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
+    public function EditBlog($id){
+        $blog = Blog::findOrFail($id);
+        $blog_cats = BlogCategory::orderBy('created_at', 'desc')->get();
+
+        return view('admin.backOffice.blog.edit_blog', compact('blog', 'blog_cats'));
+    }//endmethod
+
     public function AddBlog(){
 
 
@@ -126,7 +133,7 @@ public function AddBlogCategory(){
          'description' => $request->description,
          'image' => $save_url,
          'author' => $request->author,
-         'category' => $request->category,
+         'blog_category_id' => $request->category,
 
      ]);
 
@@ -142,7 +149,7 @@ public function AddBlogCategory(){
          'description' => $request->description,
             // 'image' => $save_url,
          'author' => $request->author,
-         'category' => $request->category,
+         'blog_category_id' => $request->category,
 
      ]);
 

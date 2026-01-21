@@ -43,7 +43,7 @@
                                             <select name="category" id="category-select" class="form-select" aria-label="Default select example">
                                                 <option value="">Select Blog Category</option>
                                                 @foreach($blog_cats as $cat)
-                                                <option value="{{$cat->id}}" {{ $cat->id == $blog->category ? 'selected' : '' }}>{{$cat->name}}</option>
+                                                <option value="{{$cat->id}}" {{ $cat->id == $blog->blog_category_id ? 'selected' : '' }}>{{$cat->name}}</option>
                                                 @endforeach
                                             </select>
                                             <span class="text-danger" id="category-error"></span>
