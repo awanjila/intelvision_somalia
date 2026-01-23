@@ -761,3 +761,298 @@
 [2026-01-21 19:49:25] local.INFO: array (
 )  
 [2026-01-21 19:49:25] local.INFO: 0.52  
+[2026-01-23 10:59:20] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 10:59:20] local.INFO: array (
+)  
+[2026-01-23 10:59:20] local.INFO: 11.96  
+[2026-01-23 10:59:21] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 10:59:21] local.INFO: array (
+)  
+[2026-01-23 10:59:21] local.INFO: 5.27  
+[2026-01-23 10:59:40] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 10:59:40] local.INFO: array (
+)  
+[2026-01-23 10:59:40] local.INFO: 2.66  
+[2026-01-23 10:59:40] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 10:59:40] local.INFO: array (
+)  
+[2026-01-23 10:59:40] local.INFO: 0.46  
+[2026-01-23 11:17:23] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 11:17:23] local.INFO: array (
+)  
+[2026-01-23 11:17:23] local.INFO: 26.06  
+[2026-01-23 11:17:24] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 11:17:24] local.INFO: array (
+)  
+[2026-01-23 11:17:24] local.INFO: 13.33  
+[2026-01-23 11:33:40] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 11:33:40] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:33:40] local.INFO: 12.06  
+[2026-01-23 11:33:40] local.INFO: select * from `blogs`  
+[2026-01-23 11:33:40] local.INFO: array (
+)  
+[2026-01-23 11:33:40] local.INFO: 1.72  
+[2026-01-23 11:33:40] local.INFO: select * from `blog_categories`  
+[2026-01-23 11:33:40] local.INFO: array (
+)  
+[2026-01-23 11:33:40] local.INFO: 3.82  
+[2026-01-23 11:33:40] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 11:33:40] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:33:40] local.INFO: 1.57  
+[2026-01-23 11:33:40] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 11:33:40] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:33:40] local.INFO: 1.29  
+[2026-01-23 11:33:48] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 11:33:48] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:33:48] local.INFO: 41.55  
+[2026-01-23 11:33:48] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (2)  
+[2026-01-23 11:33:48] local.INFO: array (
+)  
+[2026-01-23 11:33:48] local.INFO: 53.91  
+[2026-01-23 11:48:04] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 11:48:04] local.INFO: array (
+)  
+[2026-01-23 11:48:04] local.INFO: 9.59  
+[2026-01-23 11:48:04] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 11:48:04] local.INFO: array (
+)  
+[2026-01-23 11:48:04] local.INFO: 8.82  
+[2026-01-23 11:52:09] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 11:52:09] local.INFO: array (
+)  
+[2026-01-23 11:52:09] local.INFO: 3.9  
+[2026-01-23 11:52:09] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 11:52:09] local.INFO: array (
+)  
+[2026-01-23 11:52:09] local.INFO: 1  
+[2026-01-23 11:52:14] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 11:52:14] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:14] local.INFO: 28.57  
+[2026-01-23 11:52:14] local.INFO: select * from `blogs`  
+[2026-01-23 11:52:14] local.INFO: array (
+)  
+[2026-01-23 11:52:14] local.INFO: 0.53  
+[2026-01-23 11:52:14] local.INFO: select * from `blog_categories`  
+[2026-01-23 11:52:14] local.INFO: array (
+)  
+[2026-01-23 11:52:14] local.INFO: 0.43  
+[2026-01-23 11:52:14] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 11:52:14] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:14] local.INFO: 0.35  
+[2026-01-23 11:52:14] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 11:52:14] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:14] local.INFO: 0.31  
+[2026-01-23 11:52:16] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 11:52:16] local.INFO: array (
+)  
+[2026-01-23 11:52:16] local.INFO: 2.03  
+[2026-01-23 11:52:16] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 11:52:16] local.INFO: array (
+)  
+[2026-01-23 11:52:16] local.INFO: 0.45  
+[2026-01-23 11:52:19] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 11:52:19] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:19] local.INFO: 2.38  
+[2026-01-23 11:52:19] local.INFO: select * from `blogs`  
+[2026-01-23 11:52:19] local.INFO: array (
+)  
+[2026-01-23 11:52:19] local.INFO: 0.47  
+[2026-01-23 11:52:19] local.INFO: select * from `blog_categories`  
+[2026-01-23 11:52:19] local.INFO: array (
+)  
+[2026-01-23 11:52:19] local.INFO: 0.48  
+[2026-01-23 11:52:19] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 11:52:19] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:19] local.INFO: 0.63  
+[2026-01-23 11:52:19] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 11:52:19] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:19] local.INFO: 0.38  
+[2026-01-23 11:52:21] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 11:52:21] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 11:52:21] local.INFO: 16.98  
+[2026-01-23 11:52:21] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (2)  
+[2026-01-23 11:52:21] local.INFO: array (
+)  
+[2026-01-23 11:52:21] local.INFO: 0.48  
+[2026-01-23 12:01:52] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 12:01:52] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 12:01:52] local.INFO: 3.91  
+[2026-01-23 12:01:52] local.INFO: select * from `blogs`  
+[2026-01-23 12:01:52] local.INFO: array (
+)  
+[2026-01-23 12:01:52] local.INFO: 0.57  
+[2026-01-23 12:01:52] local.INFO: select * from `blog_categories`  
+[2026-01-23 12:01:52] local.INFO: array (
+)  
+[2026-01-23 12:01:52] local.INFO: 0.6  
+[2026-01-23 12:01:52] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 12:01:52] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 12:01:52] local.INFO: 0.51  
+[2026-01-23 12:01:52] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 12:01:52] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 12:01:52] local.INFO: 0.43  
+[2026-01-23 12:01:57] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 12:01:57] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 12:01:57] local.INFO: 5.92  
+[2026-01-23 12:01:57] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (2)  
+[2026-01-23 12:01:57] local.INFO: array (
+)  
+[2026-01-23 12:01:57] local.INFO: 0.53  
+[2026-01-23 13:21:22] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 13:21:22] local.INFO: array (
+)  
+[2026-01-23 13:21:22] local.INFO: 18.39  
+[2026-01-23 13:21:24] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 13:21:24] local.INFO: array (
+)  
+[2026-01-23 13:21:24] local.INFO: 7.99  
+[2026-01-23 13:39:28] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:39:28] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:39:28] local.INFO: 14.11  
+[2026-01-23 13:39:28] local.INFO: select * from `blogs`  
+[2026-01-23 13:39:28] local.INFO: array (
+)  
+[2026-01-23 13:39:28] local.INFO: 2.86  
+[2026-01-23 13:39:28] local.INFO: select * from `blog_categories`  
+[2026-01-23 13:39:28] local.INFO: array (
+)  
+[2026-01-23 13:39:28] local.INFO: 4.6  
+[2026-01-23 13:39:28] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 13:39:28] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:39:28] local.INFO: 2.13  
+[2026-01-23 13:39:28] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 13:39:28] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:39:28] local.INFO: 7.15  
+[2026-01-23 13:39:37] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:39:37] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:39:37] local.INFO: 14.1  
+[2026-01-23 13:39:37] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (2)  
+[2026-01-23 13:39:37] local.INFO: array (
+)  
+[2026-01-23 13:39:37] local.INFO: 2.74  
+[2026-01-23 13:40:59] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:40:59] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:40:59] local.INFO: 14.73  
+[2026-01-23 13:40:59] local.INFO: select * from `blogs`  
+[2026-01-23 13:40:59] local.INFO: array (
+)  
+[2026-01-23 13:40:59] local.INFO: 2.38  
+[2026-01-23 13:40:59] local.INFO: select * from `blog_categories`  
+[2026-01-23 13:40:59] local.INFO: array (
+)  
+[2026-01-23 13:40:59] local.INFO: 3.86  
+[2026-01-23 13:40:59] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 13:40:59] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:40:59] local.INFO: 1.77  
+[2026-01-23 13:40:59] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 13:40:59] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:40:59] local.INFO: 1.75  
+[2026-01-23 13:41:09] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:41:09] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access-perimeter-protection',
+)  
+[2026-01-23 13:41:09] local.INFO: 10.41  
+[2026-01-23 13:41:09] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (2)  
+[2026-01-23 13:41:09] local.INFO: array (
+)  
+[2026-01-23 13:41:09] local.INFO: 1.71  
+[2026-01-23 13:52:15] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 13:52:15] local.INFO: array (
+)  
+[2026-01-23 13:52:15] local.INFO: 15.1  
+[2026-01-23 13:52:16] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 13:52:16] local.INFO: array (
+)  
+[2026-01-23 13:52:16] local.INFO: 1.55  
+[2026-01-23 13:53:03] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 13:53:03] local.INFO: array (
+)  
+[2026-01-23 13:53:03] local.INFO: 10.36  
+[2026-01-23 13:53:03] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 13:53:03] local.INFO: array (
+)  
+[2026-01-23 13:53:03] local.INFO: 2.54  
+[2026-01-23 13:56:34] local.INFO: select `id`, `blog_category_id`, `author`, `name`, `slug`, `meta_title`, `meta_description`, `image`, `created_at` from `blogs` order by `created_at` desc  
+[2026-01-23 13:56:35] local.INFO: array (
+)  
+[2026-01-23 13:56:35] local.INFO: 16.87  
+[2026-01-23 13:56:35] local.INFO: select `id`, `name`, `slug` from `blog_categories` where `blog_categories`.`id` in (2, 3, 5)  
+[2026-01-23 13:56:35] local.INFO: array (
+)  
+[2026-01-23 13:56:35] local.INFO: 13.51  
+[2026-01-23 13:56:45] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:56:45] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access',
+)  
+[2026-01-23 13:56:45] local.INFO: 11.15  
+[2026-01-23 13:56:45] local.INFO: select * from `blogs`  
+[2026-01-23 13:56:45] local.INFO: array (
+)  
+[2026-01-23 13:56:45] local.INFO: 2.85  
+[2026-01-23 13:56:45] local.INFO: select * from `blog_categories`  
+[2026-01-23 13:56:45] local.INFO: array (
+)  
+[2026-01-23 13:56:45] local.INFO: 1.87  
+[2026-01-23 13:56:45] local.INFO: select max(`slug`) as aggregate from `blogs` where `slug` < ?  
+[2026-01-23 13:56:45] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access',
+)  
+[2026-01-23 13:56:45] local.INFO: 1.57  
+[2026-01-23 13:56:45] local.INFO: select min(`slug`) as aggregate from `blogs` where `slug` > ?  
+[2026-01-23 13:56:45] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access',
+)  
+[2026-01-23 13:56:45] local.INFO: 3.91  
+[2026-01-23 13:56:54] local.INFO: select * from `blogs` where `slug` = ? limit 1  
+[2026-01-23 13:56:54] local.INFO: array (
+  0 => 'security-bollards-for-controlled-access',
+)  
+[2026-01-23 13:56:54] local.INFO: 10.22  
+[2026-01-23 13:56:54] local.INFO: select * from `blog_categories` where `blog_categories`.`id` in (3)  
+[2026-01-23 13:56:54] local.INFO: array (
+)  
+[2026-01-23 13:56:54] local.INFO: 2.17  

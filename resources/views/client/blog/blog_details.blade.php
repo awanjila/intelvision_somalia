@@ -1,6 +1,6 @@
 @extends('client.layout.app')
 @section('title')
-{{$blog->name}} 
+{{$blog->name}}  | {{$blog->meta_title}}
 @endsection
 
 @section('meta_title')

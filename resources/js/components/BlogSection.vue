@@ -48,7 +48,11 @@
                 </div>
                 <h3 class="card-title">{{ blog.name }}</h3>
                 <p class="card-excerpt">{{ truncateExcerpt(blog.meta_description) }}</p>
-                <a :href="`show/blog/${blog.slug}`" class="card-link">
+                <a 
+                  v-if="blog.slug" 
+                  :href="`/show/blog/${blog.slug}`" 
+                  class="card-link"
+                >
                   Read Article
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +69,9 @@
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
                 </a>
+                <span v-else class="card-link disabled">
+                  No Link Available
+                </span>
               </div>
             </article>
           </div>
@@ -219,7 +226,15 @@ onMounted(async () => {
   try {
     loading.value = true
     const res = await fetch('/api/blogs')
-    blogs.value = await res.json()
+    const data = await res.json()
+    
+    // Debug: Log blogs with missing slugs
+    const missingSlug = data.filter(blog => !blog.slug)
+    if (missingSlug.length > 0) {
+      console.warn('Blogs missing slugs:', missingSlug)
+    }
+    
+    blogs.value = data
   } catch (error) {
     console.error('Error fetching blogs:', error)
     blogs.value = []
@@ -490,6 +505,12 @@ onMounted(async () => {
 
 .card-link:hover svg {
   transform: translateX(6px);
+}
+
+.card-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Navigation Arrows */
