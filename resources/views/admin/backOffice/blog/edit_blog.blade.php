@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Admin | Edit a Blog Post | Wabe Digital Agency @endsection
+@section('title') Admin | Edit a Blog Post | Intelvisin Technologies @endsection
 
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -9,7 +9,7 @@
 <script src="https://cdn.tiny.cloud/1/0mq6swtdkm89efyjaqer11cr7cojkd5ezhufky9fderhwt07/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <div class="content-page">
-        <div class="content">
+        <div class="content">a
             <!-- Start Content-->
             <div class="container-fluid">
                 <div class="row">

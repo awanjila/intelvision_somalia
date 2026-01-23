@@ -11,9 +11,7 @@ class Blog extends Model
     protected $guarded = [];
 
     public function category(){
-
         return $this->belongsTo(BlogCategory::class, 'blog_category_id', 'id' );
-
     }//end of category method
 
     protected static function boot()
@@ -26,9 +24,18 @@ class Blog extends Model
             \Log::info($query->time);
         });
 
-
+        // FIXED: Generate slug on creating (when slug is not already set)
         static::creating(function ($m) {
-            $m->slug = Str::slug($m->name); // Generate the slug from the title
+            if (empty($m->slug)) {
+                $m->slug = Str::slug($m->name);
+            }
+        });
+
+        // FIXED: Add updating event to regenerate slug when name changes
+        static::updating(function ($m) {
+            if ($m->isDirty('name') && empty($m->slug)) {
+                $m->slug = Str::slug($m->name);
+            }
         });
     }
 }
