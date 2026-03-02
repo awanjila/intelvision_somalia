@@ -16,7 +16,7 @@ export default {
   name: 'WhatsAppButton',
   methods: {
     openWhatsApp() {
-      const phoneNumber = '254781312070';
+      const phoneNumber = '254722850008';
       const message = 'Hello! I am interested in your services.';
       const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
