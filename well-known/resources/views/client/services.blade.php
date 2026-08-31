@@ -43,10 +43,10 @@
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="business-growth__right">
-                        <p class="business-growth__right-text">"We are creative digital studio based in Nairobi Kenya, and we offer Web services that Include
+                        <p class="business-growth__right-text">"We are creative digital studio based in KM4, Mogadishu, Somalia, and we offer Web services that Include
                             Modern Web development & design, Custom Software that is tailored to your needs, and a
                             Creative Strategy for handling your online presence that will attract and maintain your clients. We are always happy to serve.
-                            We are WABESTUDIO.</p>
+                            We are INTELVISION.</p>
                     </div>
                 </div>
             </div>

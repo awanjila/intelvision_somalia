@@ -7,22 +7,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>@yield('title', 'Intelvision Technologies | Security Solutions')</title>
+<title>@yield('title', 'Intelvision Technologies | Security Systems & Gold Detectors')</title>
 
-<meta name="title" content="@yield('meta_title', 'Intelvision Technologies | CCTV, Electric Fences & Access Control')" />
-<meta name="description" content="@yield('meta_description', 'Intelvision Technologies provides professional CCTV, electric fences, biometric access control, automated gates, and fire safety solutions in Kenya.')" />
+<meta name="title" content="@yield('meta_title', 'Intelvision Technologies | CCTV, Electric Fences, Access Control & Gold Detectors')" />
+<meta name="description" content="@yield('meta_description', 'Intelvision Technologies provides professional CCTV, electric fences, biometric access control, automated gates, fire safety solutions, and premium Gold Detectors (Minelab, Garrett, Fisher, Nokta) in Somalia.')" />
 
 <meta name="keywords" id="dynamic-keywords"
-content="CCTV Installation Kenya, Electric Fence Kenya, Biometric Access Control, Surveillance Cameras, Automated Gates, Fire Safety Solutions">
+content="CCTV Installation Somalia, Electric Fence Somalia, Biometric Access Control, Surveillance Cameras, Automated Gates, Fire Safety Solutions, Gold Detectors, Minelab, Garrett, Fisher, Nokta">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Intelvision Technologies | Advanced Security Solutions">
+<meta property="og:title" content="Intelvision Technologies | Security Systems & Gold Detectors">
 <meta property="og:description" content="@yield('meta_description')">
 <meta property="og:image" content="{{ asset('front-assets/images/intelvision-og.jpg') }}">
-<meta property="og:url" content="https://intelvision.co.ke">
+<meta property="og:url" content="https://intelvisionsomalia.com">
 
 <!-- Twitter -->
-<meta name="twitter:title" content="Intelvision Technologies | Security Solutions">
+<meta name="twitter:title" content="Intelvision Technologies | Security Systems & Gold Detectors">
 <meta name="twitter:description" content="@yield('meta_description')">
 <meta name="twitter:image" content="{{ asset('front-assets/images/intelvision-og.jpg') }}">
 
@@ -93,7 +93,7 @@ content="CCTV Installation Kenya, Electric Fence Kenya, Biometric Access Control
 <!-- Dynamic Keywords by Country -->
 <script>
 function updateMetaKeywords(country) {
-    const baseKeywords = "CCTV Installation, Electric Fence, Biometric Access Control, Surveillance Cameras, Fire Safety";
+    const baseKeywords = "CCTV Installation, Electric Fence, Biometric Access Control, Surveillance Cameras, Fire Safety, Gold Detectors, Minelab, Garrett, Fisher, Nokta";
     document.getElementById('dynamic-keywords')
         .setAttribute('content', `${baseKeywords}, ${country}`);
 }
@@ -101,7 +101,7 @@ function updateMetaKeywords(country) {
 fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => updateMetaKeywords(data.country_name))
-    .catch(() => updateMetaKeywords('Kenya'));
+    .catch(() => updateMetaKeywords('Somalia'));
 </script>
 
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">

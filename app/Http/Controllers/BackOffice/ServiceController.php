@@ -61,6 +61,7 @@ public function IndexOfServices(){
             $service->name = $request->title;
             $service->meta_title = $request->meta_title;
             $service->meta_description = $request->meta_description;
+            $service->category = $request->category;
             $service->description = $request->description;
             $service->image = $save_url;
             $service->save();
@@ -76,9 +77,10 @@ public function IndexOfServices(){
 
             $service = new Service();
             $service->name = $request->title;
-            $service->description = $request->short_title;
+            $service->description = $request->description;
             $service->meta_title = $request->meta_title;
             $service->meta_description = $request->meta_description;
+            $service->category = $request->category;
             $service->save();
 
             $notification = [
@@ -137,6 +139,7 @@ public function IndexOfServices(){
             'meta_title' => $request->meta_title,
 
             'meta_description' => $request->meta_description,
+            'category' => $request->category,
             'image' => $save_url,
         ]);
 
@@ -152,6 +155,7 @@ public function IndexOfServices(){
             'description' => $request->description,
             'meta_title' => $request->meta_title,
             'meta_description' => $request->meta_description,
+            'category' => $request->category,
         ]);
 
         $notification = array(

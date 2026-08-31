@@ -9,10 +9,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="title" content="Web Design in Kenya, Custom Software Development In Kenya, Creative digital strategy in Kenya "/>
-    <meta name="description" content="We are creative digital studio based in Nairobi Kenya, and we offer Web services that Include
+    <meta name="description" content="We are creative digital studio based in KM4, Mogadishu, Somalia, and we offer Web services that Include
     Modern Web development & design, Custom Software that is tailored to your needs, and a
      Creative Strategy for handling your online presence that will attract and maintain your clients. We are always happy to serve.
-      We are WABESTUDIO." />
+      We are INTELVISION." />
     <title>@yield('title') </title>
     <!-- favicons Icons -->
     <!-- CSS Files
@@ -73,8 +73,8 @@
 <script type="text/javascript">
     (function () {
         var options = {
-            whatsapp: "+254710909198", // WhatsApp number
-            sms: "+254710909198", // Sms phone number
+            whatsapp: "+252615992025", // WhatsApp number
+            sms: "+252615992025", // Sms phone number
             call_to_action: "Message us", // Call to action
             button_color: "#FF6550", // Color of button
             position: "right", // Position may be 'right' or 'left'

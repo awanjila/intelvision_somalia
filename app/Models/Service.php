@@ -14,7 +14,9 @@ class Service extends Model
         'meta_title',
         'meta_description',
         'slug',
+        'category',
         'description',
+        'image',
         'cover_image'
     ];
 }

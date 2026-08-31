@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'Africa/nairobi',
+    'timezone' => 'Africa/Mogadishu',
 
     /*
     |--------------------------------------------------------------------------

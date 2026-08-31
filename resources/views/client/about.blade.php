@@ -1,14 +1,14 @@
 @extends('client.layout.app')
 @section('title')
-Intelvision Technologies | Advanced Security Solutions  
+Intelvision Technologies | Security Systems & Gold Detectors  
 @endsection
 
 @section('meta_title')
-About | Website Design | Point Of Sale | ecommerce  | Web Design | Biometric Attendance   
+About | Security Systems | Gold Detectors | Minelab | Garrett | Fisher | Nokta
 @endsection
 
 @section('meta_description')
-Boost your online presence with expert Website Design, efficient Point Of Sale systems, robust Ecommerce solutions, innovative Web Design, and secure Biometric Attendance systems. Enhance functionality and user experience.
+Intelvision Technologies is your trusted provider of advanced security systems (CCTV, electric fences, access control, fire safety) and premium Gold Detectors from Minelab, Garrett, Fisher, and Nokta in Somalia.
 @endsection
 @section('content')
 

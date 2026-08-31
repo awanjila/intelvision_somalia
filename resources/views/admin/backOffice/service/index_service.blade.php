@@ -165,6 +165,7 @@
                                 <th style="width: 60px;">#</th>
                                 <th style="width: 100px;">Image</th>
                                 <th style="width: 200px;">Service Name</th>
+                                <th style="width: 150px;">Category</th>
                                 <th>Description</th>
                                 <th style="width: 150px;">Actions</th>
                             </tr>
@@ -181,6 +182,9 @@
                                 </td>
                                 <td>
                                     <span class="service-title">{{ $item->name }}</span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-light">{{ $item->category ?? 'Uncategorized' }}</span>
                                 </td>
                                 <td>
                                     <div class="service-description">
@@ -206,7 +210,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center py-4">
+                                <td colspan="6" class="text-center py-4">
                                     <div class="text-muted">
                                         <i class="fas fa-inbox fa-3x mb-3"></i>
                                         <p>No services found. Add your first service to get started.</p>

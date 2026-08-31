@@ -11,7 +11,7 @@
       </div>
       <div class="address-text">
         <span class="label">Email:</span>
-        <a href="mailto:info@wabestudio.co.ke">info@wabestudio.co.ke</a>
+        <a href="mailto:info@intelvisionsomalia.com">info@intelvisionsomalia.com</a>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
       </div>
       <div class="address-text">
         <span class="label">Phone:</span>
-        <a href="tel:+254710909198">+254710909198</a>
+        <a href="tel:+252615992025">+252 61 599 2025</a>
       </div>
     </div>
 
@@ -31,7 +31,7 @@
       </div>
       <div class="address-text">
         <span class="label">Address:</span>
-        <div class="desc">Nairobi, Kenya</div>
+        <div class="desc">KM4, Mogadishu, Somalia</div>
       </div>
     </div>
   </div>

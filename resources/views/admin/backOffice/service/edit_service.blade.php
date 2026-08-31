@@ -6,9 +6,13 @@ Admin | Edit Service
 
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.tiny.cloud/1/0mq6swtdkm89efyjaqer11cr7cojkd5ezhufky9fderhwt07/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="{{ asset('backend/assets/libs/quill/quill.snow.css') }}" rel="stylesheet" />
+    <script src="{{ asset('backend/assets/libs/quill/quill.min.js') }}"></script>
+    <style>
+        #description-editor .ql-editor { min-height: 250px; }
+    </style>
 
     <div class="content-page">
         <div class="content">
@@ -47,6 +51,18 @@ Admin | Edit Service
                                         </div>
                                     </div>
 
+                                    <div class="row mb-3">
+                                        <label for="service-category" class="col-sm-2 col-form-label">Service Category</label>
+                                        <div class="col-sm-10">
+                                            <select name="category" class="form-control" id="service-category">
+                                                <option value="Security Systems" {{ $service->category == 'Security Systems' ? 'selected' : '' }}>Security Systems</option>
+                                                <option value="Gold Detectors" {{ $service->category == 'Gold Detectors' ? 'selected' : '' }}>Gold Detectors</option>
+                                            </select>
+                                            <span class="text-danger" id="category-error"></span>
+                                        </div>
+                                    </div>
+                                    <!-- end row -->
+
                                 <div class="row mb-3">
                                         <label for="meta-description-input" class="col-sm-2 col-form-label">Meta Description</label>
                                         <div class="col-sm-10">
@@ -59,7 +75,8 @@ Admin | Edit Service
                                     <div class="row mb-3">
                                         <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                         <div class="col-sm-10">
-                                            <textarea name="description" class="form-control" id="description-input">{{$service->description}}</textarea>
+                                            <textarea name="description" class="form-control" id="description-input" style="display:none;">{{$service->description}}</textarea>
+                                            <div id="description-editor">{!! $service->description !!}</div>
                                             <span class="text-danger" id="description-error"></span>
                                         </div>
                                     </div>
@@ -103,9 +120,9 @@ Admin | Edit Service
             $('#sliderForm').submit(function(e) {
                 e.preventDefault();
 
-                // Sync TinyMCE content back to textarea
-                if (tinymce) {
-                    tinymce.triggerSave();
+                // Sync Quill content back to the hidden textarea
+                if (typeof descriptionQuill !== 'undefined') {
+                    $('#description-input').val(descriptionQuill.root.innerHTML);
                 }
 
                 // Clear previous error messages
@@ -150,13 +167,20 @@ Admin | Edit Service
                 reader.readAsDataURL(e.target.files[0]);
             });
             
-            tinymce.init({
-                selector: '#description-input',
-                plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-                toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
-                menubar: false,
-                toolbar_mode: 'floating',
-                height: 300
+            var descriptionQuill = new Quill('#description-editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ header: [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ color: [] }, { background: [] }],
+                        [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+                        [{ align: [] }],
+                        ['link', 'image'],
+                        ['clean']
+                    ]
+                },
+                placeholder: 'Enter service description...'
             });
         });
     </script>

@@ -61,7 +61,7 @@ class ContactController extends Controller
 
         // Send email notification to support
         try {
-            $admin_email = 'support@wabestudio.co.ke';
+            $admin_email = 'info@intelvisionsomalia.com';
             Mail::to($admin_email)->send(new ContactMail($data));
         } catch (\Exception $e) {
             \Log::error('Contact email failed: ' . $e->getMessage());

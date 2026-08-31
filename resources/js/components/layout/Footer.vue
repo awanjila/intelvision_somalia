@@ -50,20 +50,18 @@
             <ul class="contact-info">
               <li>
                 <i class="fas fa-map-marker-alt"></i>
-                <span>3rd Parklands Ave, Nairobi</span>
+                <span>KM4, Mogadishu, Somalia</span>
               </li>
               <li>
                 <i class="fas fa-phone"></i>
                 <div class="contact-group">
-                  <a href="tel:+254722850008">+254 (0)722 850008</a>
-                  <a href="tel:+254734850008">+254 (0)734 850008</a>
+                  <a href="tel:+252615992025">+252 61 599 2025</a>
                 </div>
               </li>
               <li>
                 <i class="fas fa-envelope"></i>
                 <div class="contact-group">
-                  <a href="mailto:info@intelvision.co.ke">info@intelvision.co.ke</a>
-                  <a href="mailto:sales@intelvision.co.ke">sales@intelvision.co.ke</a>
+                  <a href="mailto:info@intelvisionsomalia.com">info@intelvisionsomalia.com</a>
                 </div>
               </li>
               <li>
@@ -108,7 +106,7 @@
         <div class="footer-bottom-content">
           <div class="copyright">
             <span id="current-year">{{ currentYear }}</span> © All Rights Reserved. Developed By 
-            <a href="https://wabestudio.co.ke/" target="_blank">Wabe Digital Agency</a>
+            <a href="https://intelvisionsomalia.com/" target="_blank">Intelvision Technologies</a>
           </div>
           <ul class="footer-menu">
             <li><a href="/">Home</a></li>

@@ -347,7 +347,7 @@ In today’s digital landscape, creative designing strategies remain effective i
                     <!-- gallery item -->
                     <div class="item">
                         <div class="picframe s2">
-                            <a href="http://www.wabestudio.co.ke/">
+                            <a href="http://www.intelvisionsomalia.com/">
                                     <span class="overlay">
                                         <span class="pf_title">
                                             <span class="project-name">Technology</span>
@@ -412,7 +412,7 @@ In today’s digital landscape, creative designing strategies remain effective i
                     </div>
 
                     <div class="col-md-4 text-right">
-                        <a href="https://wa.me/254781312070" class="btn-line-white wow fadeInUp">Hire Us Now</a>
+                        <a href="https://wa.me/252615992025" class="btn-line-white wow fadeInUp">Hire Us Now</a>
                     </div>
                 </div>
             </div>

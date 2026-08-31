@@ -57,13 +57,16 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HeroSection',
   data() {
     return {
       currentSlide: 0,
       autoplayInterval: null,
-      slides: [
+      slides: [],
+      defaultSlides: [
         {
           title: 'Professional CCTV Surveillance Systems',
           description:
@@ -92,7 +95,20 @@ export default {
     }
   },
 
-  mounted() {
+  async mounted() {
+    this.slides = this.defaultSlides
+    try {
+      const { data } = await axios.get('/api/home-sliders')
+      if (data && data.length) {
+        this.slides = data.map((slide) => ({
+          title: slide.title,
+          description: slide.short_description,
+          image: slide.home_slide ? '/' + slide.home_slide : '/images/hero/default.jpg'
+        }))
+      }
+    } catch {
+      this.slides = this.defaultSlides
+    }
     this.startAutoplay()
   },
 
@@ -102,6 +118,7 @@ export default {
 
   methods: {
     startAutoplay() {
+      if (!this.slides.length) return
       this.autoplayInterval = setInterval(this.nextSlide, 5000)
     },
     stopAutoplay() {

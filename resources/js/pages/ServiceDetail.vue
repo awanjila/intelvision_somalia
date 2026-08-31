@@ -62,8 +62,7 @@
               <h3 class="contact-title">Have any Questions?</h3>
               <p class="contact-subtitle">Call us Today!</p>
               <div class="contact-numbers">
-                <a href="tel:+254722850008" class="contact-number">+254 (0)722 850008</a>
-                <a href="tel:+254734850008" class="contact-number">+254 (0)734 850008</a>
+                <a href="tel:+252615992025" class="contact-number">+252 61 599 2025</a>
               </div>
             </div>
 
@@ -74,13 +73,9 @@
               </div>
               <h3 class="email-title">Email Us</h3>
               <div class="email-addresses">
-                <a href="mailto:info@intelvision.co.ke" class="email-link">
+                <a href="mailto:info@intelvisionsomalia.com" class="email-link">
                   <i class="fas fa-paper-plane"></i>
-                  info@intelvision.co.ke
-                </a>
-                <a href="mailto:sales@intelvision.co.ke" class="email-link">
-                  <i class="fas fa-paper-plane"></i>
-                  sales@intelvision.co.ke
+                  info@intelvisionsomalia.com
                 </a>
               </div>
             </div>

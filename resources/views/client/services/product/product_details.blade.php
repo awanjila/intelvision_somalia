@@ -87,7 +87,7 @@
                     <div class="project-details__bottom">
                         <h3 class="project-details__bottom-title">Have any project in mind</h3>
                         <div class="project-details__bottom-btn-box">
-                            <a href="https://wa.me/254781312070" class="project-details__bottom-btn thm-btn">Do you want to work with
+                            <a href="https://wa.me/252615992025" class="project-details__bottom-btn thm-btn">Do you want to work with
                                 us</a>
                         </div>
                     </div>

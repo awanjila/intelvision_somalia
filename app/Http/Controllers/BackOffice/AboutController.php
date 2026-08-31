@@ -13,7 +13,16 @@ class AboutController extends Controller
      //About PageController//
     public function AboutPage(){
 
-        $about = About::find(1);
+        $about = About::first();
+
+        if (!$about) {
+            $about = About::create([
+                'title' => 'About Intelvision',
+                'vision' => 'Our Vision',
+                'mission' => 'Our Mission',
+                'description' => '',
+            ]);
+        }
 
         return view('admin.backOffice.about.add_about', compact('about'));
 

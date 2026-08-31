@@ -113,7 +113,7 @@
                             </div>
                             <h2 class="service-details__need-help-text-box">Schedule a 30-Minute Meeting With Our E-Commerce  Professionals</h2>
                             <div class="service-details__need-help-contact">
-                                <a href="tel:254710909198">+254 710 909 198</a>
+                                <a href="tel:+252615992025">+252 61 599 2025</a>
                                 <p>Contact us<br>today</p>
                             </div>
                         </div>

@@ -159,8 +159,7 @@
           <i class="fas fa-phone-alt"></i>
         </div>
         <h4>Call Us</h4>
-        <a href="tel:+254722850008">+254 (0)722 850008</a>
-        <a href="tel:+254734850008">+254 (0)734 850008</a>
+        <a href="tel:+252615992025">+252 61 599 2025</a>
       </div>
 
       <div class="info-card">
@@ -168,8 +167,7 @@
           <i class="fas fa-envelope"></i>
         </div>
         <h4>Email Us</h4>
-        <a href="mailto:info@intelvision.co.ke">info@intelvision.co.ke</a>
-        <a href="mailto:sales@intelvision.co.ke">sales@intelvision.co.ke</a>
+        <a href="mailto:info@intelvisionsomalia.com">info@intelvisionsomalia.com</a>
       </div>
 
       <div class="info-card">
@@ -177,7 +175,7 @@
           <i class="fas fa-map-marker-alt"></i>
         </div>
         <h4>Visit Us</h4>
-        <p>3rd Parklands Ave,<br>Nairobi, Kenya</p>
+        <p>KM4, Mogadishu, Somalia</p>
       </div>
     </div>
   </div>

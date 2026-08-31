@@ -8,97 +8,107 @@
         </p>
       </div>
 
-      <div class="carousel-wrapper">
-        <div v-if="loading" class="loading-state">
-          <div class="spinner"></div>
-          <p>Loading services...</p>
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading services...</p>
+      </div>
+
+      <div
+        v-else
+        v-for="cat in serviceCategories"
+        :key="cat.key"
+        class="category-block"
+      >
+        <div class="category-header">
+          <h3 class="category-title">{{ cat.label }}</h3>
         </div>
 
-        <transition-group
-          v-else
-          name="slide-fade"
-          tag="div"
-          class="carousel-track"
-        >
-          <div
-            v-for="(batch, batchIndex) in batches"
-            :key="batchIndex"
-            v-show="currentBatch === batchIndex"
-            class="services-batch"
+        <div class="carousel-wrapper">
+          <transition-group
+            name="slide-fade"
+            tag="div"
+            class="carousel-track"
           >
             <div
-              v-for="(service, index) in batch"
-              :key="`${batchIndex}-${index}`"
-              class="service-card"
+              v-for="(batch, batchIndex) in cat.batches"
+              :key="batchIndex"
+              v-show="cat.currentBatch === batchIndex"
+              class="services-batch"
             >
-              <div class="card-image-wrapper">
-                <img
-                  :src="service.image || '/images/services/default.jpg'"
-                  :alt="service.title || service.name"
-                  class="card-image"
-                />
-              </div>
+              <div
+                v-for="(service, index) in batch"
+                :key="`${cat.key}-${batchIndex}-${index}`"
+                class="service-card"
+              >
+                <div class="card-image-wrapper">
+                  <img
+                    :src="service.image || '/images/services/default.jpg'"
+                    :alt="service.title || service.name"
+                    class="card-image"
+                  />
+                </div>
 
-              <div class="card-content">
-                <h3 class="card-title">
-                  {{ service.title || service.name }}
-                </h3>
+                <div class="card-content">
+                  <h4 class="card-title">
+                    {{ service.title || service.name }}
+                  </h4>
 
-                <p
-                  class="card-description"
-                  v-html="truncateDescription(service.description)"
-                ></p>
+                  <p
+                    class="card-description"
+                    v-html="truncateDescription(service.description)"
+                  ></p>
 
-                <a
-                  :href="`/show/product/${service.slug}`"
-                  class="card-link"
-                >
-                  Learn More
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                  <a
+                    :href="`/show/product/${service.slug}`"
+                    class="card-link"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
+                    Learn More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </transition-group>
+          </transition-group>
 
-        <!-- Navigation -->
-        <button
-          class="carousel-nav prev"
-          @click="prevBatch"
-          :disabled="currentBatch === 0"
-        >
-          ‹
-        </button>
-
-        <button
-          class="carousel-nav next"
-          @click="nextBatch"
-          :disabled="currentBatch === batches.length - 1"
-        >
-          ›
-        </button>
-
-        <!-- Dots -->
-        <div class="carousel-dots">
+          <!-- Navigation -->
           <button
-            v-for="(_, index) in batches"
-            :key="index"
-            :class="['dot', { active: currentBatch === index }]"
-            @click="goToBatch(index)"
-          />
+            class="carousel-nav prev"
+            @click="prevBatch(cat)"
+            :disabled="cat.currentBatch === 0"
+          >
+            ‹
+          </button>
+
+          <button
+            class="carousel-nav next"
+            @click="nextBatch(cat)"
+            :disabled="cat.currentBatch === cat.batches.length - 1"
+          >
+            ›
+          </button>
+
+          <!-- Dots -->
+          <div class="carousel-dots">
+            <button
+              v-for="(_, index) in cat.batches"
+              :key="index"
+              :class="['dot', { active: cat.currentBatch === index }]"
+              @click="goToBatch(cat, index)"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -112,9 +122,13 @@ import axios from 'axios'
 export default {
   name: 'ServicesCarousel',
   setup() {
-    const currentBatch = ref(0)
     const services = ref([])
     const loading = ref(true)
+
+    const categories = [
+      { key: 'security', label: 'Security Systems', match: 'Security Systems' },
+      { key: 'gold', label: 'Gold Detectors', match: 'Gold Detectors' }
+    ]
 
     const truncateDescription = (html) => {
       if (!html) return ''
@@ -135,35 +149,49 @@ export default {
       }
     }
 
-    const batches = computed(() => {
+    const makeBatches = (list) => {
       const size = 3
       const out = []
-      for (let i = 0; i < services.value.length; i += size) {
-        out.push(services.value.slice(i, i + size))
+      for (let i = 0; i < list.length; i += size) {
+        out.push(list.slice(i, i + size))
       }
       return out
+    }
+
+    const serviceCategories = computed(() => {
+      return categories
+        .map((cat) => {
+          const items = services.value.filter(
+            (s) => (s.category || '').toLowerCase() === cat.match.toLowerCase()
+          )
+          return {
+            ...cat,
+            currentBatch: 0,
+            batches: makeBatches(items)
+          }
+        })
+        .filter((cat) => cat.batches.length)
     })
 
-    const nextBatch = () => {
-      if (currentBatch.value < batches.value.length - 1) {
-        currentBatch.value++
+    const nextBatch = (cat) => {
+      if (cat.currentBatch < cat.batches.length - 1) {
+        cat.currentBatch++
       }
     }
 
-    const prevBatch = () => {
-      if (currentBatch.value > 0) {
-        currentBatch.value--
+    const prevBatch = (cat) => {
+      if (cat.currentBatch > 0) {
+        cat.currentBatch--
       }
     }
 
-    const goToBatch = (i) => (currentBatch.value = i)
+    const goToBatch = (cat, i) => (cat.currentBatch = i)
 
     onMounted(fetchServices)
 
     return {
       loading,
-      currentBatch,
-      batches,
+      serviceCategories,
       nextBatch,
       prevBatch,
       goToBatch,
@@ -206,6 +234,40 @@ export default {
   color: #6c757d;
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+.category-block {
+  margin-bottom: 60px;
+}
+
+.category-block:last-child {
+  margin-bottom: 0;
+}
+
+.category-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #02375f;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #01aeef;
+  border-radius: 2px;
 }
 
 .carousel-wrapper {
@@ -462,6 +524,18 @@ export default {
   .section-subtitle {
     font-size: 1rem;
     margin-top: 12px;
+  }
+
+  .category-block {
+    margin-bottom: 44px;
+  }
+
+  .category-header {
+    margin-bottom: 28px;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
   }
 
   .services-batch {

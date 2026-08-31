@@ -16,11 +16,11 @@
         <ul class="mobile-nav__contact list-unstyled">
             <li>
                 <i class="fa fa-envelope"></i>
-                <a href="mailto:needhelp@wabestudio.co.ke">needhelp@wabestudio.co.ke</a>
+                <a href="mailto:info@intelvisionsomalia.com">info@intelvisionsomalia.com</a>
             </li>
             <li>
                 <i class="fa fa-phone-alt"></i>
-                <a href="tel:+254710909198">+254 781 312 070</a>
+                <a href="tel:+252615992025">+252 61 599 2025</a>
             </li>
         </ul><!-- /.mobile-nav__contact -->
         <div class="mobile-nav__top">

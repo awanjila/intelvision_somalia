@@ -23,10 +23,10 @@
                 <h3>Contact Us</h3>
                 <div class="widget widget-address">
                     <address>
-                        <span>3rd Parklands Avenue, Nairobi</span>
-                        <span><strong>Phone:</strong>(254) 781 312 070</span>
-                        <span><strong>Email:</strong><a href="mailto:needhelp@wabestudio.co.ke">needhelp@wabestudio.co.ke</a></span>
-                        <span><strong>Web:</strong><a href="https://wabestudio.co.k">https://wabestudio.co.ke</a></span>
+                        <span>KM4, Mogadishu, Somalia</span>
+                        <span><strong>Phone:</strong>+252 61 599 2025</span>
+                        <span><strong>Email:</strong><a href="mailto:info@intelvisionsomalia.com">info@intelvisionsomalia.com</a></span>
+                        <span><strong>Web:</strong><a href="https://intelvisionsomalia.com">https://intelvisionsomalia.com</a></span>
                     </address>
                 </div>
             </div>

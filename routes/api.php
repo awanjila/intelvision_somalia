@@ -56,7 +56,12 @@ Route::post('/contact', [ContactController::class, 'store']);
 
 // Services API routes
 Route::get('/services', function() {
-    return \App\Models\Service::select('id', 'name', 'slug', 'description', 'image')->get();
+    return \App\Models\Service::select('id', 'name', 'slug', 'category', 'description', 'image')->get();
+});
+
+// Home Sliders API routes
+Route::get('/home-sliders', function() {
+    return \App\Models\BackOffice\HomeSlider::select('id', 'title', 'short_description', 'home_slide', 'video_url')->get();
 });
 
 Route::get('/service/{slug}', function($slug) {

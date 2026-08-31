@@ -3,7 +3,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; Wabe Digital Agency  <a href="https://wabestudio.co.ke/">WABE CMS</a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; Intelvision Technologies  <a href="https://intelvisionsomalia.com/">INTELVISION CMS</a> 
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-end footer-links d-none d-sm-block">

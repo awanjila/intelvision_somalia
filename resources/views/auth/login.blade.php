@@ -102,7 +102,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt">
-            <script>document.write(new Date().getFullYear())</script> &copy; WabeStudio by <a href="https://wabestudio.co.ke/" class="text-white-50">Wabe Digital Agency</a> 
+            <script>document.write(new Date().getFullYear())</script> &copy; Intelvision Technologies by <a href="https://intelvisionsomalia.com/" class="text-white-50">Intelvision Technologies</a> 
         </footer>
 
         <!-- Vendor js -->

@@ -21,8 +21,7 @@
               </div>
               <div class="info-content">
                 <h4 class="info-title">Phone</h4>
-                <a href="tel:+254722850008" class="info-link">+254 (0)722 850008</a>
-                <a href="tel:+254734850008" class="info-link">+254 (0)734 850008</a>
+                <a href="tel:+252615992025" class="info-link">+252 61 599 2025</a>
               </div>
             </div>
             <div class="contact-info-item">
@@ -31,8 +30,7 @@
               </div>
               <div class="info-content">
                 <h4 class="info-title">Email</h4>
-                <a href="mailto:info@intelvision.co.ke" class="info-link">info@intelvision.co.ke</a>
-                <a href="mailto:sales@intelvision.co.ke" class="info-link">sales@intelvision.co.ke</a>
+                <a href="mailto:info@intelvisionsomalia.com" class="info-link">info@intelvisionsomalia.com</a>
               </div>
             </div>
             <div class="contact-info-item">
@@ -51,8 +49,8 @@
               </div>
               <div class="info-content">
                 <h4 class="info-title">Location</h4>
-                <p class="info-text">3rd Parklands Ave</p>
-                <p class="info-text">Nairobi, Kenya</p>
+                <p class="info-text">KM4</p>
+                <p class="info-text">Mogadishu, Somalia</p>
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ class BlogMail extends Mailable
     public function build()
     {
         $subject = $this->data['name'];
-        $fromAddress = config('mail.from.address', 'support@wabestudio.co.ke');
+        $fromAddress = config('mail.from.address', 'info@intelvisionsomalia.com');
         $fromName = config('mail.from.name', 'Blog System');
 
         $mail = $this->from($fromAddress, $fromName)

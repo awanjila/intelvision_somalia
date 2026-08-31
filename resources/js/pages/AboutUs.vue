@@ -39,7 +39,7 @@
         </div>
         <div class="content-card">
           <p class="lead-text">
-            Intelvision Technologies was established in 2010. Our primary aim is providing the best security solutions for our clients by taking advantage of today's modern technology. We form partnerships with our clients to ensure they realize the most gain in terms of advice and economy.
+            Intelvision Technologies was established in 2010. Our primary aim is providing the best security solutions for our clients by taking advantage of today's modern technology. We also serve as an authorized distributor of premium Gold Detectors from Minelab, Garrett, Fisher, and Nokta — offering both advanced security systems and state-of-the-art gold and metal detection equipment. We form partnerships with our clients to ensure they realize the most gain in terms of advice and economy.
           </p>
         </div>
       </div>
@@ -89,11 +89,36 @@
       </div>
     </section>
 
+    <!-- Gold Detectors Section -->
+    <section class="section-container bg-light">
+      <div class="content-wrapper">
+        <div class="section-header centered">
+          <div class="icon-wrapper">
+            <i class="fas fa-gem"></i>
+          </div>
+          <h2>Gold Detectors</h2>
+          <p class="section-subtitle">
+            Authorized distributor of world-class gold and metal detectors
+          </p>
+        </div>
+
+        <div class="gold-brands-grid">
+          <div v-for="brand in goldDetectorBrands" :key="brand.name" class="brand-card">
+            <div class="brand-icon">
+              <i :class="brand.icon"></i>
+            </div>
+            <h3 class="brand-name">{{ brand.name }}</h3>
+            <p class="brand-desc">{{ brand.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Solutions Section -->
     <section class="section-container">
       <div class="content-wrapper">
         <div class="section-header centered">
-          <h2>Our Products</h2>
+          <h2>Our Security Systems</h2>
           <p class="section-subtitle">Comprehensive security systems tailored to your needs</p>
         </div>
 
@@ -169,14 +194,37 @@ const heroSlides = [
     image: '/images/hero/electric-fence.jpg'
   },
   {
-    title: 'Access Control & Biometric Solutions',
-    description: 'Fingerprint scanners, card readers, and automated gate systems for secure and convenient entry management.',
+    title: 'Premium Gold Detectors',
+    description: 'Authorized dealer of Minelab, Garrett, Fisher, and Nokta gold and metal detectors for prospecting and security.',
     image: '/images/hero/residential-security.jpg'
   },
   {
-    title: 'Automated Gates & Barrier Systems',
-    description: 'Automated gates and barriers for secure property access.',
+    title: 'Access Control & Biometric Solutions',
+    description: 'Fingerprint scanners, card readers, and automated gate systems for secure and convenient entry management.',
     image: '/images/hero/automated-gates.jpg'
+  }
+]
+
+const goldDetectorBrands = [
+  {
+    name: 'Minelab',
+    icon: 'fas fa-gem',
+    description: 'World-leading gold detector technology for all levels of prospecting.'
+  },
+  {
+    name: 'Garrett',
+    icon: 'fas fa-search',
+    description: 'Reliable metal and gold detectors trusted by professionals worldwide.'
+  },
+  {
+    name: 'Fisher',
+    icon: 'fas fa-crosshairs',
+    description: 'High-performance detectors with advanced target discrimination.'
+  },
+  {
+    name: 'Nokta',
+    icon: 'fas fa-satellite-dish',
+    description: 'Innovative, multi-purpose detectors for gold, metal, and treasure hunting.'
   }
 ]
 
@@ -552,6 +600,58 @@ onUnmounted(() => {
   color: #01aeef;
   font-size: 0.875rem;
   flex-shrink: 0;
+}
+
+/* ===== GOLD DETECTORS ===== */
+.gold-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.brand-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(1, 174, 239, 0.1);
+  transition: all 0.3s ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(1, 174, 239, 0.2);
+}
+
+.brand-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-icon i {
+  font-size: 2rem;
+  color: white;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #02375f;
+  margin-bottom: 12px;
+}
+
+.brand-desc {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
