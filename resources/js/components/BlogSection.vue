@@ -252,7 +252,7 @@ onMounted(async () => {
 }
 
 .blog-section {
-  padding: 50px 0 30px 0;
+  padding: 30px 0 20px 0;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   position: relative;
 }
@@ -275,14 +275,14 @@ onMounted(async () => {
 
 .section-header {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
 }
 
 .section-title {
-  font-size: 3.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
   color: #02375f;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   letter-spacing: -0.03em;
   position: relative;
   display: inline-block;
@@ -291,17 +291,17 @@ onMounted(async () => {
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -12px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 5px;
+  width: 80px;
+  height: 4px;
   background: linear-gradient(90deg, #02375f, #01517a);
   border-radius: 3px;
 }
 
 .section-subtitle {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #6c757d;
   max-width: 650px;
   margin: 0 auto;
@@ -311,7 +311,7 @@ onMounted(async () => {
 .carousel-wrapper {
   position: relative;
   width: 100%;
-  min-height: 580px;
+  min-height: 420px;
 }
 
 .loading-state {
@@ -322,7 +322,7 @@ onMounted(async () => {
   gap: 20px;
   padding: 80px 20px;
   color: #6c757d;
-  min-height: 580px;
+  min-height: 420px;
 }
 
 .spinner {
@@ -371,7 +371,7 @@ onMounted(async () => {
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  height: 260px;
+  height: 200px;
   overflow: hidden;
   background: linear-gradient(135deg, #02375f 0%, #01517a 100%);
 }
@@ -566,7 +566,7 @@ onMounted(async () => {
   display: flex;
   gap: 14px;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .dot {
@@ -594,7 +594,7 @@ onMounted(async () => {
 /* Section Footer */
 .section-footer {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .view-all-link {
@@ -672,7 +672,7 @@ onMounted(async () => {
 
 @media (max-width: 768px) {
   .blog-section {
-    padding: 40px 0 25px 0;
+    padding: 30px 0 20px 0;
   }
 
   .container {
@@ -680,15 +680,15 @@ onMounted(async () => {
   }
 
   .section-header {
-    margin-bottom: 50px;
+    margin-bottom: 32px;
   }
 
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .section-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .carousel-wrapper {
@@ -701,7 +701,7 @@ onMounted(async () => {
   }
 
   .card-image-wrapper {
-    height: 220px;
+    height: 190px;
   }
 
   .card-title {
@@ -727,7 +727,7 @@ onMounted(async () => {
   }
 
   .carousel-dots {
-    margin-top: 40px;
+    margin-top: 24px;
   }
 
   .dot {
@@ -740,7 +740,7 @@ onMounted(async () => {
   }
 
   .section-footer {
-    margin-top: 50px;
+    margin-top: 32px;
   }
 
   .view-all-link {
