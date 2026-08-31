@@ -4,7 +4,7 @@
       <div class="section-header">
         <h2 class="section-title">What We Do</h2>
         <p class="section-subtitle">
-          Comprehensive security solutions powered by modern technology
+          Professional security systems and advanced gold detection technology
         </p>
       </div>
 
