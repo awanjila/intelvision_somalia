@@ -329,8 +329,9 @@ export default {
 
 .card-image-wrapper {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 220px;
   background: #02375f;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,7 +340,12 @@ export default {
 .card-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .card-image {
+  transform: scale(1.05);
 }
 
 .card-content {
