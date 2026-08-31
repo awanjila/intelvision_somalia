@@ -104,10 +104,6 @@ fetch('https://ipapi.co/json/')
     .catch(() => updateMetaKeywords('Somalia'));
 </script>
 
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-<script src="{{ asset('js/app.js') }}" defer></script>
-
 <script>
 window.paypalClientId = "{{ config('services.paypal.client_id') }}";
 window.paypalMode = "{{ config('services.paypal.mode') }}";
