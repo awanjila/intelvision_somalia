@@ -82,7 +82,8 @@ Route::get('edit/about/page', 'AboutPage')->name('edit.about.page');
 
    //frontend
 Route::get('about', 'About')->name('about');
-Route::get('pricing_and_packages', 'Pricing')->name('pricing');
+Route::get('pricing', 'Pricing')->name('pricing');
+Route::redirect('/pricing_and_packages', '/pricing', 301);
     
  });
 
@@ -183,10 +184,7 @@ Route::controller(CatalogController::class)->group(function(){
     Route::get('/category/{slug}', 'showProducts')->name('category.products');
     Route::get('/brand/{slug}', 'showBrandProducts')->name('brand.products');
     Route::get('show/product-1/{slug}', 'show')->name('show.product');
-    Route::get('show/cart', 'showCart')->name('show.cart');
-    Route::get('checkout', 'checkout')->name('show.checkout');
     Route::get('search', 'searchProducts')->name('search');
-    Route::post('/checkout/invoice', 'CheckoutInvoice')->name('checkout.invoice');
 
     Route::get('/products/{slug}', 'showByCategory')->name('products.byCategory');
 
@@ -196,7 +194,6 @@ Route::controller(CatalogController::class)->group(function(){
     Route::get('/terms', 'Terms')->name('terms');
  
     Route::get('/faqs', 'faq')->name('faqs');
-    Route::post('/check-coupon',  'checkCoupon')->name('check_coupon');
 
     Route::get('/distributor-application-form', 'BDistributor')->name('bdistributor');
     Route::post('/become-a-distributor',  'ADistributor')->name('adistributor');

@@ -63,10 +63,10 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const testimonials = [
-  { name: 'Abraham Kimani', text: 'Wabe Studio transformed our manual billing into a seamless automated system. The support is unmatched and their team truly understands business needs.', role: 'Tech Lead, Foxtrot UC' },
+  { name: 'Abraham Kimani', text: 'The security system Intelvision installed protects our entire facility. CCTV coverage is flawless and their team responds instantly when we need support.', role: 'Tech Lead, Foxtrot UC' },
   { name: 'Esther Wanjiru', text: 'Their web design team completely redefined our online presence. Our conversion rates increased by 150% within the first month. Highly recommend!', role: 'Marketing Director, Lorbhex Ltd' },
   { name: 'Brian Omondi', text: 'CCTV installation was precise and professional — integrated with our biometric system perfectly. The attention to detail was impressive.', role: 'Operations Manager, SecurePro' },
-  { name: 'Sarah Muthoni', text: 'Outstanding e-commerce platform development! Our online sales tripled after launch. The team delivered beyond our expectations with excellent post-launch support.', role: 'CEO, TrendMart Kenya' },
+  { name: 'Sarah Muthoni', text: 'The gold detectors we bought from Intelvision are outstanding — precise, reliable, and backed by top-notch training and after-sales support.', role: 'Mining Operations Director' },
   { name: 'David Kipchoge', text: 'The custom ERP system they built streamlined our entire operation. What used to take hours now takes minutes. Best investment we\'ve made in technology.', role: 'Managing Director, LogiFlow Solutions' },
 ]
 

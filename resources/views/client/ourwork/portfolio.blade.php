@@ -1,10 +1,10 @@
 @extends('client.layout.app')
 
-@section('title', 'Our Works | Web Design, POS Systems, eCommerce & Biometric Solutions in Kenya | Wabe Studio')
+@section('title', 'Our Works | CCTV, Electric Fences & Gold Detector Projects | Intelvision Technologies')
 
-@section('meta_title', 'Wabe Studio | Web Design, POS Systems, eCommerce & Biometric Solutions Across Africa')
+@section('meta_title', 'Intelvision Technologies | Security Systems, CCTV & Gold Detectors in Somalia')
 
-@section('meta_description', 'Explore Wabe Studio’s portfolio of cutting-edge digital solutions — from modern website design and scalable eCommerce platforms to powerful POS systems and secure biometric attendance integrations. Trusted across Kenya and Africa to build systems that work so you can grow.')
+@section('meta_description', 'See Intelvision Technologies’ completed works — CCTV installation, electric fence, access control, fire safety and gold detection projects across Somalia. Trusted teams, certified hardware and nationwide support.')
 
 @section('content')
     <our-works></our-works>

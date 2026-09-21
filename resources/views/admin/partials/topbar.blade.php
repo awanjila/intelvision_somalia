@@ -434,7 +434,7 @@
                                                 <h5 class="text-dark mt-0">Applications</h5>
                                                 <ul class="list-unstyled megamenu-list">
                                                     <li>
-                                                        <a href="javascript:void(0);">eCommerce Pages</a>
+                                                        <a href="javascript:void(0);">Store Pages</a>
                                                     </li>
                                                     <li>
                                                         <a href="javascript:void(0);">CRM Pages</a>

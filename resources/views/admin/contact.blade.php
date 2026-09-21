@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('title') Wabe Digital Agency| Admin @endsection
+@section('title') Intelvision Technologies | Admin @endsection
 @section('content')
 
     <!-- ============================================================== -->
@@ -71,7 +71,7 @@
 
                                         <h4>{{$contact->subject}}</h4>
 
-                                        <p>Hello Wabe Digital Agency</p>
+                                        <p>Hello Intelvision</p>
                                         <p>{{$contact->message}}</p>
                                         <hr/>
 

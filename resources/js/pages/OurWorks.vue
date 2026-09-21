@@ -10,8 +10,8 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
-            <h1 class="hero-title">Our Works — Smart Systems & Solutions</h1>
-            <p class="hero-subtitle">From POS and School Management Systems to Websites, CCTV, and Biometrics — we deliver end-to-end solutions.</p>
+            <h1 class="hero-title">Our Works — Security Systems & Gold Mining Solutions</h1>
+            <p class="hero-subtitle">From CCTV, electric fences and access control to premium gold detectors and mining equipment — Intelvision Technologies delivers trusted security solutions across Somalia.</p>
           </div>
           <div class="hero-cta">
             <router-link to="/contact" class="cta-button primary sticky-cta">Start a Project</router-link>
@@ -80,7 +80,7 @@
         <div class="testimonials-slider">
           <div class="testimonial-card">
             <blockquote class="testimonial-quote">
-              "Wabe Studio transformed our school management completely. The system handles everything from attendance to parent communication seamlessly."
+              "Intelvision secured our entire compound with CCTV and electric fencing. Professional installation and excellent after-sales support."
             </blockquote>
             <div class="testimonial-author">
               <strong>Sarah Johnson</strong>
@@ -90,7 +90,7 @@
           </div>
           <div class="testimonial-card">
             <blockquote class="testimonial-quote">
-              "Our POS system has increased efficiency by 300%. The real-time analytics and inventory management are game-changers."
+              "Intelvision installed CCTV and electric fencing across our premises. The surveillance quality and after-sales support are outstanding."
             </blockquote>
             <div class="testimonial-author">
               <strong>Michael Chen</strong>
@@ -100,11 +100,11 @@
           </div>
           <div class="testimonial-card">
             <blockquote class="testimonial-quote">
-              "The ecommerce platform they built for us handles thousands of orders daily. Exceptional performance and support."
+              "The gold detectors and mining equipment we sourced through Intelvision are top of the line. Their expertise is unmatched in the region."
             </blockquote>
             <div class="testimonial-author">
               <strong>David Kiprop</strong>
-              <span>Operations Manager, Wabe Gadgets</span>
+              <span>Mining Company Director</span>
             </div>
             <router-link to="/contact" class="testimonial-cta">Want results like these? Start Your Project</router-link>
           </div>
@@ -127,7 +127,7 @@
           </div>
           <div class="metric-card">
             <div class="metric-number">10+</div>
-            <div class="metric-label">Schools Automated</div>
+            <div class="metric-label">Schools Secured</div>
           </div>
           <div class="metric-card">
             <div class="metric-number">25+</div>
@@ -150,7 +150,7 @@
               width="560"
               height="315"
               src="https://www.youtube.com/embed/knig7eODiSY"
-              title="Wabe Studio Solutions Demo"
+              title="Intelvision Solutions Demo"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
@@ -160,8 +160,8 @@
             </div>
           </div>
           <div class="media-description">
-            <h3>Experience the Power of Smart Systems</h3>
-            <p>Watch how our integrated solutions streamline operations and boost productivity across various industries.</p>
+            <h3>See Intelvision Security Installations in Action</h3>
+            <p>Watch how our CCTV, electric fence and gold detection solutions are deployed on the ground in Somalia.</p>
             <div class="media-links">
               <a href="https://www.youtube.com/watch?v=knig7eODiSY" target="_blank" class="media-link">🎥 Watch Full Demo</a>
               <router-link to="/contact" class="media-link">📞 Schedule Consultation</router-link>
@@ -174,8 +174,8 @@
     <!-- Bottom / Footer CTA -->
     <section class="bottom-cta-section">
       <div class="container">
-        <h2 class="cta-title">Ready to Automate Your Business?</h2>
-        <p class="cta-text">Join the growing number of businesses that trust Wabe Studio for their digital transformation.</p>
+        <h2 class="cta-title">Ready to Secure Your Business?</h2>
+        <p class="cta-text">Join the growing number of homes and businesses that trust Intelvision Technologies for their security, surveillance and gold mining needs.</p>
         <div class="cta-buttons">
           <router-link to="/contact" class="cta-button primary">Start a Project</router-link>
           <router-link to="/contact" class="cta-button secondary">Book a Consultation</router-link>
@@ -209,8 +209,8 @@ export default {
         },
         {
           id: 3,
-          title: "E-Commerce Platform",
-          description: "Full-featured online store with payment integration and order management.",
+          title: "Security Systems Deployment",
+          description: "Professional CCTV, electric fence, access control and fire safety installations for homes and businesses.",
           image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop",
           categorySlug: "ecommerce-platforms"
         }

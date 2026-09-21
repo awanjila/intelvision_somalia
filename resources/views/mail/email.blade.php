@@ -1,4 +1,4 @@
-<h2>Hello Wabestudio,</h2>
+<h2>Hello Intelvision,</h2>
 Email received from: {{ $name }}
 
 User information:

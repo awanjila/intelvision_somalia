@@ -7,7 +7,7 @@
           <div class="why-choose-header">
             <div class="section-label">Why Choose Us</div>
             <h2 class="section-title">
-              Why Businesses <span class="gradient-text">Choose</span> Wabe Studio
+              Why Businesses <span class="gradient-text">Choose</span> Intelvision Technologies
             </h2>
             <p class="section-description">
               Trusted expertise, innovative solutions, and a commitment to your success every step of the way. We don't just deliver projects — we build lasting partnerships.

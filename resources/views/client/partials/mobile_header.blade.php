@@ -25,8 +25,6 @@
         </ul><!-- /.mobile-nav__contact -->
         <div class="mobile-nav__top">
             <div class="mobile-nav__social">
-                <a href="https://www.twitter.com/wabestudio/" class="fab fa-twitter"></a>
-                <a href="https://www.facebook.com/wabestudio/" class="fab fa-facebook-square"></a>
                 <a href="#" class="fab fa-pinterest-p"></a>
                 <a href="#" class="fab fa-instagram"></a>
             </div><!-- /.mobile-nav__social -->

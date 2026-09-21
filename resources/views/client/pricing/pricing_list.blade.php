@@ -1,14 +1,14 @@
 @extends('client.layout.app')
 @section('title')
-Cost | Price of Ecommerce and Websites in Kenya  
+Pricing | Security Systems and Gold Detectors in Somalia  
 @endsection
 
 @section('meta_title')
-Pricing | The Cost | Price of Ecommerce and Websites in Kenya  
+Pricing | Cost of Security Systems and Gold Detectors in Somalia  
 @endsection
 
 @section('meta_description')
-Boost your online presence with expert Website Design, efficient Point Of Sale systems, robust Ecommerce solutions, innovative Web Design, and secure Biometric Attendance systems. Enhance functionality and user experience.
+Protect your home and business with advanced security systems — CCTV, electric fences, access control and fire safety — and premium gold detectors and mining equipment from Intelvision Technologies.
 @endsection
 @section('content')
 <!--Page Title-->

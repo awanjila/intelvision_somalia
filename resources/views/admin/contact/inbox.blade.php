@@ -1,7 +1,7 @@
 
 @extends('admin.admin_master')
 
-@section('title')  Wabe Digital Agency| Admin @endsection
+@section('title') Intelvision Technologies | Admin @endsection
 @section('content')
             <!-- ============================================================== -->
             <!-- Start Page Content here -->

@@ -7,7 +7,6 @@
           <!-- Company Info -->
           <div class="footer-column">
             <div class="footer-logo">
-              <!-- <a href="/"><img src="/front_assets/images/logo-light.png" alt="Wabe Studio"></a> -->
             </div>
             <p class="footer-description">
               An excellent service management in the area of IT providing solutions. High level efficient solution to businesses growth.

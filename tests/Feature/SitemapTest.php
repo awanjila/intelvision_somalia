@@ -13,7 +13,7 @@ class SitemapTest extends TestCase
         $response->assertStatus(200);
         $this->assertStringStartsWith('text/xml', $response->headers->get('Content-Type'));
 
-        foreach (['/', '/about', '/pricing_and_packages', '/products', '/blogs', '/pricings', '/store', '/delivery', '/terms', '/faqs', '/contact', '/our-works'] as $path) {
+        foreach (['/', '/about', '/pricing', '/products', '/blogs', '/pricings', '/store', '/delivery', '/terms', '/faqs', '/contact', '/our-works'] as $path) {
             $response->assertSee(url($path), false);
         }
     }

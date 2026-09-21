@@ -4,11 +4,11 @@ Intelvision Technologies | Advanced Security Solutions
 @endsection
 
 @section('meta_title')
-Services | Website Design | Point Of Sale | ecommerce  | Web Design | Biometric Attendance   
+Services | Security Systems | CCTV | Electric Fences | Gold Detectors | Mining Equipment   
 @endsection
 
 @section('meta_description')
-Boost your online presence with expert Website Design, efficient Point Of Sale systems, robust Ecommerce solutions, innovative Web Design, and secure Biometric Attendance systems. Enhance functionality and user experience.
+Protect your home and business with advanced security systems — CCTV, electric fences, access control and fire safety — and premium gold detectors and mining equipment from Intelvision Technologies.
 @endsection
 @section('content')
 
