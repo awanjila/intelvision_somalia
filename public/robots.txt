@@ -1,2 +1,11 @@
 User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /admin
+Disallow: /cart
+Disallow: /checkout
+Disallow: /search
+
+Sitemap: https://intelvisionsomalia.com/sitemap.xml
 

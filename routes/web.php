@@ -257,6 +257,8 @@ Route::get('/our-works', function () {
 
 Route::get('/portfolio/category/{slug}', [PortfolioController::class, 'ShowCategoryPortfolios'])->name('portfolio.category.show');
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
 
 
 
