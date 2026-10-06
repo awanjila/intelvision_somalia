@@ -155,11 +155,60 @@
             });
 
             $('#image-input').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
+                var input = this;
+                var file = e.target.files[0];
+                if (!file) return;
+
+                var supported = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
+
+                function showPreview() {
+                    if (!input.files[0]) return;
+                    var reader = new FileReader();
+                    reader.onload = function(ev) {
+                        $('#showImage').attr('src', ev.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
                 }
-                reader.readAsDataURL(e.target.files[0]);
+
+                if (supported.indexOf(file.type) !== -1) {
+                    showPreview();
+                    return;
+                }
+
+                if (file.type.indexOf('image/') !== 0) {
+                    toastr.error('Unsupported file type: ' + (file.type || 'unknown') + '. Please upload a JPG, PNG, GIF, BMP or WebP image.');
+                    input.value = '';
+                    return;
+                }
+
+                var url = URL.createObjectURL(file);
+                var img = new Image();
+                img.onload = function() {
+                    var canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    canvas.getContext('2d').drawImage(img, 0, 0);
+                    URL.revokeObjectURL(url);
+                    canvas.toBlob(function(blob) {
+                        if (!blob) {
+                            toastr.error('Could not convert the image. Please save it as JPG and upload again.');
+                            input.value = '';
+                            return;
+                        }
+                        var name = file.name.replace(/\.[^.]+$/, '') + '.jpg';
+                        var transfer = new DataTransfer();
+                        transfer.items.add(new File([blob], name, { type: 'image/jpeg' }));
+                        input.files = transfer.files;
+                        toastr.info('Image converted to JPG automatically.');
+                        showPreview();
+                    }, 'image/jpeg', 0.92);
+                };
+                img.onerror = function() {
+                    URL.revokeObjectURL(url);
+                    toastr.error('Cannot read this image in your browser. Please convert it to JPG and upload again.');
+                    input.value = '';
+                };
+                img.src = url;
             });
             
             var descriptionQuill = new Quill('#description-editor', {

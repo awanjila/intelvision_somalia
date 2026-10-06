@@ -52,6 +52,13 @@ public function IndexOfServices(){
             'description' => 'required',
         ]);
 
+        if ($request->hasFile('image') && !in_array($request->file('image')->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])) {
+            return redirect()->route('add.service')->with([
+                'message' => 'Unsupported image type: ' . $request->file('image')->getMimeType() . '. Please upload a JPG, PNG, GIF, BMP or WebP image.',
+                'alert-type' => 'error',
+            ]);
+        }
+
         if ($request->file('image')) {
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
@@ -124,6 +131,13 @@ public function IndexOfServices(){
             'title' => 'required',
             'description' => 'required',
         ]);
+
+    if ($request->hasFile('image') && !in_array($request->file('image')->getMimeType(), ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'])) {
+        return redirect()->route('edit.service', $service_id)->with([
+            'message' => 'Unsupported image type: ' . $request->file('image')->getMimeType() . '. Please upload a JPG, PNG, GIF, BMP or WebP image.',
+            'alert-type' => 'error',
+        ]);
+    }
 
     if ($request->file('image')) {
         $image = $request->file('image');
