@@ -2,6 +2,7 @@
   <section class="services-section">
     <div class="container">
       <div class="section-header">
+        <p class="section-kicker">Our Services</p>
         <h2 class="section-title">What We Do</h2>
         <p class="section-subtitle">
           Professional security systems and advanced gold detection technology
@@ -203,7 +204,7 @@ export default {
 
 <style scoped>
 .services-section {
-  padding: 50px 0 30px 0;
+  padding: 80px 0 70px 0;
   background: #f8f9fa;
 }
 
@@ -215,7 +216,16 @@ export default {
 
 .section-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
+}
+
+.section-kicker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #01aeef;
+  margin-bottom: 12px;
 }
 
 .section-title {
@@ -250,24 +260,25 @@ export default {
 }
 
 .category-title {
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.35rem;
+  font-weight: 700;
   color: #02375f;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   display: inline-block;
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
 }
 
 .category-title::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
-  height: 4px;
+  width: 40px;
+  height: 2px;
   background: #01aeef;
-  border-radius: 2px;
+  border-radius: 1px;
 }
 
 .carousel-wrapper {
@@ -312,29 +323,28 @@ export default {
 
 .service-card {
   background: #fff;
-  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  border: 1px solid transparent;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  border-color: #01aeef;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  border-color: #cbd5e1;
 }
 
 .card-image-wrapper {
   width: 100%;
   height: 220px;
-  background: #02375f;
+  background: #fff;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .card-image {
@@ -345,7 +355,7 @@ export default {
 }
 
 .service-card:hover .card-image {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .card-content {
@@ -370,18 +380,18 @@ export default {
 
 .card-link {
   margin-top: auto;
-  font-weight: 700;
-  color: #01aeef;
+  font-weight: 600;
+  color: #02375f;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   padding: 4px 0;
 }
 
 .card-link:hover {
-  color: #0284c7;
+  color: #01aeef;
   gap: 10px;
 }
 
@@ -397,26 +407,29 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #02375f;
-  color: #fff;
-  border: none;
-  width: 48px;
-  height: 48px;
+  background: #fff;
+  color: #64748b;
+  border: 1px solid #e5e7eb;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(2, 55, 95, 0.2);
+  font-size: 20px;
+  line-height: 1;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .carousel-nav:hover:not(:disabled) {
-  background: #01aeef;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 6px 16px rgba(1, 174, 239, 0.3);
+  background: #02375f;
+  color: #fff;
+  border-color: #02375f;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 6px rgba(2, 55, 95, 0.15);
 }
 
 .carousel-nav:disabled {
@@ -435,25 +448,25 @@ export default {
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
-  background: #cbd5e0;
+  width: 8px;
+  height: 8px;
+  background: #cbd5e1;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   padding: 0;
 }
 
 .dot:hover:not(.active) {
-  background: #01aeef;
-  transform: scale(1.2);
+  background: #94a3b8;
+  transform: none;
 }
 
 .dot.active {
-  background: #01aeef;
-  width: 36px;
-  border-radius: 12px;
+  background: #02375f;
+  width: 8px;
+  border-radius: 50%;
 }
 
 /* Slide transitions */
