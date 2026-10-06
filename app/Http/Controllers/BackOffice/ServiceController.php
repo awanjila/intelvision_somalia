@@ -55,7 +55,7 @@ public function IndexOfServices(){
         if ($request->file('image')) {
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->fit(1700, 700)->save('upload/service_image/' . $name_gen);
+            Image::make($image)->widen(1700, function ($constraint) { $constraint->upsize(); })->save('upload/service_image/' . $name_gen);
             $save_url = 'upload/service_image/' . $name_gen;
             $service = new Service();
             $service->name = $request->title;
@@ -128,7 +128,7 @@ public function IndexOfServices(){
     if ($request->file('image')) {
         $image = $request->file('image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->fit(669, 499)->save('upload/service_image/' . $name_gen);
+        Image::make($image)->widen(1700, function ($constraint) { $constraint->upsize(); })->save('upload/service_image/' . $name_gen);
         $save_url = 'upload/service_image/' . $name_gen;
         Service::findOrFail($service_id)->update([
 
